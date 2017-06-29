@@ -116,13 +116,16 @@ Your proxy is ready to go!
 
 ## Next Step
 
-Now you will be ready to run a container with the option `-e VIRTUAL_HOST=foo.bar.com` alongside with `LETSENCRYPT_HOST=foo.bar.com`, exposing port 80 and 443, and your certificate will be generated and always valid.
+
+### If you want to test how it works please check this working sample (docker-compose.yml)
+
+[wordpress-docker-letsencrypt](https://github.com/evertramos/wordpress-docker-letsencrypt)
+
+Or you can run your own containers with the option `-e VIRTUAL_HOST=foo.bar.com` alongside with `LETSENCRYPT_HOST=foo.bar.com`, exposing port 80 and 443, and your certificate will be generated and always valid.
+
+
+## Credits
 
 All credits goes to:
 1. [@jwilder](https://github.com/jwilder/nginx-proxy)
-2. [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion).
-
-
-## If you want to test how it works please check this working sample (docker-compose.yml)
-
-[wordpress-docker-letsencrypt](https://github.com/evertramos/wordpress-docker-letsencrypt)
+2. [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
