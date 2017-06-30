@@ -130,3 +130,8 @@ Or you can run your own containers with the option `-e VIRTUAL_HOST=foo.bar.com`
 All credits goes to:
 1. [@jwilder](https://github.com/jwilder/nginx-proxy)
 2. [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
+
+
+### Special thanks to:
+
+1. [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
