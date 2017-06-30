@@ -63,6 +63,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       NGINX_DOCKER_GEN_CONTAINER: "nginx-gen"
+      NGINX_PROXY_CONTAINER: "nginx"
 ```
 
 2. Change the file `docker-compose.yml` with you own settings:
