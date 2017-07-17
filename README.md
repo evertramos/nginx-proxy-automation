@@ -33,10 +33,10 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /path/to/your/nginx/data/conf.d:/etc/nginx/conf.d
-      - /path/to/your/nginx/data/vhost.d:/etc/nginx/vhost.d
-      - /path/to/your/nginx/data/html:/usr/share/nginx/html
-      - /path/to/your/nginx/data/certs:/etc/nginx/certs:ro
+      - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
+      - ${NGINX_FILES_PATH}/vhost.d:/etc/nginx/vhost.d
+      - ${NGINX_FILES_PATH}/html:/usr/share/nginx/html
+      - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs:ro
 
   nginx-gen:
     image: jwilder/docker-gen
@@ -44,10 +44,10 @@ services:
     container_name: nginx-gen
     restart: unless-stopped
     volumes:
-      - /path/to/your/nginx/data/conf.d:/etc/nginx/conf.d
-      - /path/to/your/nginx/data/vhost.d:/etc/nginx/vhost.d
-      - /path/to/your/nginx/data/html:/usr/share/nginx/html
-      - /path/to/your/nginx/data/certs:/etc/nginx/certs:ro
+      - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
+      - ${NGINX_FILES_PATH}/vhost.d:/etc/nginx/vhost.d
+      - ${NGINX_FILES_PATH}/html:/usr/share/nginx/html
+      - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
 
@@ -56,19 +56,25 @@ services:
     container_name: nginx-letsencrypt
     restart: unless-stopped
     volumes:
-      - /path/to/your/nginx/data/conf.d:/etc/nginx/conf.d
-      - /path/to/your/nginx/data/vhost.d:/etc/nginx/vhost.d
-      - /path/to/your/nginx/data/html:/usr/share/nginx/html
-      - /path/to/your/nginx/data/certs:/etc/nginx/certs:rw
+      - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
+      - ${NGINX_FILES_PATH}/vhost.d:/etc/nginx/vhost.d
+      - ${NGINX_FILES_PATH}/html:/usr/share/nginx/html
+      - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       NGINX_DOCKER_GEN_CONTAINER: "nginx-gen"
       NGINX_PROXY_CONTAINER: "nginx"
 ```
 
-2. Change the file `docker-compose.yml` with you own settings:
+2. Create an `.env` file and say where you will locate the nginx files:
 
-2.1. Use a specific network (optional)
+```
+NGINX_FILES_PATH=/path/to/your/nginx/data
+```
+
+3. Change the file `docker-compose.yml` with you own settings:
+
+3.1. Use a specific network (optional)
 
 In order to use an specific network add the following lines at the end of your file:
 ```bash
@@ -78,7 +84,7 @@ networks:
       name: your-network-name
 ```
 
-2.2. Set your IP address (optional)
+3.2. Set your IP address (optional)
 
 On the line `ports` add as follow:
 ```bash
@@ -88,23 +94,14 @@ On the line `ports` add as follow:
 
 ```
 
-2.3. Change the configuration path where you will locate the nginx files
-
-```bash
-    volumes:
-      - /CHANGE/HERE/conf.d:/etc/nginx/conf.d
-      - /CHANGE/HERE/vhost.d:/etc/nginx/vhost.d
-      - /CHANGE/HERE/html:/usr/share/nginx/html
-```
-
-3. Get the latest version of **nginx.tmpl** file (only if you have not cloned this repostiry)
+4. Get the latest version of **nginx.tmpl** file (only if you have not cloned this repostiry)
 
 ```bash
 curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
 ```
 Make sure you are in the same folder of docker-compose file, if not, you must update the the settings `- ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro`.
 
-4. Start your project
+5. Start your project
 ```bash
 docker-compose up -d
 ```
