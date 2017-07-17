@@ -132,3 +132,4 @@ All credits goes to:
 ### Special thanks to:
 
 - [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
+- [@fracz](https://github.com/fracz) - Update repo to use `.env` file
