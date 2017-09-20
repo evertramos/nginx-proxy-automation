@@ -74,9 +74,9 @@ NGINX_FILES_PATH=/path/to/your/nginx/data
 
 3. Change the file `docker-compose.yml` with you own settings:
 
-3.1. Use a specific network (optional)
+3.1. Set your PROXY Network
 
-In order to use an specific network add the following lines at the end of your file:
+Your wordpress container must be in the same network of your nginx proxy.
 ```bash
 networks:
   default:
