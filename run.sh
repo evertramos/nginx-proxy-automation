@@ -14,7 +14,7 @@ fi
 docker network create $NETWORK
 
 # 3. Download the latest version of nginx.tmpl
-#curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
+curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
 
 # 4. Start proxy
 docker-compose up -d
