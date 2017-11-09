@@ -1,3 +1,12 @@
+
+# THIS REPO WAS CONVERTED TO WEBPROXY
+## https://github.com/evertramos/webproxy/ 
+(to simplify naming convetion)
+
+It will be synced until Jun of 2018.
+
+---
+
 # Usage of Docker Compose (docker-compose) with NGINX proxy and Letsencrypt
 
 Docker Compose (docker-compose) for [docker-letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
