@@ -68,11 +68,20 @@ Your proxy is ready to go!
 
 5. Test your proxy
 
+Run our `test.sh` informing your domain already configured in your DNS server as follow:
+
+```bash
+# ./test.sh your.domain.com
+```
+
+or simply run:
+
 ```bash
  docker run -dit -e VIRTUAL_HOST=your.domain.com --network=webproxy --name test-web httpd:alpine
 ```
 
-And access your browser with your domain already configured in your dns.
+
+Access your browser with your domain!
 
 
 > Please note that when running a new container to generate certificates with LetsEncrypt (`-e LETSENCRYPT_HOST=your.domain.com`), it may take a few minutes, depending on multiples circunstances.
