@@ -1,13 +1,4 @@
-
-# THIS REPO WAS CONVERTED TO WEBPROXY
-## https://github.com/evertramos/webproxy/ 
-(to simplify naming convetion)
-
-It will be synced until Jun of 2018.
-
----
-
-# Usage of Docker Compose (docker-compose) with NGINX proxy and Letsencrypt
+# Usage of Docker Compose (docker-compose) with NGINX Proxy and Letsencrypt
 
 Docker Compose (docker-compose) for [docker-letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
 
@@ -24,10 +15,10 @@ In order to use, you must follow these steps:
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion.git
+git clone https://github.com/evertramos/webproxy.git
 ```
 
-Or just copy the content of `docker-compose.yml`, as of below:
+Or just copy the content of `docker-compose.yml`, as of below and substitute with your own configuration settings:
 
 ```bash
 version: '3'
@@ -36,11 +27,11 @@ services:
     image: nginx
     labels:
         com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
-    container_name: nginx
+    container_name: ${NGINX_WEB}
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
+      - "${IP}:80:80"
+      - "${IP}:443:443"
     volumes:
       - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH}/vhost.d:/etc/nginx/vhost.d
@@ -50,7 +41,7 @@ services:
   nginx-gen:
     image: jwilder/docker-gen
     command: -notify-sighup nginx -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
-    container_name: nginx-gen
+    container_name: ${DOCKER_GEN}
     restart: unless-stopped
     volumes:
       - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
@@ -62,7 +53,7 @@ services:
 
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: nginx-letsencrypt
+    container_name: ${LETS_ENCRYPT}
     restart: unless-stopped
     volumes:
       - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
@@ -71,54 +62,52 @@ services:
       - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      NGINX_DOCKER_GEN_CONTAINER: "nginx-gen"
-      NGINX_PROXY_CONTAINER: "nginx"
-```
+      NGINX_DOCKER_GEN_CONTAINER: ${DOCKER_GEN}
+      NGINX_PROXY_CONTAINER: ${NGINX_WEB}
 
-2. Create an `.env` file and say where you will locate the nginx files:
-
-```
-NGINX_FILES_PATH=/path/to/your/nginx/data
-```
-
-3. Change the file `docker-compose.yml` with you own settings:
-
-3.1. Set your PROXY Network
-
-Your wordpress container must be in the same network of your nginx proxy.
-```bash
 networks:
   default:
     external:
-      name: your-network-name
+      name: ${NETWORK}
 ```
 
-3.2. Set your IP address (optional)
+2. Create an `.env` file as of our `.env.sample`, save it in the same folder as your compose file:
 
-On the line `ports` add as follow:
+```
+#
+# WEBPROXY
+#
+# A Web Proxy using docker with NGINX with Let's Encrypt
+# And our great community docker-gen, nginx-proxy and docker-letsencrypt-nginx-proxy-companion
+#
+# This is the .env file to set up your webproxy enviornment
+
+# Define the names for your local containers
+NGINX_WEB=nginx-web
+DOCKER_GEN=nginx-gen
+LETS_ENCRYPT=nginx-letsencrypt
+
+# Your external IP address
+IP=0.0.0.0
+
+# Network name
+NETWORK=webproxy
+
+# NGINX file path
+NGINX_FILES_PATH=/path/to/your/nginx/data
+```
+
+4. Run our start script
+
 ```bash
-    ports:
-      - "YOUR_PUBLIC_IP:80:80"
-      - "YOUR_PUBLIC_IP:443:443"
-
+# ./run.sh
 ```
 
-4. Get the latest version of **nginx.tmpl** file (only if you have not cloned this repostiry)
+Your proxy is ready to go!
 
-```bash
-curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
-```
-Make sure you are in the same folder of docker-compose file, if not, you must update the the settings `- ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro`.
-
-5. Start your project
-```bash
-docker-compose up -d
-```
 
 > Please note that when running a new container to generate certificates with LetsEncrypt it may take a few minutes, depending on multiples circunstances.
 
-
-Your proxy is ready to go!
 
 
 ## Next Step
@@ -134,8 +123,9 @@ Or you can run your own containers with the option `-e VIRTUAL_HOST=foo.bar.com`
 ## Credits
 
 All credits goes to:
-- [@jwilder](https://github.com/jwilder/nginx-proxy)
-- [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
+- nginx-proxy [@jwilder](https://github.com/jwilder/nginx-proxy)
+- docker-gen [@jwilder](https://github.com/jwilder/docker-gen)
+- dockher-letsencrypt-nginx-proxy-companion [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
 
 
 ### Special thanks to:
