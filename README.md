@@ -66,9 +66,37 @@ NGINX_FILES_PATH=/path/to/your/nginx/data
 
 Your proxy is ready to go!
 
-5. Test your proxy
+## Starting your web containers
 
-Run our `test.sh` informing your domain already configured in your DNS server as follow:
+After following the steps above you can start new web containers with port 80 open and add the option `-e VIRTUAL_HOST=your.domain.com` so proxy will automatically generate the reverse script in NGINX Proxy to forward new connections to your web/app container, as of:
+
+```bash
+docker run -d -e VIRTUAL_HOST=your.domain.com \
+              --network=webproxy \
+              --name my_app \
+              httpd:alpine
+```
+
+To have SSL in your web/app you just add the option `-e LETSENCRYPT_HOST=your.domain.com`, as follow:
+
+```bash
+docker run -d -e VIRTUAL_HOST=your.domain.com \
+              -e LETSENCRYPT_HOST=your.domain.com \
+              -e LETSENCRYPT_EMAIL=your.email@your.domain.com \
+              --network=webproxy \
+              --name my_app \
+              httpd:alpine
+```
+
+> You don´t need to open port *443* in your container, the certificate validation is managed by the web proxy.
+
+
+> Please note that when running a new container to generate certificates with LetsEncrypt (`-e LETSENCRYPT_HOST=your.domain.com`), it may take a few minutes, depending on multiples circunstances.
+
+
+## Testing your proxy with scripts preconfigured 
+
+1. Run the script `test.sh` informing your domain already configured in your DNS to point out to your server as follow:
 
 ```bash
 # ./test.sh your.domain.com
@@ -80,15 +108,9 @@ or simply run:
  docker run -dit -e VIRTUAL_HOST=your.domain.com --network=webproxy --name test-web httpd:alpine
 ```
 
-
 Access your browser with your domain!
 
-
-> Please note that when running a new container to generate certificates with LetsEncrypt (`-e LETSENCRYPT_HOST=your.domain.com`), it may take a few minutes, depending on multiples circunstances.
-
-6. Stop and remove your test container
-
-Run our `stop_test.sh` script:
+To stop and remove your test container run our `stop_test.sh` script:
 
 ```bash
 # ./stop_test.sh
@@ -100,19 +122,19 @@ Or simply run:
 docker stop test-web && docker rm test-web 
 ```
 
-## Next Step
 
-
-### If you want to test how it works please check this working sample (docker-compose.yml)
+## Production Environment using Web Proxy and Wordpress
 
 [wordpress-docker-letsencrypt](https://github.com/evertramos/wordpress-docker-letsencrypt)
 
-Or you can run your own containers with the option `-e VIRTUAL_HOST=foo.bar.com` alongside with `LETSENCRYPT_HOST=foo.bar.com`, exposing port 80 and 443, and your certificate will be generated and always valid.
+In this repo you will find a docker-compose file to start a production enviornment for a new wordpress site.
 
 
 ## Credits
 
-All credits goes to:
+Without the repositories below this webproxy wouldn´t be possible.
+
+Credits goes to:
 - nginx-proxy [@jwilder](https://github.com/jwilder/nginx-proxy)
 - docker-gen [@jwilder](https://github.com/jwilder/docker-gen)
 - dockher-letsencrypt-nginx-proxy-companion [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
