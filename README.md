@@ -139,7 +139,9 @@ Without the repositories below this webproxy wouldn´t be possible.
 Credits goes to:
 - nginx-proxy [@jwilder](https://github.com/jwilder/nginx-proxy)
 - docker-gen [@jwilder](https://github.com/jwilder/docker-gen)
-- dockher-letsencrypt-nginx-proxy-companion [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
+
+The inicial idea came from:
+- docker-letsencrypt-nginx-proxy-companion [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
 
 
 ### Special thanks to:
