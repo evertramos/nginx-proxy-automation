@@ -4,7 +4,9 @@ With this repo you will be able to set up your server with multiple sites using 
 
 Something like:
 
-![Proxy Enviornment](https://cdn-images-1.medium.com/max/873/1*rnzxfcy2N_ffJPnBundJQw.jpeg)
+
+
+![Web Proxy Enviornment](https://github.com/evertramos/images/raw/master/webproxy.jpg)
 
 
 ## Why use it?
