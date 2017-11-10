@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Run this compose file with all set up includes
+#
+# This file should be used to prepare and run your WebProxy after set up your .env file
+# Source: https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion
+#
 
 # 1. Check if .env file exists
 if [ -e .env ]; then
