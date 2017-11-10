@@ -86,6 +86,19 @@ Access your browser with your domain!
 
 > Please note that when running a new container to generate certificates with LetsEncrypt (`-e LETSENCRYPT_HOST=your.domain.com`), it may take a few minutes, depending on multiples circunstances.
 
+6. Stop and remove your test container
+
+Run our `stop_test.sh` script:
+
+```bash
+# ./stop_test.sh
+```
+
+Or simply run:
+
+```bash
+docker stop test-web && docker rm test-web 
+```
 
 ## Next Step
 
