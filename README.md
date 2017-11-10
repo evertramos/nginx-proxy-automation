@@ -1,6 +1,6 @@
-# A Web Proxy using Docker, NGINX and Let's Encrypt
+# An Automated Web Proxy using Docker, NGINX and Let's Encrypt
 
-With this repo you will be able to set up your server with multiple sites using a single NGINX proxy to manage your connections.
+With this repo you will be able to set up your server with multiple sites using a single NGINX proxy to manage your connections, automating your apps container (port 80 and 443) to auto renew your ssl certificates with Let´s Encrypt.
 
 Something like:
 
