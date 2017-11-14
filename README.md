@@ -124,13 +124,12 @@ Or simply run:
 docker stop test-web && docker rm test-web 
 ```
 
-
 ## Production Environment using Web Proxy and Wordpress
 
-[wordpress-docker-letsencrypt](https://github.com/evertramos/wordpress-docker-letsencrypt)
+1. [wordpress-docker-letsencrypt](https://github.com/evertramos/wordpress-docker-letsencrypt)
+2. [docker-portainer-letsencrypt](https://github.com/evertramos/docker-portainer-letsencrypt)
 
 In this repo you will find a docker-compose file to start a production enviornment for a new wordpress site.
-
 
 ## Credits
 
