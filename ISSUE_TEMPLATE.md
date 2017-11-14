@@ -1,17 +1,15 @@
-Please informe the list below:
-
-# 1. Error description:
+# Error description:
 
 
-# 2. Steps to reproduce
+# Steps to reproduce
 
 
-# 3. Expected result
+# Expected result
 
 
-# 4. Error result
+# Error result
 
 
-# 5. Comments
+# Comments
 
 
