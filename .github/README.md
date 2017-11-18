@@ -11,7 +11,7 @@ Something like:
 
 ## Why use it?
 
-Using this set up you will be able start a productyion enviornment in a few seconds. And to start new web project simply start new containers the option `-e VIRTUAL_HOST=your.domain.com` and will be ready to go, if you want to use SSL (Let's Encrypt) just add the tag `-e LETSENCRYPT_HOST=your.domain.com`. Done!
+Using this set up you will be able start a production environment in a few seconds. And to start new web project simply start new containers the option `-e VIRTUAL_HOST=your.domain.com` and will be ready to go, if you want to use SSL (Let's Encrypt) just add the tag `-e LETSENCRYPT_HOST=your.domain.com`. Done!
 
 Easy and trustworthy!
 
