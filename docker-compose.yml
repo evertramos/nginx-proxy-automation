@@ -5,7 +5,7 @@ services:
     labels:
         com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     container_name: ${NGINX_WEB}
-    restart: unless-stopped
+    restart: always
     ports:
       - "${IP}:80:80"
       - "${IP}:443:443"
@@ -19,7 +19,7 @@ services:
     image: jwilder/docker-gen
     command: -notify-sighup ${NGINX_WEB} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
     container_name: ${DOCKER_GEN}
-    restart: unless-stopped
+    restart: always
     volumes:
       - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH}/vhost.d:/etc/nginx/vhost.d
@@ -31,7 +31,7 @@ services:
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: ${LETS_ENCRYPT}
-    restart: unless-stopped
+    restart: always
     volumes:
       - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH}/vhost.d:/etc/nginx/vhost.d
