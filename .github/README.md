@@ -6,7 +6,7 @@ Something like:
 
 
 
-![Web Proxy Enviornment](https://github.com/evertramos/images/raw/master/webproxy.jpg)
+![Web Proxy environment](https://github.com/evertramos/images/raw/master/webproxy.jpg)
 
 
 ## Why use it?
@@ -43,7 +43,7 @@ Update this file with your preferences.
 # A Web Proxy using docker with NGINX with Let's Encrypt
 # And our great community docker-gen, nginx-proxy and docker-letsencrypt-nginx-proxy-companion
 #
-# This is the .env file to set up your webproxy enviornment
+# This is the .env file to set up your webproxy environment
 
 # Define the names for your local containers
 NGINX_WEB=nginx-web
@@ -129,7 +129,7 @@ docker stop test-web && docker rm test-web
 1. [wordpress-docker-letsencrypt](https://github.com/evertramos/wordpress-docker-letsencrypt)
 2. [docker-portainer-letsencrypt](https://github.com/evertramos/docker-portainer-letsencrypt)
 
-In this repo you will find a docker-compose file to start a production enviornment for a new wordpress site.
+In this repo you will find a docker-compose file to start a production environment for a new wordpress site.
 
 ## Credits
 
