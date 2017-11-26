@@ -3,7 +3,7 @@
 # Set up your DOMAIN
 if [ $# -eq 0 ]; then
     echo "Please inform your domain name to test your proxy."
-    echo "./test.sh $1"
+    echo "./start_test.sh $1"
     exit 1
 else
     DOMAIN=$1
