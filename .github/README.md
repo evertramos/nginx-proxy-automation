@@ -95,6 +95,18 @@ docker run -d -e VIRTUAL_HOST=your.domain.com \
 
 > Please note that when running a new container to generate certificates with LetsEncrypt (`-e LETSENCRYPT_HOST=your.domain.com`), it may take a few minutes, depending on multiples circunstances.
 
+## Futher Options
+
+1. Basic Authentication Support
+
+In order to be able to secure your virtual host with basic authentication, you must create a file named as its equivalent VIRTUAL_HOST variable on directory ${NGINX_FILES_PATH}/htpasswd/$VIRTUAL_HOST.
+
+After set up this webproxy, you will do the following:
+```bash
+sudo sh -c "echo -n 'user_name:' >> ${NGINX_FILES_PATH}/your_domain.com"
+sudo sh -c "openssl passwd -apr1 >> ${NGINX_FILES_PATH}/your_domain.com"
+```
+> Please substitute the `${NGINX_FILES_PATH}` with your path information and your virtual host name as `your_domain.com`.
 
 ## Testing your proxy with scripts preconfigured 
 

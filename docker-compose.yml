@@ -14,6 +14,7 @@ services:
       - ${NGINX_FILES_PATH}/vhost.d:/etc/nginx/vhost.d
       - ${NGINX_FILES_PATH}/html:/usr/share/nginx/html
       - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs:ro
+      - ${NGINX_FILES_PATH}/htpasswd:/etc/nginx/htpasswd:ro
 
   nginx-gen:
     image: jwilder/docker-gen
@@ -25,6 +26,7 @@ services:
       - ${NGINX_FILES_PATH}/vhost.d:/etc/nginx/vhost.d
       - ${NGINX_FILES_PATH}/html:/usr/share/nginx/html
       - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs:ro
+      - ${NGINX_FILES_PATH}/htpasswd:/etc/nginx/htpasswd:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
 
