@@ -1,6 +1,6 @@
 version: '3'
 services:
-  nginx:
+  nginx-web:
     image: nginx
     labels:
         com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
