@@ -4,8 +4,6 @@ With this repo you will be able to set up your server with multiple sites using 
 
 Something like:
 
-
-
 ![Web Proxy environment](https://github.com/evertramos/images/raw/master/webproxy.jpg)
 
 
@@ -38,32 +36,46 @@ Update this file with your preferences.
 
 ```
 #
-# WEBPROXY
+# docker-compose-letsencrypt-nginx-proxy-companion
+# 
+# A Web Proxy using docker with NGINX and Let's Encrypt
+# Using the great community docker-gen, nginx-proxy and docker-letsencrypt-nginx-proxy-companion
 #
-# A Web Proxy using docker with NGINX with Let's Encrypt
-# And our great community docker-gen, nginx-proxy and docker-letsencrypt-nginx-proxy-companion
-#
-# This is the .env file to set up your webproxy environment
+# This is the .env file to set up your webproxy enviornment
 
-# Define the names for your local containers
+#
+# Your local containers NAME
+#
 NGINX_WEB=nginx-web
 DOCKER_GEN=nginx-gen
 LETS_ENCRYPT=nginx-letsencrypt
 
+#
 # Your external IP address
+#
 IP=0.0.0.0
 
-# Network name
+#
+# Default Network
+#
 NETWORK=webproxy
 
+#
+# Service Network
+#
+# This is optional in case you decide to add a new network to your services containers
+#SERVICE_NETWORK=webservices
+
+#
 # NGINX file path
+#
 NGINX_FILES_PATH=/path/to/your/nginx/data
 ```
 
 4. Run our start script
 
 ```bash
-# ./run.sh
+# ./start.sh
 ```
 
 Your proxy is ready to go!
@@ -108,12 +120,23 @@ sudo sh -c "openssl passwd -apr1 >> ${NGINX_FILES_PATH}/your_domain.com"
 ```
 > Please substitute the `${NGINX_FILES_PATH}` with your path information and your virtual host name as `your_domain.com`.
 
+2. Using multiple networks
+
+If you want to use more than one network to better organize your environment you could set the option `SERVICE_NETWORK` in our `.env.sample` or you can just create your own network and attach all your containers as of:
+
+```bash
+docker network create myownnetwork
+docker network connect myownnetwork nginx-web
+docker network connect myownnetwork nginx-gen
+docker network connect myownnetwork nginx-letsencrypt
+```
+
 ## Testing your proxy with scripts preconfigured 
 
 1. Run the script `test.sh` informing your domain already configured in your DNS to point out to your server as follow:
 
 ```bash
-# ./test.sh your.domain.com
+# ./test_start.sh your.domain.com
 ```
 
 or simply run:
@@ -127,7 +150,7 @@ Access your browser with your domain!
 To stop and remove your test container run our `stop_test.sh` script:
 
 ```bash
-# ./stop_test.sh
+# ./test_stop.sh
 ```
 
 Or simply run:
