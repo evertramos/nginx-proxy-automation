@@ -24,7 +24,12 @@ fi
 # 4. Download the latest version of nginx.tmpl
 curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
 
-# 5. Start proxy
+# 5. Update local images
+docker pull nginx
+docker pull jwilder/docker-gen
+docker pull jrcs/letsencrypt-nginx-proxy-companion
+
+# 6. Start proxy
 
 # Check if you have multiple network
 if [ -z ${SERVICE_NETWORK+X} ]; then
