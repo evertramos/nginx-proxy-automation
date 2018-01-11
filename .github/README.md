@@ -114,11 +114,11 @@ docker run -d -e VIRTUAL_HOST=your.domain.com \
 In order to be able to secure your virtual host with basic authentication, you must create a htpasswd file within `${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOST}` via:
 
 ```bash
-sudo sh -c "echo -n '[username]' >> ${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOST}"
+sudo sh -c "echo -n '[username]:' >> ${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOST}"
 sudo sh -c "openssl passwd -apr1 >> ${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOST}"
 ```
 
-> Please substitute the `${NGINX_FILES_PATH}` with your path information, `[username]` with your username and `${VIRTUAL_HOST}` with your host's domain. You will be prompted for a password.
+> Please substitute the `${NGINX_FILES_PATH}` with your path information, replace `[username]` with your username and `${VIRTUAL_HOST}` with your host's domain. You will be prompted for a password.
 
 2. Using multiple networks
 
