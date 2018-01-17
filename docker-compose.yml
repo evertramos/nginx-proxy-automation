@@ -15,6 +15,9 @@ services:
       - ${NGINX_FILES_PATH}/html:/usr/share/nginx/html
       - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs:ro
       - ${NGINX_FILES_PATH}/htpasswd:/etc/nginx/htpasswd:ro
+    logging:
+      options:
+        max-size: ${NGINX_MAX_LOG_SIZE:-100m}
 
   nginx-gen:
     image: jwilder/docker-gen
@@ -29,6 +32,9 @@ services:
       - ${NGINX_FILES_PATH}/htpasswd:/etc/nginx/htpasswd:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
+    logging:
+      options:
+        max-size: ${NGINX_GEN_MAX_LOG_SIZE:-25m}
 
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -43,6 +49,9 @@ services:
     environment:
       NGINX_DOCKER_GEN_CONTAINER: ${DOCKER_GEN}
       NGINX_PROXY_CONTAINER: ${NGINX_WEB}
+    logging:
+      options:
+        max-size: ${NGINX_LETSENCRYPT_MAX_LOG_SIZE:-25m}
 
 networks:
   default:
