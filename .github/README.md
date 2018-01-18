@@ -70,6 +70,41 @@ NETWORK=webproxy
 # NGINX file path
 #
 NGINX_FILES_PATH=/path/to/your/nginx/data
+
+#
+# NGINX use special conf files
+#
+# In case you want to add some special configuration to your NGINX Web Proxy you could
+# add your files to ./conf.d/ folder as of sample file 'uploadsize.conf'
+#
+# [WARNING] This setting was built to use our `start.sh`.
+#
+# [WARNING] Once you set this options to true all your files will be copied to data
+#           folder (./data/conf.d). If you decide to remove this special configuration
+#           you must delete your files from data folder ./data/conf.d.
+#
+#USE_NGINX_CONF_FILES=true
+
+#
+# Docker Logging Config
+#
+# This section offers two options max-size and max-file, which follow the docker documentation
+# as follow:
+#
+# logging:
+#      driver: "json-file"
+#      options:
+#        max-size: "200k"
+#        max-file: "10"
+#
+#NGINX_WEB_LOG_MAX_SIZE=4m
+#NGINX_WEB_LOG_MAX_FILE=10
+
+#NGINX_GEN_LOG_MAX_SIZE=2m
+#NGINX_GEN_LOG_MAX_FILE=10
+
+#NGINX_LETSENCRYPT_LOG_MAX_SIZE=2m
+#NGINX_LETSENCRYPT_LOG_MAX_FILE=10
 ```
 
 4. Run our start script
