@@ -2,9 +2,14 @@ version: '2'
 
 services:
 
-  httpd:
+  my-app:
     image: httpd:alpine
     environment:
       VIRTUAL_HOST: your.domain.com
       LETSENCRYPT_HOST: your.domain.com
       LETSENCRYPT_EMAIL: your.email@your.domain.com
+
+networks:
+  default:
+    external:
+      name: ${NETWORK-webproxy}

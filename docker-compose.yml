@@ -7,8 +7,7 @@ services:
     container_name: ${NGINX_WEB:-nginx-web}
     restart: always
     ports:
-      - "${IP:-0.0.0.0}:80:80"
-      - "${IP:-0.0.0.0}:443:443"
+      - "${IP:-0.0.0.0}:${PORT:-443}:443"
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
