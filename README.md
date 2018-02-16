@@ -39,6 +39,8 @@ Copy the .env.sample to .env and edit the variables accordingly
 - DOMAINS: the domains that you want ot register for SSL
 - LETSENCRYPT_EMAIL: the mails for registering the domain
 
+In case your image is exposing multiple ports, you need to precise which one to proxy with the variable `VIRTUAL_PORT`.
+
 ## Credits
 
 Without the repositories below this webproxy wouldn´t be possible.

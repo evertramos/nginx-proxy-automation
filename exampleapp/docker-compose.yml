@@ -6,6 +6,7 @@ services:
     image: httpd:alpine
     environment:
       VIRTUAL_HOST: ${DOMAINS}
+      #VIRTUAL_PORT: 80
       LETSENCRYPT_HOST: ${DOMAINS}
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
 
