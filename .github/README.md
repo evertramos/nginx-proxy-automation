@@ -166,6 +166,25 @@ docker network connect myownnetwork nginx-gen
 docker network connect myownnetwork nginx-letsencrypt
 ```
 
+3. Using different ports to be proxied
+
+If your service container runs on port 8545 you probably will need to add the `VIRTUAL_PORT` environment variable to your container, as of:
+
+```bash
+parity
+    image: parity/parity:v1.8.9
+    [...]
+    environment:
+      [...]
+      VIRTUAL_PORT: 8545
+```
+
+Or as of below:
+
+```bash
+docker run [...] -e VIRTUAL_PORT=8545 [...]
+```
+
 ## Testing your proxy with scripts preconfigured 
 
 1. Run the script `test.sh` informing your domain already configured in your DNS to point out to your server as follow:
