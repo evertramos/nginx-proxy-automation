@@ -9,6 +9,8 @@ services:
     ports:
       - "${IP:-0.0.0.0}:80:80"
       - "${IP:-0.0.0.0}:443:443"
+      - "${IPv6:-::/0}:80:80"
+      - "${IPv6:-::/0}:443:443"
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
