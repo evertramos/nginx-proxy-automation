@@ -15,6 +15,8 @@ services:
       - ${NGINX_FILES_PATH:-./data}/html:/usr/share/nginx/html
       - ${NGINX_FILES_PATH:-./data}/certs:/etc/nginx/certs:ro
       - ${NGINX_FILES_PATH:-./data}/htpasswd:/etc/nginx/htpasswd:ro
+    environment:
+      ENABLE_IPV6: ${ENABLE_IPV6:-true}
     logging:
       options:
         max-size: ${NGINX_WEB_LOG_MAX_SIZE:-4m}
