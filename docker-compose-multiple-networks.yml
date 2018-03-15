@@ -46,7 +46,7 @@ services:
 
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: ${LETS_ENCRYPT:-nginx-letsencrpt}
+    container_name: ${LETS_ENCRYPT:-nginx-letsencrypt}
     restart: always
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
