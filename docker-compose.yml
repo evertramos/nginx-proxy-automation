@@ -9,12 +9,16 @@ services:
     ports:
       - "${IP:-0.0.0.0}:80:80"
       - "${IP:-0.0.0.0}:443:443"
+      - "${IPv6:-::/0}:80:80"
+      - "${IPv6:-::/0}:443:443"
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
       - ${NGINX_FILES_PATH:-./data}/html:/usr/share/nginx/html
       - ${NGINX_FILES_PATH:-./data}/certs:/etc/nginx/certs:ro
       - ${NGINX_FILES_PATH:-./data}/htpasswd:/etc/nginx/htpasswd:ro
+    environment:
+      ENABLE_IPV6: ${ENABLE_IPV6:-true}
     logging:
       options:
         max-size: ${NGINX_WEB_LOG_MAX_SIZE:-4m}
