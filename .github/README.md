@@ -140,7 +140,7 @@ docker run -d -e VIRTUAL_HOST=your.domain.com \
 > You don´t need to open port *443* in your container, the certificate validation is managed by the web proxy.
 
 
-> Please note that when running a new container to generate certificates with LetsEncrypt (`-e LETSENCRYPT_HOST=your.domain.com`), it may take a few minutes, depending on multiples circunstances.
+> Please note that when running a new container to generate certificates with LetsEncrypt (`-e LETSENCRYPT_HOST=your.domain.com`), it may take a few minutes, depending on multiples circumstances.
 
 ## Further Options
 
