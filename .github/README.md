@@ -107,7 +107,7 @@ NGINX_FILES_PATH=/path/to/your/nginx/data
 #NGINX_LETSENCRYPT_LOG_MAX_FILE=10
 ```
 
-4. Run our start script
+3. Run our start script
 
 ```bash
 # ./start.sh
