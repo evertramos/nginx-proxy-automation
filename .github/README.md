@@ -236,7 +236,3 @@ Credits goes to:
 - [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
 - [@fracz](https://github.com/fracz) - Many contributions!
 
-
-## Support on Beerpay
-
-[![Beerpay](https://beerpay.io/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/badge.svg?style=flat)](https://beerpay.io/evertramos/docker-compose-letsencrypt-nginx-proxy-companion)
