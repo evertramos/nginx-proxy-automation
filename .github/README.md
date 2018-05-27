@@ -107,10 +107,10 @@ NGINX_FILES_PATH=/path/to/your/nginx/data
 #NGINX_LETSENCRYPT_LOG_MAX_FILE=10
 ```
 
-4. Run our start script
+3. Run our start script
 
 ```bash
-# ./start.sh
+./start.sh
 ```
 
 Your proxy is ready to go!
@@ -168,7 +168,7 @@ docker network connect myownnetwork nginx-letsencrypt
 
 3. Using different ports to be proxied
 
-If your service container runs on port 8545 you probably will need to add the `VIRTUAL_PORT` environment variable to your container, as of:
+If your service container runs on port 8545 you probably will need to add the `VIRTUAL_PORT` environment variable to your container, in the `docker-compose.yml`, as of:
 
 ```bash
 parity
@@ -190,13 +190,13 @@ docker run [...] -e VIRTUAL_PORT=8545 [...]
 1. Run the script `test.sh` informing your domain already configured in your DNS to point out to your server as follow:
 
 ```bash
-# ./test_start.sh your.domain.com
+./test_start.sh your.domain.com
 ```
 
 or simply run:
 
 ```bash
- docker run -dit -e VIRTUAL_HOST=your.domain.com --network=webproxy --name test-web httpd:alpine
+docker run -dit -e VIRTUAL_HOST=your.domain.com --network=webproxy --name test-web httpd:alpine
 ```
 
 Access your browser with your domain!
@@ -204,7 +204,7 @@ Access your browser with your domain!
 To stop and remove your test container run our `stop_test.sh` script:
 
 ```bash
-# ./test_stop.sh
+./test_stop.sh
 ```
 
 Or simply run:
@@ -235,3 +235,4 @@ Credits goes to:
 
 - [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
 - [@fracz](https://github.com/fracz) - Many contributions!
+
