@@ -19,6 +19,7 @@ services:
       - default
       - outside
     logging:
+      driver: ${NGINX_WEB_LOG_DRIVER:-json-file}
       options:
         max-size: ${NGINX_WEB_LOG_MAX_SIZE:-4m}
         max-file: ${NGINX_WEB_LOG_MAX_FILE:-10}
@@ -40,6 +41,7 @@ services:
       - default
       - outside
     logging:
+      driver: ${NGINX_GEN_LOG_DRIVER:-json-file}
       options:
         max-size: ${NGINX_GEN_LOG_MAX_SIZE:-2m}
         max-file: ${NGINX_GEN_LOG_MAX_FILE:-10}
@@ -61,6 +63,7 @@ services:
       - default
       - outside
     logging:
+      driver: ${NGINX_LETSENCRYPT_LOG_DRIVER:-json-file}
       options:
         max-size: ${NGINX_LETSENCRYPT_LOG_MAX_SIZE:-2m}
         max-file: ${NGINX_LETSENCRYPT_LOG_MAX_FILE:-10}
