@@ -167,8 +167,6 @@ upstream {{ $upstream_name }} {
 {{/* Get the SSL_POLICY defined by containers w/ the same vhost, falling back to "Mozilla-Intermediate" */}}
 {{ $ssl_policy := or (first (groupByKeys $containers "Env.SSL_POLICY")) "Mozilla-Intermediate" }}
 
-{{/* Get the HSTS defined by containers w/ the same vhost, falling back to "max-age=31536000" */}}
-{{/* $hsts := or (first (groupByKeys $containers "Env.HSTS")) "max-age=31536000" */ }}
 
 {{/* Get the VIRTUAL_ROOT By containers w/ use fastcgi root */}}
 {{ $vhost_root := or (first (groupByKeys $containers "Env.VIRTUAL_ROOT")) "/var/www/public" }}
