@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+
+  my-app:
+    image: httpd:alpine
+    environment:
+      VIRTUAL_HOST: ${DOMAINS}
+      LETSENCRYPT_HOST: ${DOMAINS}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}
