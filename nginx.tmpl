@@ -58,7 +58,7 @@ map $scheme $proxy_x_forwarded_ssl {
 }
 
 gzip on;
-gzip_disable "msie6";
+zip_disable "MSIE [1-6]\.(?!.*SV1)";
 gzip_types text/plain text/css application/javascript application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
 
