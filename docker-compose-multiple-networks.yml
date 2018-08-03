@@ -1,9 +1,9 @@
-version: '3.2'
+version: '3.6'
 services:
   nginx-web:
-    image: nginx
-    labels:
-        com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
+    image: apeixinho/nginx-opt:1.0.0
+    # labels:
+        # com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     container_name: ${NGINX_WEB:-nginx-web}
     restart: always
     ports:
