@@ -1,3 +1,4 @@
+.idea/
 data
 .env*
 !.env.sample
