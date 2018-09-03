@@ -25,6 +25,8 @@ services:
     command: -notify-sighup ${NGINX_WEB:-nginx-web} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
     container_name: ${DOCKER_GEN:-nginx-gen}
     restart: ${RESTART}
+    depends_on:
+      - nginx-web
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d

@@ -25,7 +25,7 @@ fi
 curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
 
 # 5. Update local images
-docker-compose pull
+# docker-compose pull
 
 # 6. Add any special configuration if it's set in .env file
 
