@@ -14,7 +14,8 @@ else
 fi
 
 # 2. Create docker network
-docker network create $NETWORK
+docker run -d --restart=always -v /var/run/docker.sock:/var/run/docker.sock:ro --privileged --net=host robbertkl/ipv6nat
+docker network create --ipv6 --subnet=fd00:dead:beef::/48 $NETWORK
 
 # 3. Verify if second network is configured
 if [ ! -z ${SERVICE_NETWORK+X} ]; then
