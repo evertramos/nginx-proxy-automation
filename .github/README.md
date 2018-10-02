@@ -248,6 +248,7 @@ Credits goes to:
 
 ### Special thanks to:
 
+- [@j7an](https://github.com/j7an) - Many contributions and the ipv6 branch!
 - [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
 - [@fracz](https://github.com/fracz) - Many contributions!
 
