@@ -37,7 +37,7 @@ Update this file with your preferences.
 ```
 #
 # docker-compose-letsencrypt-nginx-proxy-companion
-# 
+#
 # A Web Proxy using docker with NGINX and Let's Encrypt
 # Using the great community docker-gen, nginx-proxy and docker-letsencrypt-nginx-proxy-companion
 #
@@ -60,11 +60,23 @@ IP=0.0.0.0
 #
 NETWORK=webproxy
 
+# If you want to customize the created network, use the following variable
+#NETWORK_OPTIONS="--opt encrypted=true"
+
 #
-# Service Network
+# Service Network (Optional)
 #
-# This is optional in case you decide to add a new network to your services containers
+# In case you decide to add a new network to your services containers you can set this
+# network as a SERVICE_NETWORK
+#
+# [WARNING] This setting was built to use our `start.sh` script or in that special case
+#           you could use the docker-composer with our multiple network option, as of:
+#           `docker-compose -f docker-compose-multiple-networks.yml up -d`
+#
 #SERVICE_NETWORK=webservices
+
+# If you want to customize the created network, use the following variable
+#SERVICE_NETWORK_OPTIONS="--opt encrypted=true"
 
 #
 # NGINX file path
@@ -97,12 +109,15 @@ NGINX_FILES_PATH=/path/to/your/nginx/data
 #        max-size: "200k"
 #        max-file: "10"
 #
+#NGINX_WEB_LOG_DRIVER=json-file
 #NGINX_WEB_LOG_MAX_SIZE=4m
 #NGINX_WEB_LOG_MAX_FILE=10
 
+#NGINX_GEN_LOG_DRIVER=json-file
 #NGINX_GEN_LOG_MAX_SIZE=2m
 #NGINX_GEN_LOG_MAX_FILE=10
 
+#NGINX_LETSENCRYPT_LOG_DRIVER=json-file
 #NGINX_LETSENCRYPT_LOG_MAX_SIZE=2m
 #NGINX_LETSENCRYPT_LOG_MAX_FILE=10
 ```
