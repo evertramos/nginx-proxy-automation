@@ -16,6 +16,7 @@ services:
       - ${NGINX_FILES_PATH:-./data}/certs:/etc/nginx/certs:ro
       - ${NGINX_FILES_PATH:-./data}/htpasswd:/etc/nginx/htpasswd:ro
     logging:
+      driver: ${NGINX_WEB_LOG_DRIVER:-json-file}
       options:
         max-size: ${NGINX_WEB_LOG_MAX_SIZE:-4m}
         max-file: ${NGINX_WEB_LOG_MAX_FILE:-10}
@@ -34,6 +35,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
     logging:
+      driver: ${NGINX_GEN_LOG_DRIVER:-json-file}
       options:
         max-size: ${NGINX_GEN_LOG_MAX_SIZE:-2m}
         max-file: ${NGINX_GEN_LOG_MAX_FILE:-10}
@@ -52,6 +54,7 @@ services:
       NGINX_DOCKER_GEN_CONTAINER: ${DOCKER_GEN:-nginx-gen}
       NGINX_PROXY_CONTAINER: ${NGINX_WEB:-nginx-web}
     logging:
+      driver: ${NGINX_LETSENCRYPT_LOG_DRIVER:-json-file}
       options:
         max-size: ${NGINX_LETSENCRYPT_LOG_MAX_SIZE:-2m}
         max-file: ${NGINX_LETSENCRYPT_LOG_MAX_FILE:-10}
