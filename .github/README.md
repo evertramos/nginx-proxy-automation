@@ -51,7 +51,7 @@ DOCKER_GEN=nginx-gen
 LETS_ENCRYPT=nginx-letsencrypt
 
 #
-# Your external IP address
+# Set the IP address of the external access Interface
 #
 IP=0.0.0.0
 
