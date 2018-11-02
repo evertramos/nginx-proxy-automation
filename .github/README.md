@@ -205,7 +205,7 @@ docker run [...] -e VIRTUAL_PORT=8545 [...]
 1. Run the script `test.sh` informing your domain already configured in your DNS to point out to your server as follow:
 
 ```bash
-./test_start.sh your.domain.com
+./test_start_ssl.sh your.domain.com
 ```
 
 or simply run:
