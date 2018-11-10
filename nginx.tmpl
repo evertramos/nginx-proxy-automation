@@ -43,16 +43,6 @@ map $http_upgrade $proxy_connection {
   '' close;
 }
 
-# Expires map
-map $sent_http_content_type $expires {
-    default                    off;
-    text/html                  epoch;
-    text/css                   max;
-    application/javascript     max;
-    ~images/                   max;
-}
-expires $expires;
-
 # Apply fix for very long server names
 server_names_hash_bucket_size 128;
 
@@ -66,10 +56,6 @@ map $scheme $proxy_x_forwarded_ssl {
   default off;
   https on;
 }
-
-worker_processes auto; 
-
-worker_rlimit_nofile 131072;
 
 gzip on;
 gzip_proxied expired no-cache no-store private auth;
@@ -96,18 +82,6 @@ log_format vhost '$host $remote_addr - $remote_user [$time_local] '
                  '"$http_referer" "$http_user_agent"';
 
 server_tokens off;
-
-# provides the configuration file context in which the directives that affect connection processing are specified.
-events {
-    # max clients is also limited by the number of socket connections available on the system (~64k)
-    worker_connections 4096;
-	# determines how much clients will be served per worker
-    max clients = worker_connections * worker_processes
-    # optmized to serve many clients with each thread, essential for linux -- for testing environment
-    use epoll;
-    # accept as many connections as possible, may flood worker connections if set too low -- for testing environment
-    multi_accept on;
-}
 
 # cache informations about FDs, frequently accessed files
 # can boost performance, but you need to test those values
