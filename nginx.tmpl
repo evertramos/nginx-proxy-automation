@@ -112,13 +112,7 @@ reset_timedout_connection on;
 client_body_timeout 10;
 
 # if client stop responding, free up memory -- default 60
-send_timeout 2;
-
-# server will close connection after this time -- default 75
-keepalive_timeout 30;
-
-# number of requests client can make over keep-alive -- for testing environment
-keepalive_requests 100000;
+send_timeout 4;
 
 client_max_body_size 100m;
 
