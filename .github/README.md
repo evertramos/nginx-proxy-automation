@@ -79,9 +79,24 @@ NETWORK=webproxy
 #SERVICE_NETWORK_OPTIONS="--opt encrypted=true"
 
 #
-# NGINX file path
-#
-NGINX_FILES_PATH=
+## NGINX file path (mount into the host)
+# Here you can configure the path where nginx stores the configuration, certificates.
+# With the value ./nginx-data it would be create a new sub-folder into your current path.
+
+NGINX_FILES_PATH=./nginx-data
+
+## NGINX file path (use a virtual volume for this data)
+# If you don't what to mount this path on your host, you can adjust to nginx-data 
+# (that it works you have to set the volume into your docker-compose.yml)
+
+# change NGINX_FILES_PATH=./nginx-data to # NGINX_FILES_PATH=./nginx-data
+# and remove the # below
+# NGINX_FILES_PATH=nginx-data
+
+# that it works, you have to add follow volume into your docker-compose.yml
+# volumes:
+#   nginx-data:
+
 
 #
 # NGINX use special conf files
