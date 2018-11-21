@@ -80,8 +80,8 @@ NETWORK=webproxy
 
 #
 ## NGINX file path (mount into the host)
-# Here you can configure the path where nginx stores the configuration, certificates.
-# With the value ./nginx-data it would be create a new sub-folder into your current path.
+# Here you can configure the path where nginx stores all the configurations and certificates.
+# With the value ./nginx-data it creates a new sub-folder into your current path.
 
 NGINX_FILES_PATH=./nginx-data
 
