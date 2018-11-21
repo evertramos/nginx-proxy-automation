@@ -79,9 +79,11 @@ NETWORK=webproxy
 #SERVICE_NETWORK_OPTIONS="--opt encrypted=true"
 
 #
-# NGINX file path
-#
-NGINX_FILES_PATH=/path/to/your/nginx/data
+## NGINX file path (mount into the host)
+# Here you can configure the path where nginx stores all the configurations and certificates.
+# With the value ./nginx-data it creates a new sub-folder into your current path.
+
+NGINX_FILES_PATH=./nginx-data
 
 #
 # NGINX use special conf files
