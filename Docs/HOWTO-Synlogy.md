@@ -1,7 +1,7 @@
 ## Port mapping
 Synology default installs a web server on port 80 blocking certificate generation. 
 
-To circumvent this - if you do not need extenral access to the default web server (and you should not expose it anyway) configure your .env to use alternative ports and your router to forward the external official port to the alternative internal ports:
+To circumvent this - if you do not need external access to the default web server (and you should not expose it anyway) configure your .env to use alternative ports and your router to forward the external official port to the alternative internal ports:
 
 #
 # Set the local exposed ports for http and https - this  will allow you to run with a legacy web 
