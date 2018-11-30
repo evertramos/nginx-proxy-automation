@@ -230,6 +230,11 @@ Or simply run:
 docker stop test-web && docker rm test-web 
 ```
 
+## Running this Proxy on a Synology NAS
+
+Please checkout this [howto](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/blob/master/docs/HOWTO-Synlogy.md).
+
+
 ## Production Environment using Web Proxy and Wordpress
 
 1. [docker-wordpress-letsencrypt](https://github.com/evertramos/docker-wordpress-letsencrypt)
