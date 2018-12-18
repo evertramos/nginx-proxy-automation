@@ -14,11 +14,11 @@ else
 fi
 
 # 2. Create docker network
-docker network create $NETWORK $NETWORK_OPTIONS
+docker network create $NETWORK $NETWORK_OPTIONS 2>/dev/null
 
 # 3. Verify if second network is configured
 if [ ! -z ${SERVICE_NETWORK+X} ]; then
-    docker network create $SERVICE_NETWORK $SERVICE_NETWORK_OPTIONS
+    docker network create $SERVICE_NETWORK $SERVICE_NETWORK_OPTIONS 2>/dev/null
 fi
 
 # 4. Download the latest version of nginx.tmpl
