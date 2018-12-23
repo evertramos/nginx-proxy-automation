@@ -57,14 +57,6 @@ map $scheme $proxy_x_forwarded_ssl {
   https on;
 }
 
-# Set appropriate expires header
-map $sent_http_content_type $expires {
-    default                    off;
-    text/html                  epoch;
-    text/css                   max;
-    application/javascript     max;
-    ~images/                   max;
-}
 
 gzip on;
 gzip_disable "MSIE [1-6]\.(?!.*SV1)";
@@ -237,7 +229,6 @@ server {
 	listen [::]:443 ssl http2 {{ $default_server }};
 	{{ end }}
 	access_log /var/log/nginx/access.log vhost;
-	expires $expires;
 
 	{{ if eq $network_tag "internal" }}
 	# Only allow traffic from internal clients
