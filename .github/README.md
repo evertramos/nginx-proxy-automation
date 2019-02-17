@@ -27,7 +27,7 @@ In order to use this compose file (docker-compose.yml) you must have:
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion.git
+git clone --depth 1 https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion.git
 ```
 
 2. Make a copy of our `.env.sample` and rename it to `.env`:
