@@ -202,6 +202,17 @@ Or as of below:
 docker run [...] -e VIRTUAL_PORT=8545 [...]
 ```
 
+4. Restarting proxy container
+
+In some cases you will need to restart the proxy in order to read, as an example, the Basic Auth, if you set it after your service container is already up and running. So, the way I use to restart the proxy (NGINX) is as following, which has no downtime:
+
+```bash
+docker exec -it ${NGINX_WEB} nginx -s reload
+```
+
+Where *${NGINX_WEB}* is your proxy container name, which in the original `.env` file is set as *nginx-web*.
+
+
 ## Testing your proxy with scripts preconfigured 
 
 1. Run the script `test.sh` informing your domain already configured in your DNS to point out to your server as follow:
