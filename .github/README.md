@@ -37,7 +37,7 @@ Update this file with your preferences.
 ```
 #
 # docker-compose-letsencrypt-nginx-proxy-companion
-# 
+#
 # A Web Proxy using docker with NGINX and Let's Encrypt
 # Using the great community docker-gen, nginx-proxy and docker-letsencrypt-nginx-proxy-companion
 #
@@ -51,7 +51,7 @@ DOCKER_GEN=nginx-gen
 LETS_ENCRYPT=nginx-letsencrypt
 
 #
-# Your external IP address
+# Set the IP address of the external access Interface
 #
 IP=0.0.0.0
 
@@ -60,16 +60,30 @@ IP=0.0.0.0
 #
 NETWORK=webproxy
 
-#
-# Service Network
-#
-# This is optional in case you decide to add a new network to your services containers
-#SERVICE_NETWORK=webservices
+# If you want to customize the created network, use the following variable
+#NETWORK_OPTIONS="--opt encrypted=true"
 
 #
-# NGINX file path
+# Service Network (Optional)
 #
-NGINX_FILES_PATH=/path/to/your/nginx/data
+# In case you decide to add a new network to your services containers you can set this
+# network as a SERVICE_NETWORK
+#
+# [WARNING] This setting was built to use our `start.sh` script or in that special case
+#           you could use the docker-composer with our multiple network option, as of:
+#           `docker-compose -f docker-compose-multiple-networks.yml up -d`
+#
+#SERVICE_NETWORK=webservices
+
+# If you want to customize the created network, use the following variable
+#SERVICE_NETWORK_OPTIONS="--opt encrypted=true"
+
+#
+## NGINX file path (mount into the host)
+# Here you can configure the path where nginx stores all the configurations and certificates.
+# With the value ./nginx-data it creates a new sub-folder into your current path.
+
+NGINX_FILES_PATH=./nginx-data
 
 #
 # NGINX use special conf files
@@ -97,12 +111,15 @@ NGINX_FILES_PATH=/path/to/your/nginx/data
 #        max-size: "200k"
 #        max-file: "10"
 #
+#NGINX_WEB_LOG_DRIVER=json-file
 #NGINX_WEB_LOG_MAX_SIZE=4m
 #NGINX_WEB_LOG_MAX_FILE=10
 
+#NGINX_GEN_LOG_DRIVER=json-file
 #NGINX_GEN_LOG_MAX_SIZE=2m
 #NGINX_GEN_LOG_MAX_FILE=10
 
+#NGINX_LETSENCRYPT_LOG_DRIVER=json-file
 #NGINX_LETSENCRYPT_LOG_MAX_SIZE=2m
 #NGINX_LETSENCRYPT_LOG_MAX_FILE=10
 ```
@@ -185,12 +202,23 @@ Or as of below:
 docker run [...] -e VIRTUAL_PORT=8545 [...]
 ```
 
+4. Restarting proxy container
+
+In some cases you will need to restart the proxy in order to read, as an example, the Basic Auth, if you set it after your service container is already up and running. So, the way I use to restart the proxy (NGINX) is as following, which has no downtime:
+
+```bash
+docker exec -it ${NGINX_WEB} nginx -s reload
+```
+
+Where *${NGINX_WEB}* is your proxy container name, which in the original `.env` file is set as *nginx-web*.
+
+
 ## Testing your proxy with scripts preconfigured 
 
 1. Run the script `test.sh` informing your domain already configured in your DNS to point out to your server as follow:
 
 ```bash
-./test_start.sh your.domain.com
+./test_start_ssl.sh your.domain.com
 ```
 
 or simply run:
@@ -213,6 +241,11 @@ Or simply run:
 docker stop test-web && docker rm test-web 
 ```
 
+## Running this Proxy on a Synology NAS
+
+Please checkout this [howto](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/blob/master/docs/HOWTO-Synlogy.md).
+
+
 ## Production Environment using Web Proxy and Wordpress
 
 1. [docker-wordpress-letsencrypt](https://github.com/evertramos/docker-wordpress-letsencrypt)
@@ -233,6 +266,12 @@ Credits goes to:
 
 ### Special thanks to:
 
+- [@j7an](https://github.com/j7an) - Many contributions and the ipv6 branch!
 - [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
 - [@fracz](https://github.com/fracz) - Many contributions!
 
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/badge.svg?style=beer-square)](https://beerpay.io/evertramos/docker-compose-letsencrypt-nginx-proxy-companion)  [![Beerpay](https://beerpay.io/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/make-wish.svg?style=flat-square)](https://beerpay.io/evertramos/docker-compose-letsencrypt-nginx-proxy-companion?focus=wish)

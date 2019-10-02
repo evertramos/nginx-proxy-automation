@@ -9,16 +9,16 @@
 if [ -e .env ]; then
     source .env
 else 
-    echo "Please set up your .env file before starting your enviornment."
+    echo "Please set up your .env file before starting your environment."
     exit 1
 fi
 
 # 2. Create docker network
-docker network create $NETWORK
+docker network create $NETWORK $NETWORK_OPTIONS
 
 # 3. Verify if second network is configured
 if [ ! -z ${SERVICE_NETWORK+X} ]; then
-    docker network create $SERVICE_NETWORK
+    docker network create $SERVICE_NETWORK $SERVICE_NETWORK_OPTIONS
 fi
 
 # 4. Download the latest version of nginx.tmpl
