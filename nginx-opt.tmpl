@@ -19,7 +19,7 @@
 			server 127.0.0.1 down;
 		{{ end }}
 	{{ end }}
-
+	
 {{ end }}
 
 # If we receive X-Forwarded-Proto, pass it through; otherwise, pass along the
@@ -57,13 +57,70 @@ map $scheme $proxy_x_forwarded_ssl {
   https on;
 }
 
-gzip_types text/plain text/css application/javascript application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+gzip on;
+gzip_proxied expired no-cache no-store private auth;
+gzip_disable msie6;
+
+gzip_types
+    text/plain
+    text/css
+    application/json
+    application/javascript
+    application/x-javascript
+    text/xml
+    application/xml
+    application/xml+rss
+    text/javascript
+    application/vnd.ms-fontobject
+    application/x-font-ttf
+    font/opentype
+    image/svg+xml
+    image/x-icon;
 
 log_format vhost '$host $remote_addr - $remote_user [$time_local] '
                  '"$request" $status $body_bytes_sent '
                  '"$http_referer" "$http_user_agent"';
 
+server_tokens off;
+
+# cache informations about FDs, frequently accessed files
+# can boost performance, but you need to test those values
+open_file_cache max=200000 inactive=20s; 
+open_file_cache_valid 30s; 
+open_file_cache_min_uses 2;
+open_file_cache_errors on;
+
+# to boost I/O on HDD we can disable access logs
 access_log off;
+
+# only log critical errors
+error_log /var/log/nginx/error.log crit;
+
+# send headers in one peace, its better then sending them one by one 
+tcp_nopush on;
+
+# don't buffer data sent, good for small data bursts in real time
+tcp_nodelay on;
+
+aio on;
+directio 4m;
+
+# allow the server to close connection on non responding client, this will free up memory
+reset_timedout_connection on;
+
+# request timed out -- default 60
+client_body_timeout 10;
+
+# if client stop responding, free up memory -- default 60
+send_timeout 4;
+
+# server will close connection after this time -- default 75
+# keepalive_timeout 30;
+
+# number of requests client can make over keep-alive -- for testing environment
+keepalive_requests 100000;
+
+client_max_body_size 100m;
 
 {{ if $.Env.RESOLVERS }}
 resolver {{ $.Env.RESOLVERS }};
