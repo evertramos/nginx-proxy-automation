@@ -1,8 +1,8 @@
 version: '3'
 services:
   nginx-web:
-    # image: apeixinho/nginx-opt:1.0.0
-    image: nginx:alpine
+    image: apeixinho/nginx-opt:latest
+    #image: nginx:alpine
     labels:
         com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     container_name: ${NGINX_WEB:-nginx-web}
