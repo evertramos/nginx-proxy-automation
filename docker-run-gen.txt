@@ -1,4 +1,5 @@
-docker run -d --env-file .env \
+docker run -d \ 
+    --env-file .env \
     -v ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d \
     -v ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d \
     -v ${NGINX_FILES_PATH:-./data}/html:/usr/share/nginx/html \
