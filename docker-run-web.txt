@@ -16,5 +16,6 @@ docker run -d \
     --log-opt max-size: ${NGINX_WEB_LOG_MAX_SIZE:-4m} max-file: ${NGINX_WEB_LOG_MAX_FILE:-10} \
     --restart on-failure:5 \
     --network ${NETWORK:-webproxy} \
-    --name apeixinho/nginx-opt:latest \
-    ${NGINX_WEB:-nginx-web} 
+    --name ${NGINX_WEB:-nginx-web} \ 
+    apeixinho/nginx-opt:latest
+     
