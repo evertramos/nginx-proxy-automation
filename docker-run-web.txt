@@ -1,0 +1,20 @@
+docker run -d --env-file .env \
+    -e NGINX_DOCKER_GEN_CONTAINER: ${DOCKER_GEN:-nginx-gen} \
+    -e NGINX_PROXY_CONTAINER: ${NGINX_WEB:-nginx-web} \
+    -l com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true" \
+    -v ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d \
+    -v ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d \
+    -v ${NGINX_FILES_PATH:-./data}/html:/usr/share/nginx/html \
+    -v ${NGINX_FILES_PATH:-./data}/certs:/etc/nginx/certs:ro \
+    -v ${NGINX_FILES_PATH:-./data}/htpasswd:/etc/nginx/htpasswd:ro \
+    -p "${IP:-0.0.0.0}:${DOCKER_HTTP:-80}:80" \
+    -p "${IP:-0.0.0.0}:${DOCKER_HTTPS:-443}:443" \
+    -p "${IPv6:-::/0}:80:80" \
+    -p "${IPv6:-::/0}:443:443" \
+    --log-driver ${NGINX_WEB_LOG_DRIVER:-json-file} \
+    --log-opt max-size: ${NGINX_WEB_LOG_MAX_SIZE:-4m} max-file: ${NGINX_WEB_LOG_MAX_FILE:-10} \
+    --restart on-failure:5 \
+    --network ${NETWORK:-webproxy} \
+    --name ${NGINX_WEB:-nginx-web} \
+    apeixinho/nginx-opt:latest
+#   nginx:alpine
