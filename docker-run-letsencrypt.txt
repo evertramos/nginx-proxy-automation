@@ -11,5 +11,6 @@ docker run -d \
     --log-opt max-size=${NGINX_LETSENCRYPT_LOG_MAX_SIZE:-2m} max-file=${NGINX_LETSENCRYPT_LOG_MAX_FILE:-10} \
     --restart=on-failure:5 \
     --network=${NETWORK:-webproxy} \
-    --name ${LETS_ENCRYPT:-nginx-letsencrypt} \
-    jrcs/letsencrypt-nginx-proxy-companion
+    --name jrcs/letsencrypt-nginx-proxy-companion \
+    ${LETS_ENCRYPT:-nginx-letsencrypt}
+    
