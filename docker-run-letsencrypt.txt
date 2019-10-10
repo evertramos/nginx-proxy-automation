@@ -8,7 +8,7 @@ docker run -d \
     -v ${NGINX_FILES_PATH:-./data}/certs:/etc/nginx/certs:rw \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
     --log-driver ${NGINX_LETSENCRYPT_LOG_DRIVER:-json-file} \
-    --log-opt max-size=${NGINX_LETSENCRYPT_LOG_MAX_SIZE:-2m} max-file=${NGINX_LETSENCRYPT_LOG_MAX_FILE:-10} \
+#    --log-opt max-size=${NGINX_LETSENCRYPT_LOG_MAX_SIZE:-2m} max-file=${NGINX_LETSENCRYPT_LOG_MAX_FILE:-10} \
     --restart=on-failure:5 \
     --network=${NETWORK:-webproxy} \
     --name ${LETS_ENCRYPT:-nginx-letsencrypt} \ 

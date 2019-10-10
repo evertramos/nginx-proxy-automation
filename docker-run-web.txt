@@ -13,7 +13,8 @@ docker run -d \
     -p "${IPv6:-::/0}:80:80" \
     -p "${IPv6:-::/0}:443:443" \
     --log-driver ${NGINX_WEB_LOG_DRIVER:-json-file} \
-    --log-opt max-size: ${NGINX_WEB_LOG_MAX_SIZE:-4m} max-file: ${NGINX_WEB_LOG_MAX_FILE:-10} \
+    --log-opt max-size=${NGINX_WEB_LOG_MAX_SIZE:-4m} 
+    --log-opt max-file: ${NGINX_WEB_LOG_MAX_FILE:-10} \
     --restart on-failure:5 \
     --network ${NETWORK:-webproxy} \
     --name ${NGINX_WEB:-nginx-web} \ 
