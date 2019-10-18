@@ -1,17 +1,14 @@
-docker run -d \
-    --env-file .env \
+docker run -d --env-file .env \
     -e NGINX_DOCKER_GEN_CONTAINER=${DOCKER_GEN:-nginx-gen} \
     -e NGINX_PROXY_CONTAINER=${NGINX_WEB:-nginx-web} \
-    -v ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d \
-    -v ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d \
-    -v ${NGINX_FILES_PATH:-./data}/html:/usr/share/nginx/html \
-    -v ${NGINX_FILES_PATH:-./data}/certs:/etc/nginx/certs:rw \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/conf.d:/etc/nginx/conf.d \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/vhost.d:/etc/nginx/vhost.d \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/html:/usr/share/nginx/html \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/certs:/etc/nginx/certs:rw \
     -v /var/run/docker.sock:/var/run/docker.sock:ro \
-    --log-driver ${NGINX_LETSENCRYPT_LOG_DRIVER:-json-file} \
-#    --log-opt max-size=${NGINX_LETSENCRYPT_LOG_MAX_SIZE:-2m} max-file=${NGINX_LETSENCRYPT_LOG_MAX_FILE:-10} \
+    --log-driver=${NGINX_LETSENCRYPT_LOG_DRIVER:-json-file} \
+    --log-opt max-size=${NGINX_LETSENCRYPT_LOG_MAX_SIZE:-2m} --log-opt max-file=${NGINX_LETSENCRYPT_LOG_MAX_FILE:-10} \
     --restart=on-failure:5 \
     --network=${NETWORK:-webproxy} \
-    --name ${LETS_ENCRYPT:-nginx-letsencrypt} \ 
+    --name ${LETS_ENCRYPT:-nginx-letsencrypt} \
     jrcs/letsencrypt-nginx-proxy-companion
-    
-    
