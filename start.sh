@@ -9,8 +9,9 @@
 if [ -e .env ]; then
     source .env
 else 
-    echo "Please set up your .env file before starting your environment."
-    exit 1
+    echo "It seems you didn´t create your .env file, so we will create one for you."
+    cp .env.sample .env
+    # exit 1
 fi
 
 # 2. Create docker network
