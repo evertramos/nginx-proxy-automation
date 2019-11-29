@@ -50,8 +50,8 @@ if [ ! -z ${USE_NGINX_CONF_FILES+X} ] && [ "$USE_NGINX_CONF_FILES" = true ]; the
         echo "#######################################################"
         echo
         echo "There was an error trying to copy the nginx conf files."
-        echo "The webproxy will still work, your custom configuration"
-        echo "will not be loaded."
+        echo "The proxy will still work with default options, but"
+        echo "the custom settings your have made could not be loaded."
         echo 
         echo "#######################################################"
     fi
