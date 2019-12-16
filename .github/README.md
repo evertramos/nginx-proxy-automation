@@ -252,6 +252,7 @@ Please checkout this [howto](https://github.com/evertramos/docker-compose-letsen
 2. [docker-portainer-letsencrypt](https://github.com/evertramos/docker-portainer-letsencrypt)
 3. [docker-nextcloud-letsencrypt](https://github.com/evertramos/docker-nextcloud-letsencrypt)
 4. [docker-registry-letsencrypt](https://github.com/evertramos/docker-registry-letsencrypt)
+5. [gitlab-docker-letsencrypt](https://github.com/steevepay/gitlab-docker-letsencrypt)
 
 In this repo you will find a docker-compose file to start a production environment for a new wordpress site.
 
