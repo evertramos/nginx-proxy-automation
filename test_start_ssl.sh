@@ -1,19 +1,17 @@
 #!/bin/bash
 
-NAME=test-web
-
-
-# Set up your DOMAIN
-if [ $# -eq 0 ]; then
+# Set up your DOMAIN and NAME
+if [ $# -lt 2 ]; then
     echo "Please inform your domain name to test your proxy."
-    echo "./test_start_ssl.sh $1"
+    echo "./test_start_ssl.sh <domain name> <docker image name>"
     exit 1
 else
     DOMAIN=$1
+    NAME=$2
 fi
 
 # Read your .env file
-source .env
+source ../nginx-proxy-companion/.env
 
 # Testing your proxy
 if [ -z ${SERVICE_NETWORK+X} ]; then
