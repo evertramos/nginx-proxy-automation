@@ -11,7 +11,7 @@ else
 fi
 
 # Read your .env file
-source ../nginx-proxy-companion/.env
+source .env
 
 # Testing your proxy
 if [ -z ${SERVICE_NETWORK+X} ]; then
