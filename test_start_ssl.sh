@@ -2,7 +2,7 @@
 
 # Set up your DOMAIN and NAME
 if [ $# -lt 2 ]; then
-    echo "Please inform your domain name to test your proxy."
+    echo "Please pass your domain name and the docker container name as parameter to test your proxy."
     echo "./test_start_ssl.sh <domain name> <docker image name>"
     exit 1
 else
