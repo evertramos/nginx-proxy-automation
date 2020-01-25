@@ -260,7 +260,11 @@ server {
 
 	{{ if eq $network_tag "internal" }}
 	# Only allow traffic from internal clients
-	include /etc/nginx/network_internal.conf;
+	allow 127.0.0.0/8;
+	allow 10.0.0.0/8;
+	allow 192.168.0.0/16;
+	allow 172.16.0.0/12;
+	deny all;
 	{{ end }}
 
 	{{ template "ssl_policy" (dict "ssl_policy" $ssl_policy) }}
@@ -330,7 +334,11 @@ server {
 
 	{{ if eq $network_tag "internal" }}
 	# Only allow traffic from internal clients
-	include /etc/nginx/network_internal.conf;
+	allow 127.0.0.0/8;
+	allow 10.0.0.0/8;
+	allow 192.168.0.0/16;
+	allow 172.16.0.0/12;
+	deny all;
 	{{ end }}
 
 	{{ if (exists (printf "/etc/nginx/vhost.d/%s" $host)) }}
