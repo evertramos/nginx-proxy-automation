@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #
 # This file should be used to prepare and run your WebProxy after set up your .env file
