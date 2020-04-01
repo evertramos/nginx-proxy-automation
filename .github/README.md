@@ -238,15 +238,16 @@ To stop and remove your test container run our `stop_test.sh` script:
 Or simply run:
 
 ```bash
-docker stop test-web && docker rm test-web 
+docker stop test-web && docker rm test-web
 ```
 
 ## Running this Proxy on a Synology NAS
 
 Please checkout this [howto](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/blob/master/docs/HOWTO-Synlogy.md).
 
+## Production Environment using Web Proxy
 
-## Production Environment using Web Proxy and Wordpress
+Following are links to docker containers using this web proxy:
 
 1. [docker-wordpress-letsencrypt](https://github.com/evertramos/docker-wordpress-letsencrypt)
 2. [docker-portainer-letsencrypt](https://github.com/evertramos/docker-portainer-letsencrypt)
@@ -254,8 +255,6 @@ Please checkout this [howto](https://github.com/evertramos/docker-compose-letsen
 4. [docker-registry-letsencrypt](https://github.com/evertramos/docker-registry-letsencrypt)
 5. [gitlab-docker-letsencrypt](https://github.com/steevepay/gitlab-docker-letsencrypt)
 6. [docker-webtrees-letsencrypt](https://github.com/marcostroppel/docker-webtrees-letsencrypt)
-
-In this repo you will find a docker-compose file to start a production environment for a new wordpress site.
 
 ## Credits
 
@@ -265,7 +264,6 @@ Credits goes to:
 - nginx-proxy [@jwilder](https://github.com/jwilder/nginx-proxy)
 - docker-gen [@jwilder](https://github.com/jwilder/docker-gen)
 - docker-letsencrypt-nginx-proxy-companion [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
-
 
 ### Special thanks to:
 
