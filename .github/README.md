@@ -254,7 +254,7 @@ Following are links to docker containers using this web proxy:
 3. [docker-nextcloud-letsencrypt](https://github.com/evertramos/docker-nextcloud-letsencrypt)
 4. [docker-registry-letsencrypt](https://github.com/evertramos/docker-registry-letsencrypt)
 5. [gitlab-docker-letsencrypt](https://github.com/steevepay/gitlab-docker-letsencrypt)
-6. [docker-webtrees-letsencrypt](https://github.com/marcostroppel/docker-webtrees-letsencrypt)
+6. [docker-webtrees-letsencrypt](https://github.com/mstroppel/docker-webtrees-letsencrypt)
 
 ## Credits
 
