@@ -1,8 +1,9 @@
 version: '3'
 services:
   nginx-web:
-    image: apeixinho/nginx-opt:latest
+    #image: apeixinho/nginx-opt:latest
     #image: nginx:alpine
+    image: nginx
     labels:
         com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     container_name: ${NGINX_WEB:-nginx-web}
@@ -26,7 +27,7 @@ services:
     image: jwilder/docker-gen
     command: -notify-sighup ${NGINX_WEB:-nginx-web} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
     container_name: ${DOCKER_GEN:-nginx-gen}
-    restart: always
+    restart: on-failure:10
     environment:
       SSL_POLICY: ${SSL_POLICY:-Mozilla-Intermediate}
     volumes:
