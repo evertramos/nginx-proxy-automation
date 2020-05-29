@@ -5,6 +5,19 @@
 # Source: https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion
 #
 
+# Get args and options
+NGINX_CONF_CLEAN=false
+while [ ! $# -eq 0 ]
+do
+	case "$1" in
+		--clean | -c)
+			NGINX_CONF_CLEAN=true
+			;;
+	esac
+	shift
+done
+
+
 # 1. Check if .env file exists
 if [ -e .env ]; then
     source .env
@@ -35,6 +48,11 @@ if [ ! -z ${USE_NGINX_CONF_FILES+X} ] && [ "$USE_NGINX_CONF_FILES" = true ]; the
 
     # Create the conf folder if it does not exists
     mkdir -p $NGINX_FILES_PATH/conf.d
+
+    # Check if clean flag added, if so clean previous config files
+    if [ "$NGINX_CONF_CLEAN" = true ]; then
+      rm -rf $NGINX_FILES_PATH/conf.d
+    fi
 
     # Copy the special configurations to the nginx conf folder
     cp -R ./conf.d/* $NGINX_FILES_PATH/conf.d
