@@ -1,0 +1,15 @@
+docker run -d --env-file .env \
+    --label com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy="true" \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/conf.d:/etc/nginx/conf.d \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/vhost.d:/etc/nginx/vhost.d \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/html:/usr/share/nginx/html \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/certs:/etc/nginx/certs:ro \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/htpasswd:/etc/nginx/htpasswd:ro \
+    -p 136.144.129.90:80:80 \
+    -p 136.144.129.90:443:443 \
+    --log-driver=${NGINX_WEB_LOG_DRIVER:-json-file} \
+    --log-opt max-size=${NGINX_WEB_LOG_MAX_SIZE:-4m} --log-opt max-file=${NGINX_WEB_LOG_MAX_FILE:-10} \
+    --restart on-failure:5 \
+    --network ${NETWORK:-webproxy} \
+    --name ${NGINX_WEB:-nginx-web} \
+    apeixinho/nginx-opt

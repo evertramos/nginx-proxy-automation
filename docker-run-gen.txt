@@ -1,0 +1,15 @@
+docker run -d --env-file .env \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/conf.d:/etc/nginx/conf.d \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/vhost.d:/etc/nginx/vhost.d \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/html:/usr/share/nginx/html \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/certs:/etc/nginx/certs:ro \
+    -v ${NGINX_FILES_PATH:-$(pwd)/data}/htpasswd:/etc/nginx/htpasswd:ro \
+    -v /var/run/docker.sock:/tmp/docker.sock:ro \
+    -v $(pwd)/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro \
+    --log-driver=${NGINX_GEN_LOG_DRIVER:-json-file} \
+    --log-opt max-size=${NGINX_GEN_LOG_MAX_SIZE:-2m} --log-opt max-file=${NGINX_GEN_LOG_MAX_FILE:-10} \
+    --restart on-failure:5 \
+    --network ${NETWORK:-webproxy} \
+    --name ${DOCKER_GEN:-nginx-gen} \
+    jwilder/docker-gen \
+    -notify-sighup ${NGINX_WEB:-nginx-web} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf

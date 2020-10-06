@@ -19,50 +19,7 @@
 			server 127.0.0.1 down;
 		{{ end }}
 	{{ end }}
-
-{{ end }}
-
-{{ define "ssl_policy" }}
-	{{ if eq .ssl_policy "Mozilla-Modern" }}
-		ssl_protocols TLSv1.3;
-		{{/* nginx currently lacks ability to choose ciphers in TLS 1.3 in configuration, see https://trac.nginx.org/nginx/ticket/1529 /*}}
-		{{/* a possible workaround can be modify /etc/ssl/openssl.cnf to change it globally (see https://trac.nginx.org/nginx/ticket/1529#comment:12 ) /*}}
-		{{/* explicitly set ngnix default value in order to allow single servers to override the global http value */}}
-		ssl_ciphers HIGH:!aNULL:!MD5;
-		ssl_prefer_server_ciphers off;
-	{{ else if eq .ssl_policy "Mozilla-Intermediate" }}
-		ssl_protocols TLSv1.2 TLSv1.3;
-		ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384';
-		ssl_prefer_server_ciphers off;
-	{{ else if eq .ssl_policy "Mozilla-Old" }}
-		ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-		ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA256:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA';
-		ssl_prefer_server_ciphers on;
-	{{ else if eq .ssl_policy "AWS-TLS-1-2-2017-01" }}
-		ssl_protocols TLSv1.2 TLSv1.3;
-		ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:AES128-GCM-SHA256:AES128-SHA256:AES256-GCM-SHA384:AES256-SHA256';
-		ssl_prefer_server_ciphers on;
-	{{ else if eq .ssl_policy "AWS-TLS-1-1-2017-01" }}
-		ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;
-		ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA';
-		ssl_prefer_server_ciphers on;
-	{{ else if eq .ssl_policy "AWS-2016-08" }}
-		ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-		ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA';
-		ssl_prefer_server_ciphers on;
-	{{ else if eq .ssl_policy "AWS-2015-05" }}
-		ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-		ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA:DES-CBC3-SHA';
-		ssl_prefer_server_ciphers on;
-	{{ else if eq .ssl_policy "AWS-2015-03" }}
-		ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-		ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA:DHE-DSS-AES128-SHA:DES-CBC3-SHA';
-		ssl_prefer_server_ciphers on;
-	{{ else if eq .ssl_policy "AWS-2015-02" }}
-		ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-		ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA:DHE-DSS-AES128-SHA';
-		ssl_prefer_server_ciphers on;
-	{{ end }}
+	
 {{ end }}
 
 # If we receive X-Forwarded-Proto, pass it through; otherwise, pass along the
@@ -100,17 +57,70 @@ map $scheme $proxy_x_forwarded_ssl {
   https on;
 }
 
-gzip_types text/plain text/css application/javascript application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+gzip on;
+gzip_proxied expired no-cache no-store private auth;
+gzip_disable msie6;
+
+gzip_types
+    text/plain
+    text/css
+    application/json
+    application/javascript
+    application/x-javascript
+    text/xml
+    application/xml
+    application/xml+rss
+    text/javascript
+    application/vnd.ms-fontobject
+    application/x-font-ttf
+    font/opentype
+    image/svg+xml
+    image/x-icon;
 
 log_format vhost '$host $remote_addr - $remote_user [$time_local] '
                  '"$request" $status $body_bytes_sent '
                  '"$http_referer" "$http_user_agent"';
 
+server_tokens off;
+
+# cache informations about FDs, frequently accessed files
+# can boost performance, but you need to test those values
+open_file_cache max=200000 inactive=20s; 
+open_file_cache_valid 30s; 
+open_file_cache_min_uses 2;
+open_file_cache_errors on;
+
+# to boost I/O on HDD we can disable access logs
 access_log off;
 
-{{/* Get the SSL_POLICY defined by this container, falling back to "Mozilla-Intermediate" */}}
-{{ $ssl_policy := or ($.Env.SSL_POLICY) "Mozilla-Intermediate" }}
-{{ template "ssl_policy" (dict "ssl_policy" $ssl_policy) }}
+# only log critical errors
+error_log /var/log/nginx/error.log crit;
+
+# send headers in one peace, its better then sending them one by one 
+tcp_nopush on;
+
+# don't buffer data sent, good for small data bursts in real time
+tcp_nodelay on;
+
+aio on;
+directio 4m;
+
+# allow the server to close connection on non responding client, this will free up memory
+reset_timedout_connection on;
+
+# request timed out -- default 60
+client_body_timeout 10;
+
+# if client stop responding, free up memory -- default 60
+send_timeout 4;
+
+# server will close connection after this time -- default 75
+# keepalive_timeout 30;
+
+# number of requests client can make over keep-alive -- for testing environment
+keepalive_requests 100000;
+
+client_max_body_size 100m;
 
 {{ if $.Env.RESOLVERS }}
 resolver {{ $.Env.RESOLVERS }};
@@ -156,7 +166,6 @@ server {
 	access_log /var/log/nginx/access.log vhost;
 	return 503;
 
-	ssl_session_cache shared:SSL:50m;
 	ssl_session_tickets off;
 	ssl_certificate /etc/nginx/certs/default.crt;
 	ssl_certificate_key /etc/nginx/certs/default.key;
@@ -211,8 +220,8 @@ upstream {{ $upstream_name }} {
 {{/* Get the HTTPS_METHOD defined by containers w/ the same vhost, falling back to "redirect" */}}
 {{ $https_method := or (first (groupByKeys $containers "Env.HTTPS_METHOD")) "redirect" }}
 
-{{/* Get the SSL_POLICY defined by containers w/ the same vhost, falling back to empty string (use default) */}}
-{{ $ssl_policy := or (first (groupByKeys $containers "Env.SSL_POLICY")) "" }}
+{{/* Get the SSL_POLICY defined by containers w/ the same vhost, falling back to "Mozilla-Intermediate" */}}
+{{ $ssl_policy := or (first (groupByKeys $containers "Env.SSL_POLICY")) "Mozilla-Intermediate" }}
 
 {{/* Get the HSTS defined by containers w/ the same vhost, falling back to "max-age=31536000" */}}
 {{ $hsts := or (first (groupByKeys $containers "Env.HSTS")) "max-age=31536000" }}
@@ -263,8 +272,36 @@ server {
 	include /etc/nginx/network_internal.conf;
 	{{ end }}
 
-	{{ template "ssl_policy" (dict "ssl_policy" $ssl_policy) }}
+	{{ if eq $ssl_policy "Mozilla-Modern" }}
+	ssl_protocols TLSv1.2 TLSv1.3;
+	ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256';
+	{{ else if eq $ssl_policy "Mozilla-Intermediate" }}
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+	ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+	{{ else if eq $ssl_policy "Mozilla-Old" }}
+	ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+	ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:ECDHE-RSA-DES-CBC3-SHA:ECDHE-ECDSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:DES-CBC3-SHA:HIGH:SEED:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!RSAPSK:!aDH:!aECDH:!EDH-DSS-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA:!SRP';
+	{{ else if eq $ssl_policy "AWS-TLS-1-2-2017-01" }}
+	ssl_protocols TLSv1.2 TLSv1.3;
+	ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:AES128-GCM-SHA256:AES128-SHA256:AES256-GCM-SHA384:AES256-SHA256';
+	{{ else if eq $ssl_policy "AWS-TLS-1-1-2017-01" }}
+	ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;
+	ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA';
+	{{ else if eq $ssl_policy "AWS-2016-08" }}
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+	ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA';
+	{{ else if eq $ssl_policy "AWS-2015-05" }}
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+	ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA:DES-CBC3-SHA';
+	{{ else if eq $ssl_policy "AWS-2015-03" }}
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+	ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA:DHE-DSS-AES128-SHA:DES-CBC3-SHA';
+	{{ else if eq $ssl_policy "AWS-2015-02" }}
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+	ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA:DHE-DSS-AES128-SHA';
+	{{ end }}
 
+	ssl_prefer_server_ciphers on;
 	ssl_session_timeout 5m;
 	ssl_session_cache shared:SSL:50m;
 	ssl_session_tickets off;
@@ -298,7 +335,7 @@ server {
 		uwsgi_pass {{ trim $proto }}://{{ trim $upstream_name }};
 		{{ else if eq $proto "fastcgi" }}
 		root   {{ trim $vhost_root }};
-		include fastcgi_params;
+		include fastcgi.conf;
 		fastcgi_pass {{ trim $upstream_name }};
 		{{ else }}
 		proxy_pass {{ trim $proto }}://{{ trim $upstream_name }};
@@ -345,7 +382,7 @@ server {
 		uwsgi_pass {{ trim $proto }}://{{ trim $upstream_name }};
 		{{ else if eq $proto "fastcgi" }}
 		root   {{ trim $vhost_root }};
-		include fastcgi_params;
+		include fastcgi.conf;
 		fastcgi_pass {{ trim $upstream_name }};
 		{{ else }}
 		proxy_pass {{ trim $proto }}://{{ trim $upstream_name }};
