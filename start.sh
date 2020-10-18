@@ -6,13 +6,15 @@
 #
 
 # 1. Check if .env file exists
-if [ -e .env ]; then
-    source .env
-else 
+if [ ! -e .env ]; then
     echo "It seems you didn´t create your .env file, so we will create one for you."
     cp .env.sample .env
-    # exit 1
 fi
+
+# All variables must be exported
+set -a
+source .env
+set +a
 
 # 2. Create docker network
 docker network create $NETWORK $NETWORK_OPTIONS
