@@ -33,15 +33,15 @@ docker-compose pull
 # Check if user set to use Special Conf Files
 if [ ! -z ${USE_NGINX_CONF_FILES+X} ] && [ "$USE_NGINX_CONF_FILES" = true ]; then
 
-    # Create the conf folder if it does not exists
-    mkdir -p $NGINX_FILES_PATH/conf.d
+    # Create the conf folders if they do not exist
+    mkdir -p $NGINX_FILES_PATH/conf.d $NGINX_FILES_PATH/vhost.d
 
     # Copy the special configurations to the nginx conf folder
-    cp -R ./conf.d/* $NGINX_FILES_PATH/conf.d
+    cp -R ./conf.d ./vhost.d $NGINX_FILES_PATH/
 
     # Check if there was an error and try with sudo
     if [ $? -ne 0 ]; then
-        sudo cp -R ./conf.d/* $NGINX_FILES_PATH/conf.d
+        sudo cp -R ./conf.d ./vhost.d $NGINX_FILES_PATH
     fi
 
     # If there was any errors inform the user

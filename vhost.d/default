@@ -1,0 +1,9 @@
+
+#
+# [WARNING] To enable this file you need to uncomment USE_NGINX_CONF_FILES=true in .env file
+#
+# [WARNING] Also, read all the comments in .env about NGINX use special conf files
+#
+
+#  Prevent search engines from indexing 
+add_header X-Robots-Tag noindex;
