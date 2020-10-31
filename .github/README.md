@@ -212,6 +212,15 @@ docker exec -it ${NGINX_WEB} nginx -s reload
 
 Where *${NGINX_WEB}* is your proxy container name, which in the original `.env` file is set as *nginx-web*.
 
+5. IPv6 address.
+   Append IPv6=::/0 to each project's  container .env file:
+```
+IP=0.0.0.0
+IPv6=::/0
+VIRTUAL_HOST=example.com
+LETSENCRYPT_HOST=example.com
+LETSENCRYPT_EMAIL=mail@example.com
+``` 
 
 ## Testing your proxy with scripts preconfigured 
 
