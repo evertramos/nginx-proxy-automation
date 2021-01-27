@@ -187,7 +187,7 @@ docker network connect myownnetwork nginx-letsencrypt
 
 If your service container runs on port 8545 you probably will need to add the `VIRTUAL_PORT` environment variable to your container, in the `docker-compose.yml`, as of:
 
-```bash
+```yml
 parity
     image: parity/parity:v1.8.9
     [...]
@@ -212,6 +212,20 @@ docker exec -it ${NGINX_WEB} nginx -s reload
 
 Where *${NGINX_WEB}* is your proxy container name, which in the original `.env` file is set as *nginx-web*.
 
+## Using docker-compose
+
+You can also pass environment variables used in the command examples above in `docker-compose.yml` file. Here is an example how to configure Grafana as an application behind Nginx proxy. Grafana used port 3000 by default which the Nginx proxy then maps to HTTPS.
+
+```yml
+services:
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - VIRTUAL_HOST=mygrafana.example.com
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=mygrafana.example.com
+      - LETSENCRYPT_EMAIL=admin@example.com
+```      
 
 ## Testing your proxy with scripts preconfigured 
 
