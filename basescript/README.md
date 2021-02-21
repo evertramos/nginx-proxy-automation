@@ -1,4 +1,6 @@
-This is an open (free) version of basescript!
+# This is an open (free) version of basescript!
+
+---
 
 # Base Scripts 
 
