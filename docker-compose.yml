@@ -10,6 +10,8 @@ services:
     ports:
       - "${IP:-0.0.0.0}:${DOCKER_HTTP:-80}:80"
       - "${IP:-0.0.0.0}:${DOCKER_HTTPS:-443}:443"
+    environment:
+      SSL_POLICY: ${SSL_POLICY:-Mozilla-Intermediate}
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
@@ -27,8 +29,6 @@ services:
     command: -notify-sighup ${NGINX_WEB:-nginx-proxy-automation-web} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
     container_name: ${DOCKER_GEN:-nginx-proxy-automation-gen}
     restart: always
-    environment:
-      SSL_POLICY: ${SSL_POLICY:-Mozilla-Intermediate}
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
