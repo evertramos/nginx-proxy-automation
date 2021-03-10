@@ -1032,7 +1032,7 @@ DOCKER_NETWORK_NAME=${STRING_REMOVE_ALL_SPECIAL_CHAR_STRING_RESPONSE:-null}
 # Final result:
 #   - DATA_LOCATION
 #-----------------------------------------------------------------------
-LOCAL_DEFAULT_DATA_LOCATION=${DEFAULT_DATA_LOCATION:-"./data"}
+LOCAL_DEFAULT_DATA_LOCATION=${DEFAULT_DATA_LOCATION:-"$SCRIPT_PATH/../data"}
 if [[ $ARG_DATA_LOCATION == "" ]] && [[ ! "$REPLY_YES" == true ]]; then
 
   # Get user's response
@@ -1149,31 +1149,25 @@ fi
 # Add nginx config folder (conf.d)
 #-----------------------------------------------------------------------
 if [[ "$USE_NGINX_CONF_FILES" == true ]]; then
-#  # Create the conf folder if it does not exists
-#  mkdir -p $NGINX_FILES_PATH/conf.d
-#
-#  # Copy the special configurations to the nginx conf folder
-#  cp -R ./conf.d/* $NGINX_FILES_PATH/conf.d
-#
-#  # Check if there was an error and try with sudo
-#  if [ $? -ne 0 ]; then
-#      sudo cp -R ./conf.d/* $NGINX_FILES_PATH/conf.d
-#  fi
-#
-#  # If there was any errors inform the user
-#  if [ $? -ne 0 ]; then
-#      echo
-#      echo "#######################################################"
-#      echo
-#      echo "There was an error trying to copy the nginx conf files."
-#      echo "The proxy will still work with default options, but"
-#      echo "the custom settings your have made could not be loaded."
-#      echo
-#      echo "#######################################################"
-#  fi
-#  ACTION_ENV_FILE_RENAMED=true
-#  LOCAL_BACKUP_ENV_FILE=$BACKUP_FILE
-echo "@todo here..."
+  # Create the conf folder if it does not exists
+  run_function common_create_folder "$DATA_LOCATION/conf.d"
+
+  # Copy the special configurations to the nginx conf folder
+  cp -R $SCRIPT_PATH/../conf.d/* $DATA_LOCATION/conf.d/
+
+  # Check if there was an error and try with sudo
+  if [ $? -ne 0 ]; then
+      echo "sudo cp -R $SCRIPT_PATH/../conf.d/* $DATA_LOCATION/conf.d/"
+      exit 0
+      sudo cp -R $SCRIPT_PATH/../conf.d/* $DATA_LOCATION/conf.d/
+  fi
+
+  # If there was any errors inform the user
+  if [ $? -ne 0 ]; then
+    echoerr "There was an error trying to copy the nginx conf files. \
+      \nThe proxy will still work with default options, but \
+      \nthe custom settings might not be loaded."
+  fi
 fi
 
 #-----------------------------------------------------------------------
