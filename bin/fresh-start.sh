@@ -437,6 +437,11 @@ while [[ $# -gt 0 ]]; do
     ACTIVATE_IPV6=true
     shift 1
     ;;
+
+  --update-nginx-template)
+    UPDATE_NGINX_TEMPLATE=true
+    shift 1
+    ;;
   --skip-docker-image-check)
     SKIP_DOCKER_IMAGE_CHECK=true
     shift 1
@@ -1172,6 +1177,16 @@ echo "@todo here..."
 fi
 
 #-----------------------------------------------------------------------
+# Update the nginx.template with the latest version
+#-----------------------------------------------------------------------
+DEFAULT_NGINX_TEMPLATE_URL="https://raw.githubusercontent.com/nginx-proxy/nginx-proxy/master/nginx.tmpl"
+if [[ "$UPDATE_NGINX_TEMPLATE" == true ]]; then
+  cd "$SCRIPT_PATH/../"
+  curl https://raw.githubusercontent.com/nginx-proxy/nginx-proxy/master/nginx.tmpl > nginx.tmpl
+  cd - > /dev/null 2>&1
+fi
+
+#-----------------------------------------------------------------------
 # Backup .env file if exists
 #-----------------------------------------------------------------------
 if [[ "$LOCAL_BACKUP_OLD_ENV_FILE" == true ]]; then
@@ -1232,5 +1247,22 @@ fi
 # Show data for the user to take notes
 #-----------------------------------------------------------------------
 echosuccess "Your proxy was started successfully!"
+
+# @todo - testing the proxy
+#
+# attention:
+# 1. if yes don't ask for testing unless splicit
+# 2. timeout optional yes|no as default?
+# 3. url for testing - test dns first
+# 4. option for ssl testing as well
+#
+# without ssl
+# docker run -d -e VIRTUAL_HOST=$DOMAIN --network=$NETWORK --name test-web httpd:alpine
+#
+# with ss
+# docker run -d -e VIRTUAL_HOST=$DOMAIN -e LETSENCRYPT_HOST=$DOMAIN --network=$NETWORK --name $NAME httpd:alpine
+#
+# stop testint - timeout?!
+# docker stop test-web && docker rm test-web
 
 exit 0

@@ -78,6 +78,7 @@ Usage:
 
     Proxy config
     --use-nginx-conf-files              Add basic config folder to the Proxy
+    --update-nginx-template             Download the latest nginx.tmpl
 
     Network
     -netopt | --network-option          Network options please check the docs
