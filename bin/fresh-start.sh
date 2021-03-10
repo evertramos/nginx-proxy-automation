@@ -1182,7 +1182,7 @@ fi
 DEFAULT_NGINX_TEMPLATE_URL="https://raw.githubusercontent.com/nginx-proxy/nginx-proxy/master/nginx.tmpl"
 if [[ "$UPDATE_NGINX_TEMPLATE" == true ]]; then
   cd "$SCRIPT_PATH/../"
-  curl https://raw.githubusercontent.com/nginx-proxy/nginx-proxy/master/nginx.tmpl > nginx.tmpl
+  curl -L $DEFAULT_NGINX_TEMPLATE_URL -o nginx.tmpl
   cd - > /dev/null 2>&1
 fi
 
