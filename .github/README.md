@@ -1,4 +1,6 @@
-# Updating to v2 branch - please consider testing! Thanks
+# Updating to v2 branch
+
+# Please consider testing! Thanks
 
 # Web Proxy using Docker, NGINX and Let's Encrypt
 
