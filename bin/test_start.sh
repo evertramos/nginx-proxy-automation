@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "script not in use..."
+exit 0
 
 # Set up your DOMAIN
 if [ $# -eq 0 ]; then

@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "script not in use..."
+exit 0
 
 NAME=test-web
 

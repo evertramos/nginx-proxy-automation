@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "script not in use..."
+exit 0
+
 #
 # This file should be used to prepare and run your WebProxy after set up your .env file
 # Source: https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion
