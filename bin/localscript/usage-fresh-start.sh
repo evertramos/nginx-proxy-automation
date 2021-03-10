@@ -61,6 +61,7 @@ Usage:
                 [-d "/server/proxy/data"]
                 [-pn "proxy"] [-ln "letsencrypt"] [-gn "docker-gen"]
                 [-net "proxy"]
+                [--use-nginx-conf-files] [--update-nginx-template]
                 [--yes]
                 [--debug]
 
