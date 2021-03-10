@@ -3,7 +3,7 @@
 This project automates the [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy).
 We strongly recommend you (:pray: please do!) to read all documentation.
 
-> To access the previous version of this project please access [version 0.4](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/tree/v0.4).
+> To access the previous version of this project please access [version 0.4](https://github.com/evertramos/nginx-proxy-automation/tree/v0.4).
 
 
 ## What this project does
@@ -187,7 +187,7 @@ docker stop test-web && docker rm test-web
 
 ## Running this Proxy on a Synology NAS
 
-Please checkout this [howto](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/blob/master/docs/HOWTO-Synlogy.md).
+Please checkout this [howto](https://github.com/evertramos/nginx-proxy-automation/blob/master/docs/HOWTO-Synlogy.md).
 
 ## Production Environment using Web Proxy
 
