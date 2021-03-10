@@ -1,12 +1,12 @@
 # NGINX Proxy Automation
 
-This repo automates the instalation of [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy).
+This project automates the [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy).
 We strongly recommend you (:pray: please do!) to read all documentation.
 
-> To access the previous version of this repo please access [version 0.4](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/tree/v0.4).
+> To access the previous version of this project please access [version 0.4](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion/tree/v0.4).
 
 
-## So, what does it do? :grey_question::grey_exclamation:
+## What this project does
 
 This script will set up your server with the *nginx-proxy*, which will enable you to host multiple sites, 
 auto renewing Let´s Encrypt certificates. 
@@ -20,6 +20,7 @@ Something like:
 
 1. Linux! 🐧 (just in case...)
 
+> Please check all requirements at [requirements](/docs/requirements.md).
 
 In order to use this compose file (docker-compose.yml) you must have:
 
@@ -43,8 +44,11 @@ Also, you will need to make sure you have:
 1. Clone this repository:
 
 ```bash
-$ git clone https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion.git proxy 
+$ git clone --recurse-submodules https://github.com/evertramos/nginx-proxy-automation.git proxy 
 ```
+
+> Make sure you use the option '--recurse-submodules' once we use an external module in this project, please check 
+> [basescript](https://github.com/evertramos/basescript)
 
 > Please note we use 'proxy' as folder at the end. But you can change it to whatever fits you better  
 
@@ -52,12 +56,14 @@ $ git clone https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy
    
 ```bash
 $ cd proxy/bin
-$ ./fresh_start.sh
+$ ./fresh-start.sh
 ```
 
 This script will walk you through all config process.  
 
 When it finishes you are good to go! :checkered_flag:
+
+> You can check all available options to run the script `$ ./fresh-start.sh --help`
 
 3. Fire your new site with the following options:
 
@@ -93,7 +99,7 @@ $ docker run -d -e VIRTUAL_HOST=your.domain.com \
 > You don´t need to open port *443* in your container, the certificate validation is managed by the web proxy
 
 > Please note that when running a new container to generate certificates with Let's Encrypt 
-> (`-e LETSENCRYPT_HOST=your.domain.com`), it may take a few minutes, depending on multiples circumstances
+> (`-e LETSENCRYPT_HOST=your.domain.com`), it may take a few minutes
 
 
 ## Further Options
@@ -110,7 +116,7 @@ $ sudo sh -c "openssl passwd -apr1 >> ${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOS
 
 > Please replace the `${NGINX_FILES_PATH}` with real path to information, replace `[username]` with your username and `${VIRTUAL_HOST}` with your host's domain. You will be prompted for a password.
 
-2. Using multiple networks
+2. Using different networks
 
 If you want to use more than one network to better organize your environment you could set the option `SERVICE_NETWORK` in our `.env.sample` or you can just create your own network and attach all your containers as of:
 
