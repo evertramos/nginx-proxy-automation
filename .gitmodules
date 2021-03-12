@@ -1,0 +1,3 @@
+[submodule "basescript"]
+	path = basescript
+	url = git@github.com:evertramos/basescript.git
