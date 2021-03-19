@@ -25,10 +25,6 @@ fi
 # Read your .env file
 source ./../.env
 
-# Stop if test is running
-docker stop test-web
-docker rm test-web
-
 # Testing your proxy
 docker run -d -e VIRTUAL_HOST=$DOMAIN --network=$NETWORK --rm --name test-web httpd:alpine
 
