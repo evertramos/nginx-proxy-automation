@@ -42,7 +42,7 @@ local_update_env_new_site_variables()
     run_function env_update_variable $LOCAL_FILE_PATH "NGINX_PROXY_COMPANION_IMAGE_VERSION" "$LETSENCRYPT_IMAGE_VERSION"
 
     # IPs
-    run_function env_update_variable $LOCAL_FILE_PATH "IP" "$IP_ADDRESS"
+    run_function env_update_variable $LOCAL_FILE_PATH "IPv4" "$IP_ADDRESS"
     [[ "$ACTIVATE_IPV6" == true ]] && run_function env_update_variable $LOCAL_FILE_PATH "IPv6" "$IPv6_ADDRESS"
 
     # Network

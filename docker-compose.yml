@@ -8,8 +8,8 @@ services:
     container_name: ${NGINX_WEB:-nginx-proxy-automation-web}
     restart: always
     ports:
-      - "${IP:-0.0.0.0}:${DOCKER_HTTP:-80}:80"
-      - "${IP:-0.0.0.0}:${DOCKER_HTTPS:-443}:443"
+      - "${IPv4:-0.0.0.0}:${DOCKER_HTTP:-80}:80"
+      - "${IPv4:-0.0.0.0}:${DOCKER_HTTPS:-443}:443"
 #      - "${IPv6:-::/0}:80:80"
 #      - "${IPv6:-::/0}:443:443"
     environment:
