@@ -34,11 +34,11 @@ local_update_env_new_site_variables()
     [[ "$DEBUG" == true ]] && echo "Updating all variables in .env file for nginx-proxy (file: ${LOCAL_FILE_PATH})"
 
     # Docker servides and image versions
-    run_function env_update_variable $LOCAL_FILE_PATH "NGINX_WEB" "$NGINX_PROXY_SERVICE_NAME"
+    run_function env_update_variable $LOCAL_FILE_PATH "NGINX_WEB_SEVICE_NAME" "$NGINX_PROXY_SERVICE_NAME"
     run_function env_update_variable $LOCAL_FILE_PATH "NGINX_IMAGE_VERSION" "$NGINX_PROXY_IMAGE_VERSION"
     run_function env_update_variable $LOCAL_FILE_PATH "DOCKER_GEN_SEVICE_NAME" "$DOCKER_GEN_SERVICE_NAME"
     run_function env_update_variable $LOCAL_FILE_PATH "DOCKER_GEN_IMAGE_VERSION" "$DOCKER_GEN_IMAGE_VERSION"
-    run_function env_update_variable $LOCAL_FILE_PATH "LETS_ENCRYPT" "$LETSENCRYPT_SERVICE_NAME"
+    run_function env_update_variable $LOCAL_FILE_PATH "LETS_ENCRYPT_SEVICE_NAME" "$LETSENCRYPT_SERVICE_NAME"
     run_function env_update_variable $LOCAL_FILE_PATH "NGINX_PROXY_COMPANION_IMAGE_VERSION" "$LETSENCRYPT_IMAGE_VERSION"
 
     # IPs
