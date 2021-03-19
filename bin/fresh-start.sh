@@ -4,7 +4,7 @@
 #
 # Fresh Start script - set up nginx-proxy in a fresh installed server
 #
-# https://github.com/evertramos/docker-nginx-proxy-automation
+# https://github.com/evertramos/nginx-proxy-automation
 #
 # Script developed by
 #   Evert Ramos <evert.ramos@gmail.com>
@@ -540,24 +540,6 @@ local_undo_restore() {
     ACTION_DOCKER_COMPOSE_STOPPED=false
   fi
 
-  # If site folder was created
-  #    if [[ "$ACTION_SITE_PATH_CREATED" == true ]]; then
-  #        [[ "$SILENT" != true ]] && echowarning "[undo] Creating site folder '$LOCAL_SITE_FULL_PATH'."
-  #        # Remove folder
-  #        run_function system_safe_delete_folder $LOCAL_SITE  _FULL_PATH true
-  #        ACTION_SITE_PATH_CREATED=false
-  #    fi
-
-  # If site domain was created
-  #    if [[ "$ACTION_SITE_URL_CREATED" == true ]]; then
-  #        [[ "$SILENT" != true ]] && echowarning "[undo] Creating site domain '$LOCAL_NEW_URL'."
-  #        run_function domain_delete_domain_dns $LOCAL_NEW_URL
-  #        ACTION_SITE_URL_CREATED=false
-  #        if [[ "$WITH_WWW" == true ]]; then
-  #            run_function domain_delete_domain_dns "www.$LOCAL_NEW_URL"
-  #        fi
-  #    fi
-  #
   exit 0
 }
 
@@ -703,7 +685,7 @@ if [[ "$DOCKER_CONTAINER_EXISTS" == true ]]; then
 
       [[ "$USER_ACTION_RESPONSE" == true ]] && LOCAL_STOP_AND_REMOVE_NGINX_PROXY_SERVICE_CONTAINER=true
     fi
-    # We kept STOP and REMOVE because the stop function will no break the script even if the container isn't running
+    # We kept STOP and REMOVE because the stop function will not break the script even if the container isn't running
   fi
 fi
 
@@ -722,7 +704,7 @@ LOCAL_DEFAULT_LETSENCRYPT_SERVICE_NAME="letsencrypt-auto"
 if [[ $ARG_LETSENCRYPT_SERVICE_NAME == "" ]] && [[ ! "$REPLY_YES" == true ]]; then
 
   # Get user's response
-  run_function common_read_user_input "Please enter the nginx-proxy service name (default: $LOCAL_DEFAULT_LETSENCRYPT_SERVICE_NAME):"
+  run_function common_read_user_input "Please enter the letsencrypt service name (default: $LOCAL_DEFAULT_LETSENCRYPT_SERVICE_NAME):"
 
   LOCAL_LETSENCRYPT_SERVICE_NAME=${USER_INPUT_RESPONSE:-$LOCAL_DEFAULT_LETSENCRYPT_SERVICE_NAME}
 else
@@ -773,7 +755,7 @@ if [[ "$DOCKER_CONTAINER_EXISTS" == true ]]; then
 
       [[ "$USER_ACTION_RESPONSE" == true ]] && LOCAL_STOP_AND_REMOVE_LETSENCRYPT_SERVICE_CONTAINER=true
     fi
-    # We kept STOP and REMOVE because the stop function will no break the script even if the container isn't running
+    # We kept STOP and REMOVE because the stop function will not break the script even if the container isn't running
   fi
 fi
 
@@ -792,7 +774,7 @@ LOCAL_DEFAULT_DOCKER_GEN_SERVICE_NAME="docker-gen-auto"
 if [[ $ARG_DOCKER_GEN_SERVICE_NAME == "" ]] && [[ ! "$REPLY_YES" == true ]]; then
 
   # Get user's response
-  run_function common_read_user_input "Please enter the nginx-proxy service name (default: $LOCAL_DEFAULT_DOCKER_GEN_SERVICE_NAME):"
+  run_function common_read_user_input "Please enter the docker-gen service name (default: $LOCAL_DEFAULT_DOCKER_GEN_SERVICE_NAME):"
 
   LOCAL_DOCKER_GEN_SERVICE_NAME=${USER_INPUT_RESPONSE:-$LOCAL_DEFAULT_DOCKER_GEN_SERVICE_NAME}
 else
@@ -843,7 +825,7 @@ if [[ "$DOCKER_CONTAINER_EXISTS" == true ]]; then
 
       [[ "$USER_ACTION_RESPONSE" == true ]] && LOCAL_STOP_AND_REMOVE_DOCKER_GEN_SERVICE_CONTAINER=true
     fi
-    # We kept STOP and REMOVE because the stop function will no break the script even if the container isn't running
+    # We kept STOP and REMOVE because the stop function will not break the script even if the container isn't running
   fi
 fi
 

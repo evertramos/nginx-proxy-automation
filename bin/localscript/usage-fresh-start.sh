@@ -66,7 +66,7 @@ Usage:
                 [--debug]
 
     Required
-    -e | --default-email          Default email address require to issue tld
+    -e | --default-email          Default email address require to issue ssl
                                   certificates with Let's Encrypt service
 
     Basic options
