@@ -943,7 +943,7 @@ if [[ ! "$IP_IPV4" == true ]]; then
   echoerr "The IP address '$LOCAL_IP_ADDRESS' seems to be in wrong format. Please try again or keep the default value."
   local_undo_restore
 else
-  IP_ADDRESS=${LOCAL_IP_ADDRESS:-"::1"}
+  IP_ADDRESS=${LOCAL_IP_ADDRESS:-"0.0.0.0"}
 fi
 
 #-----------------------------------------------------------------------
@@ -964,11 +964,11 @@ if [[ "$ACTIVATE_IPV6" == true ]]; then
     # Get user's response
     run_function common_read_user_input \
       "Please enter the IP address (ipv6) that your server uses to connect to the internet. \
-      \nYou might try the following '$IP_EXTERNAL_IPV6' (default: ::1):"
+      \nYou might try the following '$IP_EXTERNAL_IPV6' (default: ::0):"
 
-    LOCAL_IPv6_ADDRESS=${USER_INPUT_RESPONSE:-"::1"}
+    LOCAL_IPv6_ADDRESS=${USER_INPUT_RESPONSE:-"::0"}
   else
-    LOCAL_IPv6_ADDRESS=${ARG_IPv6_ADDRESS:-"::1"}
+    LOCAL_IPv6_ADDRESS=${ARG_IPv6_ADDRESS:-"::0"}
   fi
 
   # Check the IP address
@@ -978,7 +978,7 @@ if [[ "$ACTIVATE_IPV6" == true ]]; then
     echoerr "The IP address '$LOCAL_IPv6_ADDRESS' seems to be in wrong format. Please try again or keep the default value."
     local_undo_restore
   else
-    IPv6_ADDRESS=${LOCAL_IPv6_ADDRESS:-"::1"}
+    IPv6_ADDRESS=${LOCAL_IPv6_ADDRESS:-"::0"}
   fi
 fi
 
