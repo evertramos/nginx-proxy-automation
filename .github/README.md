@@ -9,7 +9,7 @@ We strongly recommend you (:pray: please do!) to read all documentation.
 
 ## Video Tutorial
 
-I made a 5 minutes video set up:
+I made a 5 minutes tutorial video:
 
 [![NGINX-Proxy-Automation](https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
 
