@@ -7,6 +7,12 @@ We strongly recommend you (:pray: please do!) to read all documentation.
 > To access the previous version of this project please access [version 0.4](https://github.com/evertramos/nginx-proxy-automation/tree/v0.4).
 
 
+## Video Tutorial
+
+I made a 5 minutes tutorial video:
+
+[![NGINX-Proxy-Automation](https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
+
 ## What this project does
 
 This script will set up your server with the *nginx-proxy*, which will enable you to host multiple sites, 
