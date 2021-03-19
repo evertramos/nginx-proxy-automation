@@ -1081,12 +1081,12 @@ DOCKER_HTTP=${ARG_DOCKER_HTTP:-"80"}
 DOCKER_HTTPS=${ARG_DOCKER_HTTPS:-"443"}
 
 #-----------------------------------------------------------------------
-# SSL policy (defaults to Mozilla-Intermediate)
+# SSL policy (set to Mozilla-Modern)
 #
 # Please read the options at the url below:
 # https://github.com/nginx-proxy/nginx-proxy#how-ssl-support-works
 #-----------------------------------------------------------------------
-SSL_POLICY=${ARG_SSL_POLICY:-"Mozilla-Intermediate"}
+SSL_POLICY=${ARG_SSL_POLICY:-"Mozilla-Modern"}
 
 #-----------------------------------------------------------------------
 # Start actions!
