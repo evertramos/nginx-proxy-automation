@@ -15,6 +15,5 @@
 
 # Stop if test is running
 docker stop test-web
-docker rm test-web
 
 exit 0
