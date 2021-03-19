@@ -36,7 +36,7 @@ local_update_env_new_site_variables()
     # Docker servides and image versions
     run_function env_update_variable $LOCAL_FILE_PATH "NGINX_WEB" "$NGINX_PROXY_SERVICE_NAME"
     run_function env_update_variable $LOCAL_FILE_PATH "NGINX_IMAGE_VERSION" "$NGINX_PROXY_IMAGE_VERSION"
-    run_function env_update_variable $LOCAL_FILE_PATH "DOCKER_GEN" "$DOCKER_GEN_SERVICE_NAME"
+    run_function env_update_variable $LOCAL_FILE_PATH "DOCKER_GEN_SEVICE_NAME" "$DOCKER_GEN_SERVICE_NAME"
     run_function env_update_variable $LOCAL_FILE_PATH "DOCKER_GEN_IMAGE_VERSION" "$DOCKER_GEN_IMAGE_VERSION"
     run_function env_update_variable $LOCAL_FILE_PATH "LETS_ENCRYPT" "$LETSENCRYPT_SERVICE_NAME"
     run_function env_update_variable $LOCAL_FILE_PATH "NGINX_PROXY_COMPANION_IMAGE_VERSION" "$LETSENCRYPT_IMAGE_VERSION"
