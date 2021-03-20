@@ -222,4 +222,5 @@ Credits goes to:
 ### Just in case you are willing to support this project, you will find us at:
 
 [Patreon](https://www.patreon.com/evertramos)
+
 [Open Collective](https://opencollective.com/nginx-proxy-automation)
