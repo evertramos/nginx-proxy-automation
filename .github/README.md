@@ -219,5 +219,7 @@ Credits goes to:
 - [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
 - [@fracz](https://github.com/fracz) - Many contributions!
 
-# Support this project at [Patreon](https://www.patreon.com/evertramos)
-[https://www.patreon.com/evertramos](https://www.patreon.com/evertramos)
+### Just in case you are willing to support this project, you will find us at:
+
+[Patreon](https://www.patreon.com/evertramos)
+[Open Collective](https://opencollective.com/nginx-proxy-automation)
