@@ -1,27 +1,24 @@
 
 # NGINX Proxy Automation
 
-This project automates the [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy).
-We strongly recommend you (:pray: please do!) to read all documentation.
-
-> To access the previous version of this project please access [version 0.4](https://github.com/evertramos/nginx-proxy-automation/tree/v0.4).
-
-
-## Video Tutorial
-
-I made a 5 minutes tutorial video:
-
-[![NGINX-Proxy-Automation](https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
-
 ## What this project does
 
-This script will set up your server with the *nginx-proxy*, which will enable you to host multiple sites, 
-auto renewing Let´s Encrypt certificates. 
+This script will _power up_ your new server with the [*nginx-proxy*](https://github.com/nginx-proxy/nginx-proxy), where you will be able to host multiple sites, 
+auto renewing Let´s Encrypt certificates! ❤️
 
 Something like:
 
 ![Web Proxy environment](https://github.com/evertramos/images/raw/master/webproxy.jpg)
 
+We strongly recommend you (please do! 🙏) to read all documentation before starting in production as well as the [nginx-proxy docs](https://github.com/nginx-proxy/nginx-proxy).
+
+> To access the previous version of this project please access [version 0.4](https://github.com/evertramos/nginx-proxy-automation/tree/v0.4).
+
+## Video Tutorial
+
+I made a 5 minutes tutorial video to walk you through this project:
+
+[![NGINX-Proxy-Automation](https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
 
 ## Prerequisites
 
@@ -48,7 +45,7 @@ Also, you will need to make sure you have:
 
 ## How to use it
 
-1. Clone this repository:
+1. Clone this repository **using the option _--recurse-submodules_**:
 
 ```bash
 $ git clone --recurse-submodules https://github.com/evertramos/nginx-proxy-automation.git proxy 
@@ -222,5 +219,7 @@ Credits goes to:
 - [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
 - [@fracz](https://github.com/fracz) - Many contributions!
 
-# Support this project at [Patreon](https://www.patreon.com/evertramos)
-[https://www.patreon.com/evertramos](https://www.patreon.com/evertramos)
+### Just in case you are willing to support this project, you will find us at:
+
+- [Patreon (evertramos)](https://www.patreon.com/evertramos)
+- [Open Collective (nginx-proxy-automation)](https://opencollective.com/nginx-proxy-automation)
