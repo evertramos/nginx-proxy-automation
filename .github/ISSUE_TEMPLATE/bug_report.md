@@ -21,7 +21,7 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+If the error is in one of the scripts, an screen show will help a lot to identify which part of the script the error occurred. 
 
 **Server info (please complete the following information):**
  - Linux release: [e.g. Ubuntu 20.10]
