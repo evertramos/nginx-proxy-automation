@@ -856,7 +856,7 @@ NGINX_PROXY_IMAGE_VERSION=${ARG_NGINX_PROXY_IMAGE_VERSION:-$LOCAL_DEFAULT_NGINX_
 #fi
 
 # Final check image a version with dockerhub
-[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_NGINX_PROXY_IMAGE_NAME $NGINX_PROXY_IMAGE_VERSION
+[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && [[ ! "$REPLY_YES" == true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_NGINX_PROXY_IMAGE_NAME $NGINX_PROXY_IMAGE_VERSION
 
 #-----------------------------------------------------------------------
 # Let's Encrypt image version
@@ -884,7 +884,7 @@ if [[ "$LETSENCRYPT_IMAGE_VERSION" == null ]] || [[ "$LOCAL_DEFAULT_LETSENCRYPT_
 fi
 
 # Final check image a version with dockerhub
-[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_LETSENCRYPT_IMAGE_NAME $LETSENCRYPT_IMAGE_VERSION
+[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && [[ ! "$REPLY_YES" == true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_LETSENCRYPT_IMAGE_NAME $LETSENCRYPT_IMAGE_VERSION
 
 #-----------------------------------------------------------------------
 # docker-gen image version
@@ -912,7 +912,7 @@ if [[ "$DOCKER_GEN_IMAGE_VERSION" == null ]] || [[ "$LOCAL_DEFAULT_DOCKER_GEN_IM
 fi
 
 # Final check image a version with dockerhub
-[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_DOCKER_GEN_IMAGE_NAME $DOCKER_GEN_IMAGE_VERSION
+[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && [[ ! "$REPLY_YES" == true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_DOCKER_GEN_IMAGE_NAME $DOCKER_GEN_IMAGE_VERSION
 
 #-----------------------------------------------------------------------
 # IP address (IPv4)
