@@ -62,10 +62,11 @@ $ git clone --recurse-submodules https://github.com/evertramos/nginx-proxy-autom
 $ cd proxy/bin
 $ ./fresh-start.sh
 ```
-
 This script will walk you through all config process.  
 
 When it finishes you are good to go! :checkered_flag:
+
+> If you are in a 'hurry' you could use just `$ ./fresh-start.sh --yes -e your_email@do` (please set your email) and your proxy will start it as soon as possible.
 
 > You can check all available options to run the script `$ ./fresh-start.sh --help`
 
