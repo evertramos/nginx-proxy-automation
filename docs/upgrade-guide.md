@@ -39,9 +39,10 @@ So, let's go. First thing first!
    $ git reset --hard
    ```
    
-   2.3 Checkout master
+   2.3 Pull and Checkout master
 
    ```bash
+   $ git pull origin master
    $ git checkout master
    ```
    
