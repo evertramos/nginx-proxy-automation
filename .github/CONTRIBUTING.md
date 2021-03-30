@@ -1,6 +1,6 @@
 ## Contributions
 
-### nginx.tmpl file
+### NGINX template file (nginx.tmpl)
 
 All contributions regarding the `nginx.tmpl` should be suggested or implemented in the [nginx-proxy repository](https://github.com/nginx-proxy/nginx-proxy).
 
