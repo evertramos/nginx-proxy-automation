@@ -230,3 +230,7 @@ Credits goes to:
 
 - [Patreon (evertramos)](https://www.patreon.com/evertramos)
 - [Open Collective (nginx-proxy-automation)](https://opencollective.com/nginx-proxy-automation)
+
+### Current supporters, sponsors and backers
+
+Please access the page [Supporters, Sponsors and Backers](/.github/sponsor.md).
