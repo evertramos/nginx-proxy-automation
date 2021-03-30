@@ -14,6 +14,12 @@ We strongly recommend you (please do! 🙏) to read all documentation before sta
 
 > To access the previous version of this project please access [version 0.4](https://github.com/evertramos/nginx-proxy-automation/tree/v0.4).
 
+### Upgrading from previous version
+
+If you are upgrading from the previous version please follow the guide below carefully:
+
+https://github.com/evertramos/nginx-proxy-automation/blob/master/docs/upgrade-guide.md
+
 ## Video Tutorial
 
 I made a 5 minutes tutorial video to walk you through this project:
