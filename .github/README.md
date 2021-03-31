@@ -24,6 +24,8 @@ https://github.com/evertramos/nginx-proxy-automation/blob/master/docs/upgrade-gu
 
 I made a 5 minutes tutorial video to walk you through this project:
 
+Click [here](https://www.youtube.com/watch?v=E9BtHVr_v9I) to access the video or click the image below:
+
 [![NGINX-Proxy-Automation](https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
 
 ## Prerequisites
