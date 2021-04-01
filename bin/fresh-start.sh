@@ -163,7 +163,7 @@ while [[ $# -gt 0 ]]; do
   # Network options
   -ip)
     ARG_IP_ADDRESS="${2}"
-    if [[ ARG_IP_ADDRESS == "" ]]; then
+    if [[ $ARG_IP_ADDRESS == "" ]]; then
       echoerr "Invalid option for -ip"
       break
     fi
@@ -171,7 +171,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --ip-address=*)
     ARG_IP_ADDRESS="${1#*=}"
-    if [[ ARG_IP_ADDRESS == "" ]]; then
+    if [[ $ARG_IP_ADDRESS == "" ]]; then
       echoerr "Invalid option for --ip-address"
       break
     fi
@@ -179,7 +179,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -ipv6)
     ARG_IPv6_ADDRESS="${2}"
-    if [[ ARG_IPv6_ADDRESS == "" ]]; then
+    if [[ $ARG_IPv6_ADDRESS == "" ]]; then
       echoerr "Invalid option for -ipv6"
       break
     fi
@@ -187,7 +187,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --ipv6-address=*)
     ARG_IPv6_ADDRESS="${1#*=}"
-    if [[ ARG_IPv6_ADDRESS == "" ]]; then
+    if [[ $ARG_IPv6_ADDRESS == "" ]]; then
       echoerr "Invalid option for --ipv6-address"
       break
     fi
@@ -195,7 +195,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -net)
     ARG_NETWORK_NAME="${2}"
-    if [[ ARG_NETWORK_NAME == "" ]]; then
+    if [[ $ARG_NETWORK_NAME == "" ]]; then
       echoerr "Invalid option for -net"
       break
     fi
@@ -203,7 +203,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --network-name=*)
     ARG_NETWORK_NAME="${1#*=}"
-    if [[ ARG_NETWORK_NAME == "" ]]; then
+    if [[ $ARG_NETWORK_NAME == "" ]]; then
       echoerr "Invalid option for --network-name"
       break
     fi
@@ -211,7 +211,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -netopt)
     NETWORK_OPTION="${2}"
-    if [[ NETWORK_OPTION == "" ]]; then
+    if [[ $NETWORK_OPTION == "" ]]; then
       echoerr "Invalid option for -netopt"
       break
     fi
@@ -219,7 +219,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --network-option=*)
     NETWORK_OPTION="${1#*=}"
-    if [[ NETWORK_OPTION == "" ]]; then
+    if [[ $NETWORK_OPTION == "" ]]; then
       echoerr "Invalid option for --network-option"
       break
     fi
@@ -229,7 +229,7 @@ while [[ $# -gt 0 ]]; do
   # Log settings
   -lpd)
     ARG_NGINX_PROXY_LOG_DRIVER="${2}"
-    if [[ ARG_NGINX_PROXY_LOG_DRIVER == "" ]]; then
+    if [[ $ARG_NGINX_PROXY_LOG_DRIVER == "" ]]; then
       echoerr "Invalid option for -lpd"
       break
     fi
@@ -237,7 +237,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --log-nginx-proxy-driver=*)
     ARG_NGINX_PROXY_LOG_DRIVER="${1#*=}"
-    if [[ ARG_NGINX_PROXY_LOG_DRIVER == "" ]]; then
+    if [[ $ARG_NGINX_PROXY_LOG_DRIVER == "" ]]; then
       echoerr "Invalid option for --log-nginx-proxy-driver"
       break
     fi
@@ -245,7 +245,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -lpms)
     ARG_NGINX_PROXY_LOG_MAX_SIZE="${2}"
-    if [[ ARG_NGINX_PROXY_LOG_MAX_SIZE == "" ]]; then
+    if [[ $ARG_NGINX_PROXY_LOG_MAX_SIZE == "" ]]; then
       echoerr "Invalid option for -lpms"
       break
     fi
@@ -253,7 +253,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --log-nginx-proxy-max_size=*)
     ARG_NGINX_PROXY_LOG_MAX_SIZE="${1#*=}"
-    if [[ ARG_NGINX_PROXY_LOG_MAX_SIZE == "" ]]; then
+    if [[ $ARG_NGINX_PROXY_LOG_MAX_SIZE == "" ]]; then
       echoerr "Invalid option for --log-nginx-proxy-max_size"
       break
     fi
@@ -261,7 +261,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -lpmf)
     ARG_NGINX_PROXY_LOG_MAX_FILE="${2}"
-    if [[ ARG_NGINX_PROXY_LOG_MAX_FILE == "" ]]; then
+    if [[ $ARG_NGINX_PROXY_LOG_MAX_FILE == "" ]]; then
       echoerr "Invalid option for -lpmf"
       break
     fi
@@ -269,7 +269,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --log-nginx-proxy-max_file=*)
     ARG_NGINX_PROXY_LOG_MAX_FILE="${1#*=}"
-    if [[ ARG_NGINX_PROXY_LOG_MAX_FILE == "" ]]; then
+    if [[ $ARG_NGINX_PROXY_LOG_MAX_FILE == "" ]]; then
       echoerr "Invalid option for --log-nginx-proxy-max_file"
       break
     fi
@@ -277,7 +277,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -lgd)
     ARG_DOCKER_GEN_LOG_DRIVER="${2}"
-    if [[ ARG_DOCKER_GEN_LOG_DRIVER == "" ]]; then
+    if [[ $ARG_DOCKER_GEN_LOG_DRIVER == "" ]]; then
       echoerr "Invalid option for -lgd"
       break
     fi
@@ -285,7 +285,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --log-docker-gen-driver=*)
     ARG_DOCKER_GEN_LOG_DRIVER="${1#*=}"
-    if [[ ARG_DOCKER_GEN_LOG_DRIVER == "" ]]; then
+    if [[ $ARG_DOCKER_GEN_LOG_DRIVER == "" ]]; then
       echoerr "Invalid option for --log-docker-gen-driver"
       break
     fi
@@ -293,7 +293,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -lgms)
     ARG_DOCKER_GEN_LOG_MAX_SIZE="${2}"
-    if [[ ARG_DOCKER_GEN_LOG_MAX_SIZE == "" ]]; then
+    if [[ $ARG_DOCKER_GEN_LOG_MAX_SIZE == "" ]]; then
       echoerr "Invalid option for -lgms"
       break
     fi
@@ -301,7 +301,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --log-docker-gen-max_size=*)
     ARG_DOCKER_GEN_LOG_MAX_SIZE="${1#*=}"
-    if [[ ARG_DOCKER_GEN_LOG_MAX_SIZE == "" ]]; then
+    if [[ $ARG_DOCKER_GEN_LOG_MAX_SIZE == "" ]]; then
       echoerr "Invalid option for --log-docker-gen-max_size"
       break
     fi
@@ -309,7 +309,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -lgmf)
     ARG_DOCKER_GEN_LOG_MAX_FILE="${2}"
-    if [[ ARG_DOCKER_GEN_LOG_MAX_FILE == "" ]]; then
+    if [[ $ARG_DOCKER_GEN_LOG_MAX_FILE == "" ]]; then
       echoerr "Invalid option for -lgmf"
       break
     fi
@@ -317,7 +317,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --log-docker-gen-max_file=*)
     ARG_DOCKER_GEN_LOG_MAX_FILE="${1#*=}"
-    if [[ ARG_DOCKER_GEN_LOG_MAX_FILE == "" ]]; then
+    if [[ $ARG_DOCKER_GEN_LOG_MAX_FILE == "" ]]; then
       echoerr "Invalid option for --log-docker-gen-max_file"
       break
     fi
@@ -325,7 +325,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -lld)
     ARG_LETSENCRYPT_LOG_DRIVER="${2}"
-    if [[ ARG_LETSENCRYPT_LOG_DRIVER == "" ]]; then
+    if [[ $ARG_LETSENCRYPT_LOG_DRIVER == "" ]]; then
       echoerr "Invalid option for -lld"
       break
     fi
@@ -333,7 +333,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --log-letsencrypt-driver=*)
     ARG_LETSENCRYPT_LOG_DRIVER="${1#*=}"
-    if [[ ARG_LETSENCRYPT_LOG_DRIVER == "" ]]; then
+    if [[ $ARG_LETSENCRYPT_LOG_DRIVER == "" ]]; then
       echoerr "Invalid option for --log-letsencrypt-driver"
       break
     fi
@@ -341,7 +341,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -llms)
     ARG_LETSENCRYPT_LOG_MAX_SIZE="${2}"
-    if [[ ARG_LETSENCRYPT_LOG_MAX_SIZE == "" ]]; then
+    if [[ $ARG_LETSENCRYPT_LOG_MAX_SIZE == "" ]]; then
       echoerr "Invalid option for -llms"
       break
     fi
@@ -349,7 +349,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --log-letsencrypt-max_size=*)
     ARG_LETSENCRYPT_LOG_MAX_SIZE="${1#*=}"
-    if [[ ARG_LETSENCRYPT_LOG_MAX_SIZE == "" ]]; then
+    if [[ $ARG_LETSENCRYPT_LOG_MAX_SIZE == "" ]]; then
       echoerr "Invalid option for --log-letsencrypt-max_size"
       break
     fi
@@ -357,7 +357,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -llmf)
     ARG_LETSENCRYPT_LOG_MAX_FILE="${2}"
-    if [[ ARG_LETSENCRYPT_LOG_MAX_FILE == "" ]]; then
+    if [[ $ARG_LETSENCRYPT_LOG_MAX_FILE == "" ]]; then
       echoerr "Invalid option for -llmf"
       break
     fi
@@ -365,7 +365,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --log-letsencrypt-max_file=*)
     ARG_LETSENCRYPT_LOG_MAX_FILE="${1#*=}"
-    if [[ ARG_LETSENCRYPT_LOG_MAX_FILE == "" ]]; then
+    if [[ $ARG_LETSENCRYPT_LOG_MAX_FILE == "" ]]; then
       echoerr "Invalid option for --log-letsencrypt-max_file"
       break
     fi
@@ -375,7 +375,7 @@ while [[ $# -gt 0 ]]; do
   # Port binginds
   -phttp)
     ARG_DOCKER_HTTP="${2}"
-    if [[ ARG_DOCKER_HTTP == "" ]]; then
+    if [[ $ARG_DOCKER_HTTP == "" ]]; then
       echoerr "Invalid option for -phttp"
       break
     fi
@@ -383,7 +383,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --port-http=*)
     ARG_DOCKER_HTTP="${1#*=}"
-    if [[ ARG_DOCKER_HTTP == "" ]]; then
+    if [[ $ARG_DOCKER_HTTP == "" ]]; then
       echoerr "Invalid option for --port-http"
       break
     fi
@@ -391,7 +391,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   -phttps)
     ARG_DOCKER_HTTPS="${2}"
-    if [[ ARG_DOCKER_HTTPS == "" ]]; then
+    if [[ $ARG_DOCKER_HTTPS == "" ]]; then
       echoerr "Invalid option for -phttps"
       break
     fi
@@ -399,7 +399,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --port-https=*)
     ARG_DOCKER_HTTPS="${1#*=}"
-    if [[ ARG_DOCKER_HTTPS == "" ]]; then
+    if [[ $ARG_DOCKER_HTTPS == "" ]]; then
       echoerr "Invalid option for --port-https"
       break
     fi
@@ -409,7 +409,7 @@ while [[ $# -gt 0 ]]; do
   # SSL Policy
   -sp)
     ARG_SSL_POLICY="${2}"
-    if [[ ARG_SSL_POLICY == "" ]]; then
+    if [[ $ARG_SSL_POLICY == "" ]]; then
       echoerr "Invalid option for -sp"
       break
     fi
@@ -417,7 +417,7 @@ while [[ $# -gt 0 ]]; do
     ;;
   --ssl-policy=*)
     ARG_SSL_POLICY="${1#*=}"
-    if [[ ARG_SSL_POLICY == "" ]]; then
+    if [[ $ARG_SSL_POLICY == "" ]]; then
       echoerr "Invalid option for --ssl-policy"
       break
     fi
@@ -427,7 +427,7 @@ while [[ $# -gt 0 ]]; do
   # IPv6 options
   --ipv6-subnet=*)
     ARG_IPv6_SUBNET="${1#*=}"
-    if [[ ARG_IPv6_SUBNET == "" ]]; then
+    if [[ $ARG_IPv6_SUBNET == "" ]]; then
       echoerr "Invalid option for --ipv6-subnet"
       break
     fi
