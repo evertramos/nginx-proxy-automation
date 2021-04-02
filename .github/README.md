@@ -225,7 +225,8 @@ Without the projects below this proxy would be impossible:
 - [docker-gen](https://github.com/jwilder/docker-gen) by [@jwilder](https://github.com/jwilder)
 - [docker-letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion) by [@JrCs](https://github.com/JrCs)
 
-## Just in case you are willing to support this project, you will find us at:
+## Supporting | Sponsoring ♥️
+In case you are willing to support this project, check:
 - [Patreon (evertramos)](https://www.patreon.com/evertramos)
 - [Open Collective (nginx-proxy-automation)](https://opencollective.com/nginx-proxy-automation)
 
