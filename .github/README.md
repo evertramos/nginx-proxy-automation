@@ -201,6 +201,12 @@ Or simply run:
 docker stop test-web && docker rm test-web
 ```
 
+## **PRODUCTION** ⚠️ [IMPORTANT]
+
+If you are using this project in production enviroment, check all license involved and consider the following recomendation:
+
+- [rootless docker](https://docs.docker.com/engine/security/rootless/)
+
 ## Other projects using nginx-proxy
 Following are links to docker containers using this web proxy:
 1. [docker-wordpress-letsencrypt](https://github.com/evertramos/docker-wordpress-letsencrypt)
