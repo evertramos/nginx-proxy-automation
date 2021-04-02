@@ -206,6 +206,7 @@ docker stop test-web && docker rm test-web
 If you are using this project in production enviroment, check all license involved and consider the following recomendation:
 
 - [rootless docker](https://docs.docker.com/engine/security/rootless/)
+- [docker compose files](https://docs.docker.com/compose/production/)
 
 ## Other projects using nginx-proxy
 Following are links to docker containers using this web proxy:
