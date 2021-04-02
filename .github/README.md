@@ -202,9 +202,7 @@ docker stop test-web && docker rm test-web
 ```
 
 ## Other projects using nginx-proxy
-
 Following are links to docker containers using this web proxy:
-
 1. [docker-wordpress-letsencrypt](https://github.com/evertramos/docker-wordpress-letsencrypt)
 2. [docker-portainer-letsencrypt](https://github.com/evertramos/docker-portainer-letsencrypt)
 3. [docker-nextcloud-letsencrypt](https://github.com/evertramos/docker-nextcloud-letsencrypt)
@@ -213,23 +211,17 @@ Following are links to docker containers using this web proxy:
 6. [docker-webtrees-letsencrypt](https://github.com/mstroppel/docker-webtrees-letsencrypt)
 
 ## Running this Proxy on a Synology NAS
-
 Please checkout this [howto](https://github.com/evertramos/nginx-proxy-automation/blob/master/docs/HOWTO-Synlogy.md).
 
 ## Credits
-
 Without the projects below this proxy would be impossible:
-
-Credits goes to:
 - [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy) by [@jwilder](https://github.com/jwilder)
 - [docker-gen](https://github.com/jwilder/docker-gen) by [@jwilder](https://github.com/jwilder)
 - [docker-letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion) by [@JrCs](https://github.com/JrCs)
 
 ## Just in case you are willing to support this project, you will find us at:
-
 - [Patreon (evertramos)](https://www.patreon.com/evertramos)
 - [Open Collective (nginx-proxy-automation)](https://opencollective.com/nginx-proxy-automation)
 
 ## List of all contributers, supporters, sponsors and backers
-
 Please access the page [Supporters, Sponsors and Backers](/.github/sponsor.md).
