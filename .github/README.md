@@ -140,9 +140,10 @@ docker network connect myownnetwork nginx-gen
 docker network connect myownnetwork nginx-letsencrypt
 ```
 
-3. Using different ports to be proxied
+3. Ports
 
-If your service container runs on port 8545 you probably will need to add the `VIRTUAL_PORT` environment variable to your container, in the `docker-compose.yml`, as of:
+If your service container runs on port 8545 you probably will need to add the `VIRTUAL_PORT` environment variable to your container, 
+in the `docker-compose.yml`, so it can be proxied, as of:
 
 ```bash
 parity
@@ -170,12 +171,12 @@ docker exec -it ${NGINX_WEB} nginx -s reload
 Where *${NGINX_WEB}* is your proxy container name, which in the original `.env` file is set as *nginx-web*.
 
 
-## Testing your proxy with scripts preconfigured 
+## Testing nginx-proxy
 
 1. Run the script `test.sh` informing your domain already configured in your DNS to point out to your server as follow:
 
 ```bash
-./test_start_ssl.sh your.domain.com
+./test.sh your.domain.com
 ```
 
 or simply run:
@@ -184,12 +185,14 @@ or simply run:
 docker run -dit -e VIRTUAL_HOST=your.domain.com --network=webproxy --name test-web httpd:alpine
 ```
 
+> If you want to test the Let's Encrypt certificate as well use `ssl_test.sh your.domain.com`
+
 Access your browser with your domain!
 
-To stop and remove your test container run our `stop_test.sh` script:
+To stop and remove your test container run our `stop.sh` script:
 
 ```bash
-./test_stop.sh
+./stop.sh
 ```
 
 Or simply run:
@@ -197,10 +200,6 @@ Or simply run:
 ```bash
 docker stop test-web && docker rm test-web
 ```
-
-## Running this Proxy on a Synology NAS
-
-Please checkout this [howto](https://github.com/evertramos/nginx-proxy-automation/blob/master/docs/HOWTO-Synlogy.md).
 
 ## Other projects using nginx-proxy
 
@@ -213,20 +212,24 @@ Following are links to docker containers using this web proxy:
 5. [gitlab-docker-letsencrypt](https://github.com/steevepay/gitlab-docker-letsencrypt)
 6. [docker-webtrees-letsencrypt](https://github.com/mstroppel/docker-webtrees-letsencrypt)
 
+## Running this Proxy on a Synology NAS
+
+Please checkout this [howto](https://github.com/evertramos/nginx-proxy-automation/blob/master/docs/HOWTO-Synlogy.md).
+
 ## Credits
 
-Without the repositories below this webproxy wouldn´t be possible.
+Without the project below this proxy wouldn´t be possible:
 
 Credits goes to:
-- nginx-proxy [@jwilder](https://github.com/jwilder/nginx-proxy)
-- docker-gen [@jwilder](https://github.com/jwilder/docker-gen)
-- docker-letsencrypt-nginx-proxy-companion [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
+- [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy) by [@jwilder](https://github.com/jwilder)
+- [docker-gen](https://github.com/jwilder/docker-gen) by [@jwilder](https://github.com/jwilder)
+- [docker-letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion) by [@JrCs](https://github.com/JrCs)
 
-### Just in case you are willing to support this project, you will find us at:
+## Just in case you are willing to support this project, you will find us at:
 
 - [Patreon (evertramos)](https://www.patreon.com/evertramos)
 - [Open Collective (nginx-proxy-automation)](https://opencollective.com/nginx-proxy-automation)
 
-### List of all contributer, supporters, sponsors and backers
+## List of all contributers, supporters, sponsors and backers
 
 Please access the page [Supporters, Sponsors and Backers](/.github/sponsor.md).
