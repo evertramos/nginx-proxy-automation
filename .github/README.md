@@ -202,7 +202,7 @@ docker stop test-web && docker rm test-web
 
 Please checkout this [howto](https://github.com/evertramos/nginx-proxy-automation/blob/master/docs/HOWTO-Synlogy.md).
 
-## Production Environment using Web Proxy
+## Other projects using nginx-proxy
 
 Following are links to docker containers using this web proxy:
 
@@ -222,17 +222,11 @@ Credits goes to:
 - docker-gen [@jwilder](https://github.com/jwilder/docker-gen)
 - docker-letsencrypt-nginx-proxy-companion [@JrCs](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
 
-### Special thanks to:
-
-- [@j7an](https://github.com/j7an) - Many contributions and the ipv6 branch!
-- [@buchdag](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/pull/226#event-1145800062)
-- [@fracz](https://github.com/fracz) - Many contributions!
-
 ### Just in case you are willing to support this project, you will find us at:
 
 - [Patreon (evertramos)](https://www.patreon.com/evertramos)
 - [Open Collective (nginx-proxy-automation)](https://opencollective.com/nginx-proxy-automation)
 
-### Current supporters, sponsors and backers
+### List of all contributer, supporters, sponsors and backers
 
 Please access the page [Supporters, Sponsors and Backers](/.github/sponsor.md).
