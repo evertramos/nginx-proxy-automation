@@ -218,7 +218,7 @@ Please checkout this [howto](https://github.com/evertramos/nginx-proxy-automatio
 
 ## Credits
 
-Without the project below this proxy wouldn´t be possible:
+Without the projects below this proxy would be impossible:
 
 Credits goes to:
 - [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy) by [@jwilder](https://github.com/jwilder)
