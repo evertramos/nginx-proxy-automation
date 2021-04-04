@@ -52,7 +52,6 @@ So, let's go. First thing first!
    is present in the master branch we just checkout, but it is empty, so we need to fix it (init and update).
 
    ```bash
-   $ cd basescript
    $ git submodule init
    $ git submodule update
    ```
