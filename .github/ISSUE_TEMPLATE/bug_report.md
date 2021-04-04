@@ -7,6 +7,8 @@ assignees: evertramos
 
 ---
 
+**Check [Discussions](https://github.com/evertramos/nginx-proxy-automation/discussions) to see if there is an answer might help you before opening an issue**
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
