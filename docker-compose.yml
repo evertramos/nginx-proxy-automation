@@ -14,6 +14,7 @@ services:
 #      - "${IPv6:-::0}:${DOCKER_HTTPS:-443}:443"
     environment:
       SSL_POLICY: ${SSL_POLICY:-Mozilla-Intermediate}
+#      ENABLE_IPV6: "true"
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
