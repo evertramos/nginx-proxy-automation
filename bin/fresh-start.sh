@@ -642,7 +642,7 @@ else
 fi
 
 # Validate the name
-run_function string_remove_all_special_char_string $LOCAL_NGINX_PROXY_SERVICE_NAME
+run_function string_remove_all_special_char_string $LOCAL_NGINX_PROXY_SERVICE_NAME "-_"
 NGINX_PROXY_SERVICE_NAME=${STRING_REMOVE_ALL_SPECIAL_CHAR_STRING_RESPONSE:-null}
 [[ $NGINX_PROXY_SERVICE_NAME == null ]] && echoerr "The service name can not contain special chars, neither be empty"
 
@@ -712,7 +712,7 @@ else
 fi
 
 # Validate the name
-run_function string_remove_all_special_char_string $LOCAL_LETSENCRYPT_SERVICE_NAME
+run_function string_remove_all_special_char_string $LOCAL_LETSENCRYPT_SERVICE_NAME "-_"
 LETSENCRYPT_SERVICE_NAME=${STRING_REMOVE_ALL_SPECIAL_CHAR_STRING_RESPONSE:-null}
 [[ $LETSENCRYPT_SERVICE_NAME == null ]] && echoerr "The service name can not contain special chars, neither be empty"
 
@@ -782,7 +782,7 @@ else
 fi
 
 # Validate the name
-run_function string_remove_all_special_char_string $LOCAL_DOCKER_GEN_SERVICE_NAME
+run_function string_remove_all_special_char_string $LOCAL_DOCKER_GEN_SERVICE_NAME "-_"
 DOCKER_GEN_SERVICE_NAME=${STRING_REMOVE_ALL_SPECIAL_CHAR_STRING_RESPONSE:-null}
 [[ $DOCKER_GEN_SERVICE_NAME == null ]] && echoerr "The service name can not contain special chars, neither be empty"
 
