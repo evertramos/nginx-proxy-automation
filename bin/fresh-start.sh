@@ -1002,7 +1002,7 @@ else
 fi
 
 # Validate the name
-run_function string_remove_all_special_char_string $LOCAL_DOCKER_NETWORK_NAME
+run_function string_remove_all_special_char_string $LOCAL_DOCKER_NETWORK_NAME "-_"
 DOCKER_NETWORK_NAME=${STRING_REMOVE_ALL_SPECIAL_CHAR_STRING_RESPONSE:-null}
 [[ $DOCKER_NETWORK_NAME == null ]] && echoerr "The network name can not contain special chars, neither be empty"
 
