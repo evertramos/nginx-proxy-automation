@@ -26,6 +26,10 @@ source $SCRIPT_PATH"/../basescript/bootstrap.sh"
 # Source localscripts
 source $SCRIPT_PATH"/localscript/bootstrap.sh"
 
+# Log
+log "Start execution"
+log "$@"
+
 #-----------------------------------------------------------------------
 # Process arguments
 #-----------------------------------------------------------------------
