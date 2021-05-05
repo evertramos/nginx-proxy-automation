@@ -232,4 +232,4 @@ In case you are willing to support this project, check:
 - [Open Collective (nginx-proxy-automation)](https://opencollective.com/nginx-proxy-automation)
 
 ## List of all contributers, supporters, sponsors and backers
-Please access the page [Supporters, Sponsors and Backers](/.github/sponsor.md).
+Please access the page [Supporters, Sponsors and Backers](https://github.com/evertramos/evertramos/blob/main/pages/supporters.md).
