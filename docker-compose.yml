@@ -1,20 +1,20 @@
 version: '3'
 
 services:
-  nginx-proxy-automation-web:
+  proxy-web-auto:
     image: nginx:${NGINX_IMAGE_VERSION:-stable-alpine}
     labels:
         com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
-    container_name: ${NGINX_WEB_SEVICE_NAME:-nginx-proxy-automation-web}
+    container_name: ${NGINX_WEB_SEVICE_NAME:-proxy-web-auto}
     restart: always
     ports:
       - "${IPv4:-0.0.0.0}:${DOCKER_HTTP_:-80}:80"
       - "${IPv4:-0.0.0.0}:${DOCKER_HTTPS:-443}:443"
-#      - "${IPv6:-::0}:${DOCKER_HTTP_:-80}:80"
-#      - "${IPv6:-::0}:${DOCKER_HTTPS:-443}:443"
+##      - "${IPv6:-::0}:${DOCKER_HTTP_:-80}:80"
+##      - "${IPv6:-::0}:${DOCKER_HTTPS:-443}:443"
     environment:
       SSL_POLICY: ${SSL_POLICY:-Mozilla-Intermediate}
-#      ENABLE_IPV6: "true"
+##      ENABLE_IPV6: "true"
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${NGINX_FILES_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
@@ -27,10 +27,10 @@ services:
         max-size: ${NGINX_WEB_LOG_MAX_SIZE:-4m}
         max-file: ${NGINX_WEB_LOG_MAX_FILE:-10}
 
-  nginx-proxy-automation-gen:
+  docker-gen-auto:
     image: jwilder/docker-gen:${DOCKER_GEN_IMAGE_VERSION:-latest}
-    command: -notify-sighup ${NGINX_WEB_SEVICE_NAME:-nginx-proxy-automation-web} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
-    container_name: ${DOCKER_GEN_SEVICE_NAME:-nginx-proxy-automation-gen}
+    command: -notify-sighup ${NGINX_WEB_SEVICE_NAME:-proxy-web-auto} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
+    container_name: ${DOCKER_GEN_SEVICE_NAME:-docker-gen-auto}
     restart: always
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
@@ -46,9 +46,9 @@ services:
         max-size: ${NGINX_GEN_LOG_MAX_SIZE:-2m}
         max-file: ${NGINX_GEN_LOG_MAX_FILE:-10}
 
-  nginx-proxy-automation-letsencrypt:
+  letsencrypt-auto:
     image: jrcs/letsencrypt-nginx-proxy-companion:${NGINX_PROXY_COMPANION_IMAGE_VERSION:-2.0}
-    container_name: ${LETS_ENCRYPT_SEVICE_NAME:-nginx-proxy-automation-letsencrypt}
+    container_name: ${LETS_ENCRYPT_SEVICE_NAME:-letsencrypt-auto}
     restart: always
     volumes:
       - ${NGINX_FILES_PATH:-./data}/conf.d:/etc/nginx/conf.d
@@ -58,8 +58,8 @@ services:
       - ${NGINX_FILES_PATH:-./data}/acme.sh:/etc/acme.sh
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      NGINX_DOCKER_GEN_CONTAINER: ${DOCKER_GEN_SEVICE_NAME:-nginx-proxy-automation-gen}
-      NGINX_PROXY_CONTAINER: ${NGINX_WEB_SEVICE_NAME:-nginx-proxy-automation-web}
+      NGINX_DOCKER_GEN_CONTAINER: ${DOCKER_GEN_SEVICE_NAME:-docker-gen-auto}
+      NGINX_PROXY_CONTAINER: ${NGINX_WEB_SEVICE_NAME:-proxy-web-auto}
       DEFAULT_EMAIL: ${DEFAULT_EMAIL:-mail@yourdomain.tld}
     logging:
       driver: ${NGINX_LETSENCRYPT_LOG_DRIVER:-json-file}
