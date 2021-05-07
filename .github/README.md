@@ -1,5 +1,5 @@
 
-# NGINX Proxy Automation
+# NGINX Proxy Automation 🔥
 
 ## What this project does
 
@@ -30,13 +30,13 @@ Click [here](https://www.youtube.com/watch?v=E9BtHVr_v9I) to access the video or
 
 ## Prerequisites
 
-1. Linux! 🐧 (just in case...)
+1.  🐧 Linux! (just in case...)
 
 > Please check all requirements at [requirements](/docs/requirements.md).
 
 In order to use this compose file (docker-compose.yml) you must have:
 
-2. Docker installed (https://docs.docker.com/engine/installation/)
+2. 🐋 Docker installed (https://docs.docker.com/engine/installation/)
 
 3. Docker-compose installed (https://docs.docker.com/compose/install/)
 
@@ -64,7 +64,7 @@ $ git clone --recurse-submodules https://github.com/evertramos/nginx-proxy-autom
 
 > Please note we use 'proxy' as folder at the end. But you can change it to whatever fits you better  
 
-2. Run the script 'fresh_start.sh'
+2. 🚀 Run the script 'fresh_start.sh'
    
 ```bash
 $ cd proxy/bin
@@ -74,9 +74,11 @@ This script will walk you through all config process.
 
 When it finishes you are good to go! :checkered_flag:
 
-> If you are in a 'hurry' you could use just `$ ./fresh-start.sh --yes -e your_email@do` (please set your email) and your proxy will start it as soon as possible.
+> ✈️ If you are in a 'hurry' just run `$ ./fresh-start.sh --yes -e your_email@domain --skip-docker-image-check`
 
-> You can check all available options to run the script `$ ./fresh-start.sh --help`
+> ⚠️ You can check all available options to run the script `$ ./fresh-start.sh --help`
+
+> 🗒️ From version _v0.3_ the script will output logs to _/var/log/basescript.log_
 
 3. Fire your new site with the following options:
 
@@ -226,10 +228,10 @@ Without the projects below this proxy would be impossible:
 - [docker-gen](https://github.com/jwilder/docker-gen) by [@jwilder](https://github.com/jwilder)
 - [docker-letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion) by [@JrCs](https://github.com/JrCs)
 
-## Supporting | Sponsoring ♥️
+## Supporting ♥️
 In case you are willing to support this project, check:
 - [Patreon (evertramos)](https://www.patreon.com/evertramos)
 - [Open Collective (nginx-proxy-automation)](https://opencollective.com/nginx-proxy-automation)
 
-## List of all contributers, supporters, sponsors and backers
-Please access the page [Supporters, Sponsors and Backers](https://github.com/evertramos/evertramos/blob/main/pages/supporters.md).
+## List of all supporters
+Please access the page [Supporters](https://github.com/evertramos/evertramos/blob/main/pages/supporters.md).
