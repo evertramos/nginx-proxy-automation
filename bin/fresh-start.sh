@@ -27,6 +27,7 @@ source $SCRIPT_PATH"/../basescript/bootstrap.sh"
 source $SCRIPT_PATH"/localscript/bootstrap.sh"
 
 # Log
+printf "${energy} Start execution '${SCRIPT_PATH}/${SCRIPT_NAME} "
 log "Start execution"
 log "$@"
 
