@@ -29,7 +29,7 @@ local_update_env_new_site_variables()
 
     LOCAL_FILE_PATH=${1:-null}
 
-    [[ $LOCAL_FILE_PATH == "" || $LOCAL_FILE_PATH == null ]] && echoerr "You must inform the required argument(s) to the function: '${FUNCNAME[0]}'"
+    [[ $LOCAL_FILE_PATH == "" || $LOCAL_FILE_PATH == null ]] && echoerror "You must inform the required argument(s) to the function: '${FUNCNAME[0]}'"
 
     [[ "$DEBUG" == true ]] && echo "Updating all variables in .env file for nginx-proxy (file: ${LOCAL_FILE_PATH})"
 

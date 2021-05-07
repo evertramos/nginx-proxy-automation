@@ -29,7 +29,7 @@ local_update_docker_compose_file()
 
     LOCAL_FULL_PATH=${1}
 
-    [[ $LOCAL_FULL_PATH == "" || $LOCAL_FULL_PATH == null ]] && echoerr "You must inform the required argument(s) to the function: '${FUNCNAME[0]}'"
+    [[ $LOCAL_FULL_PATH == "" || $LOCAL_FULL_PATH == null ]] && echoerror "You must inform the required argument(s) to the function: '${FUNCNAME[0]}'"
 
     [[ "$DEBUG" == true ]] && echo "Updating all variables in docker-compose.yml file for nginx-proxy (file: ${LOCAL_FULL_PATH})"
 
