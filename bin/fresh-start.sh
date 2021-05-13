@@ -429,6 +429,15 @@ while [[ $# -gt 0 ]]; do
     shift 1
     ;;
 
+  # IPv4 options
+  --ipv4-subnet=*)
+    ARG_IPv4_SUBNET="${1#*=}"
+    if [[ $ARG_IPv4_SUBNET == "" ]]; then
+      echoerror "Invalid option for --ipv4-subnet"
+      break
+    fi
+    shift 1
+    ;;
   # IPv6 options
   --ipv6-subnet=*)
     ARG_IPv6_SUBNET="${1#*=}"
@@ -1199,7 +1208,8 @@ run_function docker_check_network_exists $DOCKER_NETWORK_NAME
 
 if [[ ! "$DOCKER_NETWORK_EXISTS" == true ]]; then
 
-  run_function docker_network_create $DOCKER_NETWORK_NAME $ACTIVATE_IPV6 $ARG_IPv6_SUBNET
+  IPv4_SUBNET=${ARG_IPv4_SUBNET:-"172.17.0.0/16"} # required argument for function docker_network_create
+  run_function docker_network_create $DOCKER_NETWORK_NAME $IPv4_SUBNET $ACTIVATE_IPV6 $ARG_IPv6_SUBNET
 
   if [[ "$ERROR_DOCKER_NETWORK_CREATE" == true ]]; then
     echoerror "There was error when creating the docker network $DOCKER_NETWORK_NAME [IPv6 enabled: ${ACTIVATE_IPV6:-'false'} ]" false
