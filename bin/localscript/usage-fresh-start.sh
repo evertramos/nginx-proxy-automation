@@ -83,6 +83,9 @@ Usage:
 
     Network
     -netopt | --network-option          Network options please check the docs
+    --ipv4-subnet                       You may inform IPv4 subnet to create
+                                        a docker network
+                                        (default: 172.17.0.0/16)
 
     Docker image
     -piv    | --proxy-image-version       Proxy image version
