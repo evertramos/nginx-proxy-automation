@@ -515,9 +515,9 @@ local_undo_restore() {
   LOCAL_KEEP_RESTORE_FILES=${1:-$KEEP_RESTORE_FILES}
 
   echoerror \
-    "It seems something went wrong running '${FUNCNAME[0]}' \
-        \nwe will try to UNDO all actions done by this script. \
-        \nPlease make sure everything was put it back in place." false
+    "It seems something went wrong! \
+    \nRunning '${FUNCNAME[0]} to try to UNDO all actions done by this script. \
+    \nPlease make sure everything was put it back in place." false
 
   # If docker network was created
   if [[ "$ACTION_DOCKER_NETWORK_CREATED" == true ]]; then
@@ -1208,11 +1208,14 @@ run_function docker_check_network_exists $DOCKER_NETWORK_NAME
 
 if [[ ! "$DOCKER_NETWORK_EXISTS" == true ]]; then
 
-  IPv4_SUBNET=${ARG_IPv4_SUBNET:-"172.17.0.0/16"} # required argument for function docker_network_create
-  run_function docker_network_create $DOCKER_NETWORK_NAME $IPv4_SUBNET $ACTIVATE_IPV6 $ARG_IPv6_SUBNET
+  run_function docker_network_create $DOCKER_NETWORK_NAME ${ARG_IPv4_SUBNET:-null} $ACTIVATE_IPV6 $ARG_IPv6_SUBNET
 
   if [[ "$ERROR_DOCKER_NETWORK_CREATE" == true ]]; then
-    echoerror "There was error when creating the docker network $DOCKER_NETWORK_NAME [IPv6 enabled: ${ACTIVATE_IPV6:-'false'} ]" false
+    echoerror \
+      "There was an error when creating the docker network $DOCKER_NETWORK_NAME [IPv6 enabled: ${ACTIVATE_IPV6:-'false'} ] \
+      \nPlease try to create the network by yourself using the appropriate options described below and try again: \
+      \nhttps://docs.docker.com/engine/reference/commandline/network_create/" \
+      false
     local_undo_restore
   else
     ACTION_DOCKER_NETWORK_CREATED=true
