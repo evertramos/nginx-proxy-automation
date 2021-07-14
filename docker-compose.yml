@@ -57,7 +57,7 @@ services:
       - ${NGINX_FILES_PATH:-./data}/html:/usr/share/nginx/html
       - ${NGINX_FILES_PATH:-./data}/certs:/etc/nginx/certs:rw
       - ${NGINX_FILES_PATH:-./data}/acme.sh:/etc/acme.sh
-      - ${DOCKER_HOST_ROOTLESS_PATH:-/var/run/docker.sock}:ro
+      - ${DOCKER_HOST_ROOTLESS_PATH:-/var/run/docker.sock}:/var/run/docker.sock:ro
     environment:
       NGINX_DOCKER_GEN_CONTAINER: ${DOCKER_GEN_SEVICE_NAME:-nginx-proxy-automation-gen}
       NGINX_PROXY_CONTAINER: ${NGINX_WEB_SEVICE_NAME:-nginx-proxy-automation-web}
