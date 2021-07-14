@@ -429,6 +429,16 @@ while [[ $# -gt 0 ]]; do
     shift 1
     ;;
 
+  # Docker rootless support
+  -dr)
+    USE_DOCKER_ROOTLESS=true
+    shift 1
+    ;;
+  --docker-rootless)
+    USE_DOCKER_ROOTLESS=true
+    shift 1
+    ;;
+
   # IPv4 options
   --ipv4-subnet=*)
     ARG_IPv4_SUBNET="${1#*=}"
@@ -1120,6 +1130,16 @@ DOCKER_HTTPS=${ARG_DOCKER_HTTPS:-"443"}
 # https://github.com/nginx-proxy/nginx-proxy#how-ssl-support-works
 #-----------------------------------------------------------------------
 SSL_POLICY=${ARG_SSL_POLICY:-"Mozilla-Intermediate"}
+
+#-----------------------------------------------------------------------
+# Docker rootless support. Add the current user's docker.sock path (default: blank)
+# Please read the official documentation of installing Docker Rootless:
+# https://docs.docker.com/engine/security/rootless/
+#-----------------------------------------------------------------------
+if [[ "$USE_DOCKER_ROOTLESS" == true ]]; then
+  # Get the current user's $XDG_RUNTIME_DIR and concat with the '/docker.sock'
+  DOCKER_HOST_ROOTLESS_PATH=`echo ${XDG_RUNTIME_DIR}/docker.sock`
+fi
 
 #-----------------------------------------------------------------------
 # Start actions!
