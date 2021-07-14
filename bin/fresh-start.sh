@@ -453,6 +453,14 @@ while [[ $# -gt 0 ]]; do
     ;;
 
   # Default host
+  -dh)
+    ARG_DEFAULT_HOST="${2}"
+    if [[ $ARG_DEFAULT_HOST == "" ]]; then
+      echoerror "Invalid option for -dh"
+      break
+    fi
+    shift 2
+    ;;
   --default-host=*)
     ARG_DEFAULT_HOST="${1#*=}"
     if [[ $ARG_DEFAULT_HOST == "" ]]; then

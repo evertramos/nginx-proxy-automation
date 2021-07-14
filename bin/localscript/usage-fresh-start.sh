@@ -117,8 +117,8 @@ Usage:
                                         (default: Mozilla-Intermediate)
 
     Default Host
-    --default-host                      The default host where nginx-proxy will redirect any request
-                                        (default: localhost - which will return a 503)
+    -df     | --default-host            The default host where nginx-proxy will redirect all requests to
+                                        the container that matches the VIRTUAL_HOST
 
     IPv6 support
     --activate-ipv6                     Use to activate IPv6 support
