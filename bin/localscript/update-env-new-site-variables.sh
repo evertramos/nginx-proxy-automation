@@ -75,5 +75,8 @@ local_update_env_new_site_variables()
     # Default email address
     run_function env_update_variable $LOCAL_FILE_PATH "DEFAULT_EMAIL" "$DEFAULT_EMAIL"
 
+    # Default host
+    run_function env_update_variable $LOCAL_FILE_PATH "DEFAULT_HOST" "$ARG_DEFAULT_HOST"
+
     return 0
 }
