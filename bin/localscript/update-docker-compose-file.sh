@@ -38,10 +38,13 @@ local_update_docker_compose_file()
     run_function docker_compose_replace_string $LOCAL_FULL_PATH "$REPLACE_DOCKER_GEN_SERVICE_NAME" "$DOCKER_GEN_SERVICE_NAME"
     run_function docker_compose_replace_string $LOCAL_FULL_PATH "$REPLACE_LETSENCRYPT_SERVICE_NAME" "$LETSENCRYPT_SERVICE_NAME"
 
-    # Uncomment in case of IPv6 activation or uncomment
+    # Uncomment in case of IPv6 activation or comment
     [[ "$ACTIVATE_IPV6" == true ]] && run_function file_uncomment_line_with_string ${LOCAL_FULL_PATH%/}"/docker-compose.yml" "IPv6" && run_function file_uncomment_line_with_string ${LOCAL_FULL_PATH%/}"/docker-compose.yml" "IPV6"
     [[ ! "$ACTIVATE_IPV6" == true ]] && run_function file_comment_line_with_string ${LOCAL_FULL_PATH%/}"/docker-compose.yml" "IPv6" && run_function file_comment_line_with_string ${LOCAL_FULL_PATH%/}"/docker-compose.yml" "IPV6"
     # We are aware that it will set two '#' if the IPv6 is already commented
+
+    # Uncomment in case of Default Host activation
+    [[ ! $ARG_DEFAULT_HOST == "" ]] && run_function file_uncomment_line_with_string ${LOCAL_FULL_PATH%/}"/docker-compose.yml" "DEFAULT_HOST"
 
     return 0
 }
