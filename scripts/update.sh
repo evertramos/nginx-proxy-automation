@@ -3,7 +3,7 @@
 #
 # This scrip update the web proxy without downtime
 #
-# Source: https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion
+# Source: https://github.com/evertramos/nginx-proxy-automation
 #
 
 # 1. Check if .env file exists
