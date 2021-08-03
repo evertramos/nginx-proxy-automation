@@ -1,8 +1,6 @@
 
 # NGINX Proxy Automation 🔥
 
-Automate your server with this proxy! ❤️
-
 <p align="center">
    <a target="_blank" href="https://docs.docker.com/"><img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" /></a>
    <a target="_blank" href="https://docs.nginx.com/"><img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" /></a>
@@ -16,7 +14,7 @@ Automate your server with this proxy! ❤️
    <img src="https://github.com/evertramos/images/raw/master/webproxy.jpg" />
 </p>
 
-## How to start 
+## How to start 🔰
 [![shell script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://github.com/evertramos)
 
 
@@ -48,7 +46,7 @@ or simply run:
 
 Update the lines above with your domain name which must have the DNS poiting to your public IP address in your server
 
-## Video Tutorial
+## Video Tutorial 🎥
 
 I made a 5 minutes tutorial video to walk you through this project:
 
@@ -56,7 +54,7 @@ I made a 5 minutes tutorial video to walk you through this project:
 
 [![NGINX-Proxy-Automation](https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
 
-## Further information
+## Further information 📓
 
 For more instalation details please [click here](/docs/).
 
