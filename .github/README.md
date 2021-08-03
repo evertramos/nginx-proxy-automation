@@ -52,8 +52,10 @@ I made a 5 minutes tutorial video to walk you through this project:
 
 [![youtube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
 
-[![NGINX-Proxy-Automation](https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
-
+<p align="center">
+   <a target="_blank" href="https://www.youtube.com/watch?v=E9BtHVr_v9I"><img src="https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg" /></a>
+</p>
+   
 ## Further information 📓
 
 For more instalation details please [click here](/docs/).
