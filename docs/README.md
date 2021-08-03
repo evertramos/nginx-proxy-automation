@@ -5,10 +5,6 @@
 This script will _power up_ your new server with the [*nginx-proxy*](https://github.com/nginx-proxy/nginx-proxy), where you will be able to host multiple sites, 
 auto renewing Let´s Encrypt certificates! ❤️
 
-Something like:
-
-![Web Proxy environment](https://github.com/evertramos/images/raw/master/webproxy.jpg)
-
 We strongly recommend you (please do! 🙏) to read all documentation before starting in production as well as the [nginx-proxy docs](https://github.com/nginx-proxy/nginx-proxy).
 
 > To access the previous version of this project please access [version 0.4](https://github.com/evertramos/nginx-proxy-automation/tree/v0.4).
@@ -18,14 +14,6 @@ We strongly recommend you (please do! 🙏) to read all documentation before sta
 If you are upgrading from the previous version please follow the guide below carefully:
 
 https://github.com/evertramos/nginx-proxy-automation/blob/master/docs/upgrade-guide.md
-
-## Video Tutorial
-
-I made a 5 minutes tutorial video to walk you through this project:
-
-Click [here](https://www.youtube.com/watch?v=E9BtHVr_v9I) to access the video or click the image below:
-
-[![NGINX-Proxy-Automation](https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
 
 ## Prerequisites
 
@@ -221,16 +209,3 @@ Following are links to docker containers using this web proxy:
 ## Running this Proxy on a Synology NAS
 Please checkout this [howto](https://github.com/evertramos/nginx-proxy-automation/blob/master/docs/HOWTO-Synlogy.md).
 
-## Credits
-Without the projects below this proxy would be impossible:
-- [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy) by [@jwilder](https://github.com/jwilder)
-- [docker-gen](https://github.com/jwilder/docker-gen) by [@jwilder](https://github.com/jwilder)
-- [docker-letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion) by [@JrCs](https://github.com/JrCs)
-
-## Supporting ♥️
-In case you are willing to support this project, check:
-- [Patreon (evertramos)](https://www.patreon.com/evertramos)
-- [Open Collective (nginx-proxy-automation)](https://opencollective.com/nginx-proxy-automation)
-
-## List of all supporters
-Please access the page [Supporters](https://github.com/evertramos/evertramos/blob/main/pages/supporters.md).
