@@ -1,4 +1,3 @@
-
 # NGINX Proxy Automation 🔥
 
 ## What this project does
