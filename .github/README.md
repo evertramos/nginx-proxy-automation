@@ -37,7 +37,7 @@ Update the email above with your real e-mail address
 3. 🧪 Test the proxy
 
 ```bash
-docker run -dit -e VIRTUAL_HOST=your.domain.com --network=webproxy --name test-web httpd:alpine
+docker run -dit -e VIRTUAL_HOST=your.domain.com --network=proxy --name test-web httpd:alpine
 ```
 or simply run:
 ```bash
