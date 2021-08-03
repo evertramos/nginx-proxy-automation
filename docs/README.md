@@ -171,7 +171,7 @@ Where *${NGINX_WEB}* is your proxy container name, which in the original `.env` 
 or simply run:
 
 ```bash
-docker run -dit -e VIRTUAL_HOST=your.domain.com --network=webproxy --name test-web httpd:alpine
+docker run -dit -e VIRTUAL_HOST=your.domain.com --network=proxy --name test-web httpd:alpine
 ```
 
 > If you want to test the Let's Encrypt certificate as well use `ssl_test.sh your.domain.com`
