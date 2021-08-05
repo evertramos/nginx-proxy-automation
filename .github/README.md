@@ -44,7 +44,7 @@ or simply run:
 ./test.sh your.domain.com
 ```
 
-Update the lines above with your domain name which must have the DNS poiting to your public IP address in your server
+Use your own domain name when testing this proxy and make sure your DNS is correctly configured.
 
 ## Video Tutorial 🎥
 
