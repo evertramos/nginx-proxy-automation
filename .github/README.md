@@ -18,7 +18,7 @@
 [![shell script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://github.com/evertramos)
 
 
-1. Clone this repository using the option **_--recurse-submodules_**
+1. Clone this repository using the option **_--recurse-submodules_** ⚠️
 
 ```bash
 git clone --recurse-submodules https://github.com/evertramos/nginx-proxy-automation.git proxy 
