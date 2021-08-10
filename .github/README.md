@@ -55,7 +55,13 @@ I made a 5 minutes tutorial video to walk you through this project:
 <p align="center">
    <a target="_blank" href="https://www.youtube.com/watch?v=E9BtHVr_v9I"><img src="https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg" /></a>
 </p>
-   
+
+## Server Automation 🚀
+
+Make user you try our [Server Automation](https://github.com/evertramos/server-automation)
+
+[https://github.com/evertramos/server-automation](https://github.com/evertramos/server-automation)
+
 ## Further information 📓
 
 For more instalation details please [click here](/docs/).
