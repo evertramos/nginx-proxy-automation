@@ -43,7 +43,7 @@ Also, you will need to make sure you have:
 1. Clone this repository **using the option _--recurse-submodules_**:
 
 ```bash
-$ git clone --recurse-submodules https://github.com/evertramos/nginx-proxy-automation.git proxy 
+git clone --recurse-submodules https://github.com/evertramos/nginx-proxy-automation.git proxy 
 ```
 
 > Make sure you use the option '--recurse-submodules' once we use an external module in this project, please check 
@@ -54,8 +54,8 @@ $ git clone --recurse-submodules https://github.com/evertramos/nginx-proxy-autom
 2. 🚀 Run the script 'fresh_start.sh'
    
 ```bash
-$ cd proxy/bin
-$ ./fresh-start.sh
+cd proxy/bin
+./fresh-start.sh
 ```
 This script will walk you through all config process.  
 
@@ -81,21 +81,21 @@ the default please update the option *'NETWORK'* in the examples below before ru
 
 - Simple site without Let's Encrypt certificate 
 ```bash
-$ docker run -d -e VIRTUAL_HOST=your.domain.com \
-              --network=proxy \
-              --name my_app \
-              httpd:alpine
+docker run -d -e VIRTUAL_HOST=your.domain.com \
+            --network=proxy \
+            --name my_app \
+            httpd:alpine
 ```
 
 - To have SSL in your web/app you must add the option `-e LETSENCRYPT_HOST=your.domain.com`, as follow:
 
 ```bash
-$ docker run -d -e VIRTUAL_HOST=your.domain.com \
-              -e LETSENCRYPT_HOST=your.domain.com \
-              -e LETSENCRYPT_EMAIL=your.email@your.domain.com \
-              --network=proxy \
-              --name my_app \
-              httpd:alpine
+docker run -d -e VIRTUAL_HOST=your.domain.com \
+            -e LETSENCRYPT_HOST=your.domain.com \
+            -e LETSENCRYPT_EMAIL=your.email@your.domain.com \
+            --network=proxy \
+            --name my_app \
+            httpd:alpine
 ```
 
 > You don´t need to open port *443* in your container, the certificate validation is managed by the web proxy
@@ -112,8 +112,8 @@ In order to be able to secure your virtual host with basic authentication, you m
 within `${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOST}` via:
 
 ```bash
-$ sudo sh -c "echo -n '[username]:' >> ${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOST}"
-$ sudo sh -c "openssl passwd -apr1 >> ${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOST}"
+sudo sh -c "echo -n '[username]:' >> ${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOST}"
+sudo sh -c "openssl passwd -apr1 >> ${NGINX_FILES_PATH}/htpasswd/${VIRTUAL_HOST}"
 ```
 
 > Please replace the `${NGINX_FILES_PATH}` with real path to information, replace `[username]` with your username and `${VIRTUAL_HOST}` with your host's domain. You will be prompted for a password.
@@ -159,6 +159,14 @@ docker exec -it ${NGINX_WEB} nginx -s reload
 
 Where *${NGINX_WEB}* is your proxy container name, which in the original `.env` file is set as *nginx-web*.
 
+5. **sudo** options
+
+If you need to save the nginx-proxy data files in a folder which the user running 'fresh-start.sh' script does not have access, you might accomplish that using _sudo_. In order to allow the script to run some commands with _sudo_ you need to set _true_ to the variable ['ALLOW_RUN_WITH_SUDO'](https://github.com/evertramos/nginx-proxy-automation/blob/d48b2477ed28cbda37738046079e35df219ba3e9/.env.sample#L20) at '.env.sample' file **before** running fresh-start.sh script, as of:
+
+```bash
+# Allow run commands with sudo if needed
+ALLOW_RUN_WITH_SUDO=true
+```
 
 ## Testing nginx-proxy
 
