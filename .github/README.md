@@ -74,4 +74,4 @@ For more instalation details please [click here](/docs/).
 
 ## Code Contributors
 
-[<img src="https://opencollective.com/nginx-proxy-automation/contributors.svg?width=890" />](https://opencollective.com/nginx-proxy-automation)
+[<img src="https://opencollective.com/nginx-proxy-automation/contributors.svg?width=890&button=false" />](https://opencollective.com/nginx-proxy-automation)
