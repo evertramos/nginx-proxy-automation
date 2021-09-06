@@ -71,3 +71,7 @@ For more instalation details please [click here](/docs/).
 [![image](https://img.shields.io/badge/picpay-21C25E?style=for-the-badge&logo=picpay&logoColor=white)](https://picpay.me/evert.ramos)
 
 [List of all supporters](https://github.com/evertramos/evertramos/blob/main/pages/supporters.md).
+
+## Code Contributors
+
+[<img src="https://opencollective.com/nginx-proxy-automation/contributors.svg?width=890" />](https://github.com/evertramos/nginx-proxy-automation/graphs/contributors)
