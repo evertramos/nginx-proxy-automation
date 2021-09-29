@@ -29,7 +29,7 @@ services:
         max-file: ${NGINX_WEB_LOG_MAX_FILE:-10}
 
   nginx-proxy-automation-gen:
-    image: jwilder/docker-gen:${DOCKER_GEN_IMAGE_VERSION:-latest}
+    image: nginxproxy/docker-gen:${DOCKER_GEN_IMAGE_VERSION:-latest}
     command: -notify-sighup ${NGINX_WEB_SEVICE_NAME:-nginx-proxy-automation-web} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
     container_name: ${DOCKER_GEN_SEVICE_NAME:-nginx-proxy-automation-gen}
     restart: always
@@ -48,7 +48,7 @@ services:
         max-file: ${NGINX_GEN_LOG_MAX_FILE:-10}
 
   nginx-proxy-automation-letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion:${NGINX_PROXY_COMPANION_IMAGE_VERSION:-2.0}
+    image: nginxproxy/acme-companion:${NGINX_PROXY_COMPANION_IMAGE_VERSION:-2.0}
     container_name: ${LETS_ENCRYPT_SEVICE_NAME:-nginx-proxy-automation-letsencrypt}
     restart: always
     volumes:
