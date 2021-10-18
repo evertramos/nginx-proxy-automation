@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #-----------------------------------------------------------------------
 #
@@ -12,6 +12,20 @@
 # Copyright Evert Ramos
 #
 #-----------------------------------------------------------------------
+
+if [ $(sed -E "s/^([0-9]*).*$/\\1/g" <<< "$BASH_VERSION") -lt "4" ];then
+  printf "ERROR: At least bash version 4 is needed your bash is too old ($BASH_VERSION).\n";
+  exit 1;
+fi
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  shopt -s expand_aliases
+  for prog in "sed" "stat" "readlink"; do
+    if [[ $(eval $prog --version 2>&1 | grep "GNU") == "" ]];then
+      printf "ERROR: Please install the GNU version of '$prog' (g$prog)\ne.g. with 'brew install g$prog' and 'ln -s /usr/local/bin/g$prog /usr/local/bin/$prog' (make sure that /usr/local/bin comes before /usr/bin in \$PATH).\n"
+      exit 1;
+    fi
+  done
+fi
 
 # Bash settings (do not mess with it)
 shopt -s nullglob globstar
