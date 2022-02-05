@@ -48,9 +48,9 @@ Use your own domain name when testing this proxy and make sure your DNS is corre
 
 ## Video Tutorial 🎥
 
-I made a 5 minutes tutorial video to walk you through this project:
+I made a tutorial video to walk you through this project:
 
-[![youtube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=E9BtHVr_v9I)
+[![youtube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=eiTivLeIkm0)
 
 <p align="center">
    <a target="_blank" href="https://www.youtube.com/watch?v=E9BtHVr_v9I"><img src="https://img.youtube.com/vi/E9BtHVr_v9I/0.jpg" /></a>
