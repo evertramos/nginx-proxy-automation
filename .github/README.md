@@ -50,11 +50,20 @@ Use your own domain name when testing this proxy and make sure your DNS is corre
 
 I made a tutorial video to walk you through this project:
 
-[![youtube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=eiTivLeIkm0)
+[![youtube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCN5wb0eA3ZLlvJNYo23qBRQ)
+
+### AWS EC2
 
 <p align="center">
    <a target="_blank" href="https://www.youtube.com/watch?v=eiTivLeIkm0"><img src="https://img.youtube.com/vi/eiTivLeIkm0/0.jpg" /></a>
 </p>
+
+### OVH
+
+<p align="center">
+   <a target="_blank" href="https://www.youtube.com/watch?v=iM7ormtD01g"><img src="https://img.youtube.com/vi/iM7ormtD01g/0.jpg" /></a>
+</p>
+
 
 ## Server Automation 🚀
 
