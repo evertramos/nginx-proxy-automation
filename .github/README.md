@@ -55,7 +55,7 @@ I made a tutorial video to walk you through this project:
 ### AWS EC2
 
 <p align="center">
-   <a target="_blank" href="https://www.youtube.com/watch?v=iM7ormtD01g"><img src="https://img.youtube.com/vi/iM7ormtD01g/0.jpg" /></a>
+   <a target="_blank" href="https://www.youtube.com/watch?v=agg1VxAyoUQ"><img src="https://img.youtube.com/vi/agg1VxAyoUQ/0.jpg" /></a>
 </p>
 
 ### OVH
