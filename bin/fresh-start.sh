@@ -525,7 +525,7 @@ done
 run_function check_local_env_file
 
 # Specific PID File if needs to run multiple scripts
-NEW_PID_FILE=${PID_FILE_FRESH_INSTALL:-".fresh_start"}
+NEW_PID_FILE=${PID_FILE_FRESH_INSTALL:-".fresh_start.pid"}
 
 # Run initial check function
 run_function starts_initial_check $NEW_PID_FILE
