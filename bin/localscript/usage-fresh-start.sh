@@ -64,6 +64,7 @@ Usage:
                 [--use-nginx-conf-files] [--update-nginx-template]
                 [--yes]
                 [--debug]
+                [--docker-rootless]
 
     Required
     -e | --default-email          Default email address require to issue ssl
@@ -131,6 +132,10 @@ Usage:
     --yes                               Set "yes" to all, use it with caution
     --debug                             Show script debug options
     --silent                            Hide all script message
+    -dr | --docker-rootless             Add Docker rootless support by adding the
+                                        the current user's $XDG_RUNTIME_DIR and
+                                        concat with the '/docker.sock' in the
+                                        DOCKER_HOST_ROOTLESS_PATH .env file.
     -h | --help                         Display this help
 
 ${reset}
