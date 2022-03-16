@@ -34,6 +34,8 @@ cd proxy/bin && ./fresh-start.sh --yes -e your_email@domain --skip-docker-image-
 
 Update the email above with your real e-mail address
 
+In order to enable this option in the proxy you must run the fresh start script with the option `--use-nginx-conf-files`
+
 3. 🧪 Test the proxy
 
 ```bash
