@@ -79,7 +79,7 @@ local_update_env_new_site_variables()
     [[ ! $ARG_DEFAULT_HOST == "" ]] && run_function env_update_variable $LOCAL_FILE_PATH "DEFAULT_HOST" "${ARG_DEFAULT_HOST}"
 
     # Docker rootless support
-    run_function env_update_variable $LOCAL_FILE_PATH "DOCKER_HOST_ROOTLESS_PATH" "$DOCKER_HOST_ROOTLESS_PATH"
+    [[ "$USE_DOCKER_ROOTLESS" == true ]] && run_function env_update_variable $LOCAL_FILE_PATH "DOCKER_HOST_ROOTLESS_PATH" "$DOCKER_HOST_ROOTLESS_PATH"
 
     return 0
 }
