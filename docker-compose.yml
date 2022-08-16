@@ -61,5 +61,5 @@ services:
 
 networks:
   default:
-    external:
-      name: ${NETWORK:-webproxy}
+    name: ${NETWORK:-webproxy}
+    external: true
