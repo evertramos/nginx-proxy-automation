@@ -25,7 +25,7 @@ fi
 curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
 
 # 5. Update local images
-docker-compose pull
+docker compose pull
 
 # 6. Add any special configuration if it's set in .env file
 
@@ -60,9 +60,9 @@ fi
 
 # Check if you have multiple network
 if [ -z ${SERVICE_NETWORK+X} ]; then
-    docker-compose up -d
+    docker compose up -d
 else
-    docker-compose -f docker-compose-multiple-networks.yml up -d
+    docker compose -f docker-compose-multiple-networks.yml up -d
 fi
 
 exit 0
