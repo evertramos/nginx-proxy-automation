@@ -8,7 +8,7 @@
 # 1. Check if .env file exists
 if [ -e .env ]; then
     source .env
-else 
+else
     echo "Please set up your .env file before starting your environment."
     exit 1
 fi
@@ -23,6 +23,10 @@ fi
 
 # 4. Download the latest version of nginx.tmpl
 curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > nginx.tmpl
+
+# Add proxy_buffer settings
+#sed -f nginx-buffer-params.txt < nginx.tmpl > nginx.tmpl.tmp
+
 
 # 5. Update local images
 docker compose pull
@@ -51,10 +55,10 @@ if [ ! -z ${USE_NGINX_CONF_FILES+X} ] && [ "$USE_NGINX_CONF_FILES" = true ]; the
         echo "There was an error trying to copy the nginx conf files."
         echo "The webproxy will still work, your custom configuration"
         echo "will not be loaded."
-        echo 
+        echo
         echo "#######################################################"
     fi
-fi 
+fi
 
 # 7. Start proxy
 
