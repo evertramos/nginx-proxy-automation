@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #
 # This file should be used to prepare and run your WebProxy after set up your .env file
@@ -9,8 +9,9 @@
 if [ -e .env ]; then
     source .env
 else 
-    echo "Please set up your .env file before starting your environment."
-    exit 1
+    echo "It seems you didn´t create your .env file, so we will create one for you."
+    cp .env.sample .env
+    # exit 1
 fi
 
 # 2. Create docker network
@@ -49,8 +50,8 @@ if [ ! -z ${USE_NGINX_CONF_FILES+X} ] && [ "$USE_NGINX_CONF_FILES" = true ]; the
         echo "#######################################################"
         echo
         echo "There was an error trying to copy the nginx conf files."
-        echo "The webproxy will still work, your custom configuration"
-        echo "will not be loaded."
+        echo "The proxy will still work with default options, but"
+        echo "the custom settings your have made could not be loaded."
         echo 
         echo "#######################################################"
     fi
