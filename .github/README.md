@@ -75,7 +75,7 @@ Make user you try our [Server Automation](https://github.com/evertramos/server-a
 
 ## Further information 📓
 
-For more instalation details please [click here](/docs/).
+For more installation details please [click here](/docs/).
 
 ## Supporting ♥️
 [![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/evertramos)
