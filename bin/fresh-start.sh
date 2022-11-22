@@ -899,7 +899,7 @@ NGINX_PROXY_IMAGE_VERSION=${ARG_NGINX_PROXY_IMAGE_VERSION:-$LOCAL_DEFAULT_NGINX_
 #fi
 
 # Final check image a version with dockerhub
-[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && [[ ! "$REPLY_YES" == true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_NGINX_PROXY_IMAGE_NAME $NGINX_PROXY_IMAGE_VERSION
+#[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && [[ ! "$REPLY_YES" == true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_NGINX_PROXY_IMAGE_NAME $NGINX_PROXY_IMAGE_VERSION
 
 #-----------------------------------------------------------------------
 # Let's Encrypt image version
@@ -912,12 +912,21 @@ NGINX_PROXY_IMAGE_VERSION=${ARG_NGINX_PROXY_IMAGE_VERSION:-$LOCAL_DEFAULT_NGINX_
 LOCAL_DEFAULT_LETSENCRYPT_IMAGE_NAME=${DEFAULT_LETSENCRYPT_IMAGE_NAME:-null}
 LOCAL_DEFAULT_LETSENCRYPT_IMAGE_VERSION=${DEFAULT_LETSENCRYPT_IMAGE_VERSION:-null}
 if [[ $ARG_LETSENCRYPT_IMAGE_VERSION == "" ]] && [[ ! "$REPLY_YES" == true ]]; then
-  # Get user's response
-  run_function dockerhub_list_tags $LOCAL_DEFAULT_LETSENCRYPT_IMAGE_NAME
-  run_function select_one_option "${DOCKERHUB_LIST_TAGS[*]}" "Please select a tag for the image '$LOCAL_DEFAULT_LETSENCRYPT_IMAGE_NAME' (the list below comes from https://hub.docker.com):"
 
-  [[ $SELECT_ONE_OPTION_NAME == "" ]] && echowarning "Once you did not select any option, '$LOCAL_DEFAULT_LETSENCRYPT_IMAGE_VERSION' will be used."
-  LETSENCRYPT_IMAGE_VERSION=${SELECT_ONE_OPTION_NAME:-$LOCAL_DEFAULT_LETSENCRYPT_IMAGE_VERSION}
+  # -------
+  # docker hub api v2 does not allow to get tags from personal repos without login
+  # @todo - fix this with user login
+  # -------
+
+  LETSENCRYPT_IMAGE_VERSION=${LOCAL_DEFAULT_LETSENCRYPT_IMAGE_VERSION}
+
+
+  # Get user's response (COMMENTED - TO BE FIXED)
+#  run_function dockerhub_list_tags $LOCAL_DEFAULT_LETSENCRYPT_IMAGE_NAME
+#  run_function select_one_option "${DOCKERHUB_LIST_TAGS[*]}" "Please select a tag for the image '$LOCAL_DEFAULT_LETSENCRYPT_IMAGE_NAME' (the list below comes from https://hub.docker.com):"
+#
+#  [[ $SELECT_ONE_OPTION_NAME == "" ]] && echowarning "Once you did not select any option, '$LOCAL_DEFAULT_LETSENCRYPT_IMAGE_VERSION' will be used."
+#  LETSENCRYPT_IMAGE_VERSION=${SELECT_ONE_OPTION_NAME:-$LOCAL_DEFAULT_LETSENCRYPT_IMAGE_VERSION}
 else
   LETSENCRYPT_IMAGE_VERSION=${ARG_LETSENCRYPT_IMAGE_VERSION:-$LOCAL_DEFAULT_LETSENCRYPT_IMAGE_VERSION}
 fi
@@ -926,8 +935,13 @@ if [[ "$LETSENCRYPT_IMAGE_VERSION" == null ]] || [[ "$LOCAL_DEFAULT_LETSENCRYPT_
   echoerror "It seems there is no default image or version, please check the .env file at '$SCRIPT_PATH'"
 fi
 
-# Final check image a version with dockerhub
-[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && [[ ! "$REPLY_YES" == true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_LETSENCRYPT_IMAGE_NAME $LETSENCRYPT_IMAGE_VERSION
+# -------
+# docker hub api v2 does not allow to get tags from personal repos without login
+# @todo - fix this with user login
+# -------
+
+# Final check image a version with dockerhub (COMMENTED - TO BE FIXED)
+#[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && [[ ! "$REPLY_YES" == true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_LETSENCRYPT_IMAGE_NAME $LETSENCRYPT_IMAGE_VERSION
 
 #-----------------------------------------------------------------------
 # docker-gen image version
@@ -940,12 +954,18 @@ fi
 LOCAL_DEFAULT_DOCKER_GEN_IMAGE_NAME=${DEFAULT_DOCKER_GEN_IMAGE_NAME:-null}
 LOCAL_DEFAULT_DOCKER_GEN_IMAGE_VERSION=${DEFAULT_DOCKER_GEN_IMAGE_VERSION:-null}
 if [[ $ARG_DOCKER_GEN_IMAGE_VERSION == "" ]] && [[ ! "$REPLY_YES" == true ]]; then
-  # Get user's response
-  run_function dockerhub_list_tags $LOCAL_DEFAULT_DOCKER_GEN_IMAGE_NAME false
-  run_function select_one_option "${DOCKERHUB_LIST_TAGS[*]}" "Please select a tag for the image '$LOCAL_DEFAULT_DOCKER_GEN_IMAGE_NAME' (the list below comes from https://hub.docker.com):"
+  # -------
+  # docker hub api v2 does not allow to get tags from personal repos without login
+  # @todo - fix this with user login
+  # -------
 
-  [[ $SELECT_ONE_OPTION_NAME == "" ]] && echowarning "Once you did not select any option, '$LOCAL_DEFAULT_DOCKER_GEN_IMAGE_VERSION' will be used."
-  DOCKER_GEN_IMAGE_VERSION=${SELECT_ONE_OPTION_NAME:-$LOCAL_DEFAULT_DOCKER_GEN_IMAGE_VERSION}
+#  # Get user's response (COMMENTED - TO BE FIXED)
+#  run_function dockerhub_list_tags $LOCAL_DEFAULT_DOCKER_GEN_IMAGE_NAME false
+#  run_function select_one_option "${DOCKERHUB_LIST_TAGS[*]}" "Please select a tag for the image '$LOCAL_DEFAULT_DOCKER_GEN_IMAGE_NAME' (the list below comes from https://hub.docker.com):"
+#
+#  [[ $SELECT_ONE_OPTION_NAME == "" ]] && echowarning "Once you did not select any option, '$LOCAL_DEFAULT_DOCKER_GEN_IMAGE_VERSION' will be used."
+#  DOCKER_GEN_IMAGE_VERSION=${SELECT_ONE_OPTION_NAME:-$LOCAL_DEFAULT_DOCKER_GEN_IMAGE_VERSION}
+  DOCKER_GEN_IMAGE_VERSION=${ARG_DOCKER_GEN_IMAGE_VERSION:-$LOCAL_DEFAULT_DOCKER_GEN_IMAGE_VERSION}
 else
   DOCKER_GEN_IMAGE_VERSION=${ARG_DOCKER_GEN_IMAGE_VERSION:-$LOCAL_DEFAULT_DOCKER_GEN_IMAGE_VERSION}
 fi
@@ -954,8 +974,13 @@ if [[ "$DOCKER_GEN_IMAGE_VERSION" == null ]] || [[ "$LOCAL_DEFAULT_DOCKER_GEN_IM
   echoerror "It seems there is no default image or version, please check the .env file at '$SCRIPT_PATH'"
 fi
 
-# Final check image a version with dockerhub
-[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && [[ ! "$REPLY_YES" == true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_DOCKER_GEN_IMAGE_NAME $DOCKER_GEN_IMAGE_VERSION
+# -------
+# docker hub api v2 does not allow to get tags from personal repos without login
+# @todo - fix this with user login
+# -------
+
+# Final check image a version with dockerhub (COMMENTED - TO BE FIXED)
+#[[ "$SKIP_DOCKER_IMAGE_CHECK" != true ]] && [[ ! "$REPLY_YES" == true ]] && local_check_docker_hub_image_version $LOCAL_DEFAULT_DOCKER_GEN_IMAGE_NAME $DOCKER_GEN_IMAGE_VERSION
 
 #-----------------------------------------------------------------------
 # IP address (IPv4)
