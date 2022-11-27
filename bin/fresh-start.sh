@@ -613,7 +613,7 @@ local_check_docker_hub_image_version() {
 }
 
 #-----------------------------------------------------------------------
-# Check if the docker-compose is already running
+# Check if the docker compose is already running
 #-----------------------------------------------------------------------
 LOCAL_DOCKER_COMPOSE_FILE_FULL_PATH="$SCRIPT_PATH/../ "
 run_function docker_compose_check_service_exists $LOCAL_DOCKER_COMPOSE_FILE_FULL_PATH
