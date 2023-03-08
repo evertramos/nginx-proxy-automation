@@ -17,9 +17,5 @@ cd "${SCRIPT_PATH}/../basescript"
 git submodule init
 git submodule update
 
-if [[ ! "${SCRIPT_PATH}" == "${CURRENT_PATH}" ]]; then
-  cd - 1>/dev/null 2>/dev/null
-fi
-
 exit 0
 
