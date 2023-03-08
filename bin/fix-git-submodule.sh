@@ -17,5 +17,7 @@ cd "${SCRIPT_PATH}/../basescript"
 git submodule init
 git submodule update
 
+echo "Submodule is set"
+
 exit 0
 
