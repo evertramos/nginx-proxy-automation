@@ -1297,7 +1297,9 @@ run_function local_update_docker_compose_file "$SCRIPT_PATH/../"
 run_function docker_compose_start "$SCRIPT_PATH/../"
 
 if [[ "$ERROR_DOCKER_COMPOSE_START" == true ]]; then
-  echoerror "There was an error starting the service at '$SCRIPT_PATH/../'"
+  echoerror "There was an error starting the service at '$SCRIPT_PATH/../'" false
+  echoerror "You might have an old version of docker compose in your server, \
+    please run 'docker compose up -d' manually or try 'docker-compose up -d'"
   local_undo_restore
 fi
 
