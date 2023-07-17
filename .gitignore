@@ -3,3 +3,4 @@ data
 !.env.sample
 .DS_Store
 .idea/
+/bin/basescript.log
