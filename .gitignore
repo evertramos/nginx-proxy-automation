@@ -4,3 +4,4 @@ data
 .DS_Store
 .idea/
 /bin/basescript.log
+/docker-compose.yml.*
