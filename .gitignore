@@ -1,4 +1,4 @@
-data
+
 .env*
 !.env.sample
 .DS_Store
