@@ -340,7 +340,7 @@ server {
 {{ if or (not $is_https) (eq $https_method "noredirect") }}
 
 server {
-	server_name {{ $host }};
+	server_name {{ $host }} www.{{ $host }};
 	listen {{ $external_http_port }} {{ $default_server }};
 	{{ if $enable_ipv6 }}
 	listen [::]:80 {{ $default_server }};
@@ -358,29 +358,99 @@ server {
 	include /etc/nginx/vhost.d/default;
 	{{ end }}
 
-	location / {
-		{{ if eq $proto "uwsgi" }}
-		include uwsgi_params;
-		uwsgi_pass {{ trim $proto }}://{{ trim $upstream_name }};
-		{{ else if eq $proto "fastcgi" }}
-		root   {{ trim $vhost_root }};
-		include fastcgi_params;
-		fastcgi_pass {{ trim $upstream_name }};
-		{{ else if eq $proto "grpc" }}
-		grpc_pass {{ trim $proto }}://{{ trim $upstream_name }};
-		{{ else }}
-		proxy_pass {{ trim $proto }}://{{ trim $upstream_name }};
-		{{ end }}
-		{{ if (exists (printf "/etc/nginx/htpasswd/%s" $host)) }}
-		auth_basic	"Restricted {{ $host }}";
-		auth_basic_user_file	{{ (printf "/etc/nginx/htpasswd/%s" $host) }};
-		{{ end }}
-		{{ if (exists (printf "/etc/nginx/vhost.d/%s_location" $host)) }}
-		include {{ printf "/etc/nginx/vhost.d/%s_location" $host}};
-		{{ else if (exists "/etc/nginx/vhost.d/default_location") }}
-		include /etc/nginx/vhost.d/default_location;
-		{{ end }}
-	}
+	{{ if eq $proto "fastcgi" }}
+    index index.php;
+
+    client_max_body_size 2000m;
+
+	root /{{ trim $vhost_root }};
+
+    server_tokens off;
+    server_name_in_redirect off;
+
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "no-referrer-when-downgrade" always;
+    add_header Content-Security-Policy "default-src * data: 'unsafe-eval' 'unsafe-inline'" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        client_max_body_size 2000m;
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass {{ trim $upstream_name }};
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME /var/www/html/$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_param  PHP_VALUE   "memory_limit = 1000M \n post_max_size = 2000M \n upload_max_filesize = 2000M";
+    }
+
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    #Hide the PHP version.
+    fastcgi_hide_header X-Powered-By;
+    proxy_hide_header X-Powered-By;
+
+    location ~ \wp-login.php$ {
+        limit_req zone=WPRATELIMIT;
+    }
+
+    location ~ /\.(git)/* {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    location ~ /\.user.ini {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    
+    if ($request_method !~ ^(GET|POST)$ ) {
+        return 444;
+    }
+    location ~* /(?:uploads|files|wp-content|wp-includes)/.*.php$ {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    location ~* ^.+\.(png|jpe?g|gif)$ {
+        add_header Vary Accept;
+        try_files $uri$webp_suffix $uri =404;
+    }
+
+    location = /favicon.ico {
+            log_not_found off;
+            access_log off;
+    }
+    location = /robots.txt {
+            log_not_found off;
+            access_log off;
+    }
+    location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$ {
+            expires max;
+            log_not_found off;
+            access_log off;
+            add_header Pragma public;
+            add_header Cache-Control "public";
+    }
+
+	{{ end }}
+
+
 }
 
 {{ if (and (not $is_https) (exists "/etc/nginx/certs/default.crt") (exists "/etc/nginx/certs/default.key")) }}
