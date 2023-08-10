@@ -344,6 +344,8 @@ server {
 	{{ end }}
 	{{ $access_log }}
 
+	client_max_body_size 2000m;
+
 	{{ if eq $network_tag "internal" }}
 	# Only allow traffic from internal clients
 	include /etc/nginx/network_internal.conf;
@@ -357,8 +359,6 @@ server {
 
 	{{ if eq $proto "fastcgi" }}
     index index.php;
-
-    client_max_body_size 2000m;
 
 	root /{{ trim $vhost_root }};
 
