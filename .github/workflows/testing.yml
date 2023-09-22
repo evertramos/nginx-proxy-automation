@@ -14,9 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: textbook/git-checkout-submodule-action@master
         with:
-          remote: true
+          submodules: true
 
       #- name: Testing if has docker
       #  run: docker ps -q -a
