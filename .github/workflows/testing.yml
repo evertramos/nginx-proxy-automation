@@ -14,6 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: textbook/git-checkout-submodule-action@master
 
       #- name: Testing if has docker
       #  run: docker ps -q -a
