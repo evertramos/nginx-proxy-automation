@@ -15,8 +15,8 @@ CURRENT_PATH=$(pwd)
 cd "${SCRIPT_PATH}/../"
 
 # Stop compose
-export COMPOSE_INTERACTIVE_NO_CLI=1
-docker compose down 2&> /dev/null || true
+#export COMPOSE_INTERACTIVE_NO_CLI=1
+docker compose down || true
 
 # Remove newly created files/folder
 sudo rm -rf ./data .env docker-compose.yml.backup_* .env.backup_* .env
