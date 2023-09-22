@@ -29,7 +29,7 @@ We use submodule for [basescript](https://github.com/evertramos/basescript)
 2. 🚀 Run the script 'fresh_start.sh' from the _./proxy/bin_ folder
    
 ```bash
-cd proxy/bin && ./fresh-start.sh --yes -e your_email@domain --skip-docker-image-check
+cd proxy/bin && ./fresh-start.sh --yes --skip-docker-image-check -e your_email@domain
 ```
 
 Update the email above with your real e-mail address
