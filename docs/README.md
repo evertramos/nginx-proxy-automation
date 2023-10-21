@@ -197,6 +197,16 @@ Or simply run:
 ```bash
 docker stop test-web && docker rm test-web
 ```
+### Debugging Failed Connections
+
+If the above connection test fails, it is recommended to start diagnosing as close to the server as possible and then move outwards.
+
+1. Without using nginx-proxy-automation, run the container on the server, open the port as you normally would (i.e. `-p 9000:9000`), and attempt to see if the port is available after running. You can test if the port is available using [nmap](https://nmap.org). For example if you have exposed port 9000, running `nmap -p 9000 localhost` on the same server as the running Docker container, and it should return an open port. This tests if you may have a general issue with your docker setup. On failure, double check if you have setup any custom firewall rules or have setup `ufw` with Docker.
+2. Perform the same steps as 1, but try running `nmap` from a different machine on the same subnet / LAN if possible. This tests if the server is exposing ports at all. This tests if you may have a firewall issue on the server that needs diagnosed. On failure, double check if you have setup any custom firewall rules or have setup `ufw` with Docker.
+3. If you are using port forwarding on a router: Without using nginx-proxy-automation, run the container on the server, open the port as you normally would, and forwarding the port from the router to specified open port. This will test if you have properly forwarded the port. On failure, you will need to diagnose your port forwarding, and may need to consult your router manual.
+
+**Port Forwarding**
+If you are using port forwarding, it is highly recommended to connect via your own registered domain using [DDNS](https://en.wikipedia.org/wiki/Dynamic_DNS). There is a chance your ISP will change the public address of your router, and this will ensure the public IP of your router will be up to date.
 
 ## **PRODUCTION** ⚠️ [IMPORTANT]
 
