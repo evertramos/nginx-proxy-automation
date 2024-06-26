@@ -1,5 +1,3 @@
-version: '3.5'
-
 services:
   nginx-proxy-automation-web:
     image: nginx:${NGINX_IMAGE_VERSION:-stable-alpine}
