@@ -21,10 +21,10 @@ SCRIPT_PATH="$(dirname "$(readlink -f "$0")")"
 SCRIPT_NAME="${0##*/}"
 
 # Source basescript functions
-source $SCRIPT_PATH"/../basescript/bootstrap.sh"
+source "$SCRIPT_PATH/../basescript/bootstrap.sh"
 
 # Source localscripts
-source $SCRIPT_PATH"/localscript/bootstrap.sh"
+source "$SCRIPT_PATH/localscript/bootstrap.sh"
 
 # Log
 printf "${energy} Start execution '${SCRIPT_PATH}/${SCRIPT_NAME} "
@@ -558,21 +558,21 @@ local_undo_restore() {
   # If docker-compose file was renamed (backup)
   if [[ "$ACTION_DOCKER_COMPOSE_FILE_RENAMED" == true ]]; then
     [[ "$SILENT" != true ]] && echowarning "[undo] Renaming docker-compose.yml file '$LOCAL_BACKUP_DOCKER_COMPOSE_FILE'."
-    mv $LOCAL_BACKUP_DOCKER_COMPOSE_FILE "$SCRIPT_PATH/../docker-compose.yml"
+    mv "$LOCAL_BACKUP_DOCKER_COMPOSE_FILE" "$SCRIPT_PATH/../docker-compose.yml"
     ACTION_DOCKER_COMPOSE_FILE_RENAMED=false
   fi
 
   # If .env file was renamed (backup)
   if [[ "$ACTION_ENV_FILE_RENAMED" == true ]]; then
     [[ "$SILENT" != true ]] && echowarning "[undo] Renaming .env file '$LOCAL_BACKUP_ENV_FILE'."
-    mv $LOCAL_BACKUP_ENV_FILE "$SCRIPT_PATH/../.env"
+    mv "$LOCAL_BACKUP_ENV_FILE" "$SCRIPT_PATH/../.env"
     ACTION_ENV_FILE_RENAMED=false
   fi
 
   # If docker-compose file was renamed (backup)
   if [[ "$ACTION_DOCKER_COMPOSE_FILE_RENAMED" == true ]]; then
     [[ "$SILENT" != true ]] && echowarning "[undo] Renaming docker-compose file '$LOCAL_BACKUP_DOCKER_COMPOSE_FILE'."
-    mv $LOCAL_BACKUP_DOCKER_COMPOSE_FILE "$SCRIPT_PATH/../docker-compose.yml"
+    mv "$LOCAL_BACKUP_DOCKER_COMPOSE_FILE" "$SCRIPT_PATH/../docker-compose.yml"
     ACTION_DOCKER_COMPOSE_FILE_RENAMED=false
   fi
 
@@ -615,7 +615,7 @@ local_check_docker_hub_image_version() {
 #-----------------------------------------------------------------------
 # Check if the docker compose is already running
 #-----------------------------------------------------------------------
-LOCAL_DOCKER_COMPOSE_FILE_FULL_PATH="$SCRIPT_PATH/../ "
+LOCAL_DOCKER_COMPOSE_FILE_FULL_PATH="$SCRIPT_PATH/../"
 run_function docker_compose_check_service_exists $LOCAL_DOCKER_COMPOSE_FILE_FULL_PATH
 
 if [[ "$DOCKER_COMPOSE_SERVICE_EXISTS" == true ]]; then
@@ -1094,7 +1094,7 @@ else
 fi
 
 # Create folder if it does not exist
-run_function common_create_folder $DATA_LOCATION
+run_function common_create_folder "$DATA_LOCATION"
 
 #-----------------------------------------------------------------------
 # Default email address for the Lets Encrypt certificates
@@ -1213,13 +1213,11 @@ if [[ "$USE_NGINX_CONF_FILES" == true ]]; then
   run_function common_create_folder "$DATA_LOCATION/conf.d"
 
   # Copy the special configurations to the nginx conf folder
-  cp -R $SCRIPT_PATH/../conf.d/* $DATA_LOCATION/conf.d/
+  cp -R "$SCRIPT_PATH/../conf.d/"* "$DATA_LOCATION/conf.d/"
 
   # Check if there was an error and try with sudo
   if [ $? -ne 0 ]; then
-      echo "sudo cp -R $SCRIPT_PATH/../conf.d/* $DATA_LOCATION/conf.d/"
-      exit 0
-      sudo cp -R $SCRIPT_PATH/../conf.d/* $DATA_LOCATION/conf.d/
+      sudo cp -R "$SCRIPT_PATH/../conf.d/"* "$DATA_LOCATION/conf.d/"
   fi
 
   # If there was any errors inform the user
@@ -1236,7 +1234,7 @@ fi
 DEFAULT_NGINX_TEMPLATE_URL="https://raw.githubusercontent.com/nginx-proxy/nginx-proxy/master/nginx.tmpl"
 if [[ "$UPDATE_NGINX_TEMPLATE" == true ]]; then
   cd "$SCRIPT_PATH/../"
-  curl -L $DEFAULT_NGINX_TEMPLATE_URL -o nginx.tmpl
+  curl -L "$DEFAULT_NGINX_TEMPLATE_URL" -o nginx.tmpl
   cd - > /dev/null 2>&1
 fi
 
